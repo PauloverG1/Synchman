@@ -1,5 +1,5 @@
-var SYC_HOME = "https://qwww.synchrony.com/"
-var baseURL = 'https://qwww.synchrony.com/';
+var SYC_HOME = "/"
+var baseURL = "/";
 var bankApiURL = 'https://api-uat.syf.com/v1/retailBank/products?serviceLevel=';
 const PRODUCT_IDS = [];
 

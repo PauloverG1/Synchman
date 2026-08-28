@@ -787,11 +787,11 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 
 <!-- BOTTOM NAV -->
 <nav class="bnav">
-  <button class="bn on" onclick="goto('overview')"><span class="bn-i">⬡</span><span>Home</span></button>
-  <button class="bn" onclick="goto('transfer')"><span class="bn-i">⇄</span><span>Transfer</span></button>
-  <button class="bn" onclick="goto('loans')"><span class="bn-i">⌂</span><span>Loans</span></button>
-  <button class="bn" onclick="goto('investments')"><span class="bn-i">↗</span><span>Invest</span></button>
-  <button class="bn" onclick="goto('settings')"><span class="bn-i">⚙</span><span>More</span></button>
+  <button class="bn on" data-target="overview" onclick="goto('overview')"><span class="bn-i">⬡</span><span>Home</span></button>
+  <button class="bn" data-target="transfer" onclick="goto('transfer')"><span class="bn-i">⇄</span><span>Transfer</span></button>
+  <button class="bn" data-target="loans" onclick="goto('loans')"><span class="bn-i">⌂</span><span>Loans</span></button>
+  <button class="bn" data-target="investments" onclick="goto('investments')"><span class="bn-i">↗</span><span>Invest</span></button>
+  <button class="bn" data-target="settings" onclick="goto('settings')"><span class="bn-i">⚙</span><span>More</span></button>
 </nav>
 
 
@@ -946,7 +946,13 @@ function goto(p){
   document.querySelectorAll('.ni').forEach(b=>b.classList.remove('on'));
   const activeNi=document.querySelector('.ni[data-target="'+p+'"]');
   if(activeNi) activeNi.classList.add('on');
+
+  // Highlight active bottom nav item
   document.querySelectorAll('.bn').forEach(b=>b.classList.remove('on'));
+  const bnTarget = (p === 'help') ? 'settings' : p;
+  const activeBn = document.querySelector('.bn[data-target="'+bnTarget+'"]');
+  if(activeBn) activeBn.classList.add('on');
+
   if(p==='overview'&&!balDone) initBalChart();
   if(p==='investments'&&!portDone) initPortChart();
   if(p==='loans') calcLoan();

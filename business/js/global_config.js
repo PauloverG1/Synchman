@@ -7,8 +7,8 @@ var uiscodeURLs = {
             "lp/saving"
         ],
         "noDefault": [
-                "https://www.synchrony.com/",
-                "https://qwww.synchrony.com/",
+                "//",
+                "//",
                 "syc/home"
         ],
         "completeUrl": []
