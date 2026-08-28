@@ -976,6 +976,18 @@ function goto(p){
   if(p==='overview'&&!balDone) initBalChart();
   if(p==='investments'&&!portDone) initPortChart();
   if(p==='loans') calcLoan();
+
+  // If user navigates to Overview after a transfer, silently re-fetch latest data
+  // so the pending transaction shows up immediately without a manual reload
+  if(p==='overview' && sessionStorage.getItem('needsOverviewRefresh')==='1'){
+    sessionStorage.removeItem('needsOverviewRefresh');
+    fetch('/api/dashboard').then(r=>r.json()).then(d=>{
+      if(!d||d.error) return;
+      renderTxns(d.transactions||[]);
+      renderAccCards(d.accounts||[]);
+    }).catch(()=>{});
+  }
+
   window.scrollTo({top:0,behavior:'smooth'});
   closeSB();
 }
@@ -1258,6 +1270,8 @@ async function submitTr(){
       toast('✅ Transfer of $'+fmt(rawAmt+info.fee)+' to '+name+' submitted for review!');
       ['tr-name','tr-bank','tr-acct','tr-routing','tr-amt','tr-date-display','tr-date-val','tr-memo'].forEach(id=>{if($(id))$(id).value='';});
       updateTrPreview();
+      // Flag so Overview refreshes next time user visits it
+      sessionStorage.setItem('needsOverviewRefresh','1');
     } else { toast('⚠️ Transfer failed. Please try again.'); }
   }catch(e){ toast('⚠️ Could not reach server. Please check connection.'); }
 }

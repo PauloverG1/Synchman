@@ -128,28 +128,27 @@ tr:hover td{background:var(--bg)}
 
 @media(max-width:900px){
   .stats-row{grid-template-columns:1fr 1fr}
-  .g2,.g3{grid-template-columns:1fr}
+  .g3{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .container{padding:14px 12px}
   .stats-row{grid-template-columns:1fr 1fr;gap:10px}
   .stat-box{padding:12px 14px}
   .stat-val{font-size:20px}
-  .topbar{height:auto;padding:12px 14px;flex-direction:column;align-items:flex-start;gap:10px}
+
+  /* Topbar: stack brand above buttons on mobile */
+  .topbar{height:auto;padding:10px 14px;flex-direction:column;align-items:flex-start;gap:8px}
   .tb-r{width:100%;justify-content:space-between}
   .tb-time{display:none}
-  
+
+  /* Search bar */
   .search-action-wrap{flex-direction:column;align-items:stretch !important;width:100%;gap:10px !important}
   .search-inputs{flex-direction:column;width:100%;gap:8px !important}
   .search-inputs input{width:100% !important}
   .search-inputs button{width:100%}
 
-  .user-row{
-    flex-direction:column;
-    align-items:stretch;
-    gap:10px;
-    padding:14px;
-  }
+  /* Client row in list */
+  .user-row{flex-direction:column;align-items:stretch;gap:10px;padding:14px}
   .u-left{width:100%}
   .u-meta-right{
     width:100%;
@@ -163,10 +162,16 @@ tr:hover td{background:var(--bg)}
   .u-bal{text-align:left}
   .u-arrow{display:none}
 
-  .inv-row{
-    grid-template-columns:auto 1fr auto;
-    gap:8px;
-  }
+  /* User detail header — name + Add Transaction button */
+  #view-user > div:nth-of-type(1){flex-direction:column;align-items:flex-start;gap:10px}
+  #view-user > div:nth-of-type(1) > div:last-child{margin-left:0;width:100%}
+  #view-user > div:nth-of-type(1) > div:last-child .btn{width:100%;justify-content:center}
+
+  /* Account cards: 1 column on mobile */
+  .g2,.g3{grid-template-columns:1fr}
+
+  /* Investment asset rows */
+  .inv-row{grid-template-columns:auto 1fr auto;gap:8px}
   .inv-actions{
     grid-column:1 / -1;
     display:flex;
@@ -177,6 +182,7 @@ tr:hover td{background:var(--bg)}
     margin-top:4px;
   }
 
+  /* Modals */
   .modal-bg{padding:10px}
   .modal-box{border-radius:14px;max-width:100% !important}
   .modal-body{padding:16px}
@@ -184,6 +190,23 @@ tr:hover td{background:var(--bg)}
 }
 @media(max-width:480px){
   .stats-row{grid-template-columns:1fr}
+
+  /* Login box — fits small phone screens */
+  .login-box{width:calc(100vw - 32px);padding:28px 20px;border-radius:16px}
+  .login-logo{font-size:22px}
+
+  /* Topbar brand smaller */
+  .tb-brand{font-size:14px}
+  .btn-sm{font-size:11px;padding:4px 10px}
+
+  /* Section header + Add Transaction button: stack on narrow phones */
+  #view-user > div:nth-of-type(1){gap:8px}
+
+  /* Tabs: smaller text on tiny phones */
+  .tab{padding:8px 12px;font-size:12px}
+
+  /* Toast */
+  .toast{left:12px;right:12px;bottom:14px;max-width:unset}
 }
 
 </style>
