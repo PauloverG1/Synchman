@@ -1,0 +1,79 @@
+/* Universal breakpoints */
+.three-up .inner {
+  gap: 24px; }
+@media (max-width: 479px){
+#who-we-are{
+  padding-top:12rem;
+  }
+}
+@media (min-width:480px) and (max-width: 991px){
+#who-we-are{
+  margin-top:9rem;
+  }
+}
+.text-tile {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0 0 8px;
+  box-sizing: border-box;
+  display: flex !important;
+  justify-content: space-evenly !important; }
+  .text-tile.multi-row.-small {
+    margin-bottom: 40px;
+    padding: 20px 0;
+    width: 303px;
+    min-width: 303px;
+    max-width: 303px; }
+    .text-tile.multi-row.-small .tile-subcopy {
+      padding-top: 10px;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: normal; }
+  .text-tile.-small .text-tile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; }
+    @media (max-width: 991px) {
+      .text-tile.-small .text-tile-content {
+        justify-content: center; } }
+  @media (max-width: 991px) {
+    .text-tile {
+      width: auto; } }
+  .text-tile .tile-graphic {
+    width: auto;
+    height: 137px; }
+    @media (max-width: 479px) {
+      .text-tile .tile-graphic {
+        height: 100px; } }
+  .text-tile .tile-subcopy {
+    color: #1f2026;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 257px;
+    text-align: center; }
+    @media (max-width: 991px) {
+      .text-tile .tile-subcopy {
+        padding: 0; } }
+    @media (max-width: 991px) {
+      .text-tile .tile-subcopy {
+        font-size: 18px;
+        width: 223px; } }
+         /* ADA fix*/
+    .zoom-in-mode-level-400 #synchrony-by-number-container .three-up .inner ,
+    .zoom-in-mode-level-400 .hero_business_landing_three_up_tiles .card-button-container .three-up .inner {
+      display: block;
+     
+    }
+    .zoom-in-mode-level-400 #synchrony-by-number-container .three-up ,
+    .zoom-in-mode-level-400 .hero_business_landing_three_up_tiles .card-button-container .three-up {  
+      overflow-x: hidden;
+    }
+    .zoom-in-mode-level-400 .hero_business_landing_three_up_tiles .card-button-container .three-up .text-tile{
+      margin-top: 10px;
+    }
+    .zoom-in-mode-level-400 .business-landing-products-solutions .intersect .three-up{
+   overflow-x: hidden;
+    }
+    

@@ -1,0 +1,65 @@
+/* Universal breakpoints */
+@media (min-width: 992px) {
+  .banking-carousel-slide {
+    padding: 0px 0 80px; } }
+
+@media (min-width: 992px) {
+  .banking-carousel-slide.mb-half {
+    padding: 0px 0 40px; } }
+
+.banking-carousel-slide .banking-carousel-slide-inner {
+  align-items: center; }
+  @media (min-width: 992px) {
+    .banking-carousel-slide .banking-carousel-slide-inner {
+      margin-top: 40px; } }
+
+.banking-carousel-slide-heading {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: normal;
+  padding: 0 60px;
+  text-align: left; }
+  @media (max-width: 480px) {
+    .banking-carousel-slide-heading {
+      text-align: left; } }
+  @media (min-width: 992px) {
+    .banking-carousel-slide-heading {
+      text-align: center;
+      font-size: 42px;
+      line-height: 48px; } }
+
+.banking-carousel-slide-copy {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 40px 0 20px; }
+  @media (min-width: 992px) {
+    .banking-carousel-slide-copy {
+      font-size: 36px;
+      line-height: 48px;
+      margin: 40px 0px 40px 60px; } }
+
+@media (max-width: 991px) {
+  .banking-carousel-slide-image-wrap {
+    width: 100%;
+    margin: 40px auto 0; } }
+
+.banking-carousel-slide-image {
+  width: 425px;
+  height: 350px;
+  border-radius: 0px 0px 0px 24px;
+  max-width: 70%;
+  margin: 0 auto; }
+  @media (max-width: 480px) {
+    .banking-carousel-slide-image {
+      width: 260px;
+      height: 220px; } 
+      .rate-container{
+        height: unset !important;
+      }
+  }
+  @media (min-width: 992px) {
+    .banking-carousel-slide-image {
+      width: 425px;
+      height: 350px;
+      max-width: 100%; } }

@@ -1,0 +1,79 @@
+/* Universal breakpoints */
+.hero_three_up_tiles {
+  position: relative;
+  padding-bottom: 150px;
+  background-color: #F3F6F6; }
+  @media (max-width: 991px) {
+    .hero_three_up_tiles {
+      padding-bottom: 75px; } }
+  .hero_three_up_tiles .bkg-img-default {
+    background-position: center top; }
+  .hero_three_up_tiles .three-up {
+    max-width: 1204px;
+    margin: 0 auto; 
+   }
+    @media (max-width: 991px) {
+      .hero_three_up_tiles .three-up {
+        max-width: none; } }
+    .hero_three_up_tiles .three-up .inner {
+      flex-wrap: nowrap; }
+      /* @media (max-width: 991px) {
+        .hero_three_up_tiles .three-up .inner {
+          padding-left: 16px; 
+        } } */
+  .hero_three_up_tiles .hero {
+    min-height: 746px; }
+    @media (max-width: 991px) {
+      .hero_three_up_tiles .hero {
+        min-height: 540px; } }
+    .hero_three_up_tiles .hero .content {
+      position: absolute;
+      padding-top: 75px;
+      padding-left: 30px; }
+      @media (max-width: 991px) {
+        .hero_three_up_tiles .hero .content {
+          justify-content: flex-end; } }
+      @media (min-width: 992px) {
+        .hero_three_up_tiles .hero .content {
+          padding: 0 0 175px 100px; } }
+    .hero_three_up_tiles .hero .hero-icon {
+      margin-bottom: 10px; }
+    .hero_three_up_tiles .hero .hero-heading {
+      position: relative;
+      z-index: 2;
+      max-width: 68%; }
+      @media (max-width: 991px) {
+        .hero_three_up_tiles .hero .hero-heading {
+          padding-top: 0;
+          max-width: 100%; } }
+    @media (max-width: 991px) {
+      .hero_three_up_tiles .hero .bg-image-mobile {
+        min-height: 540px;
+        position: absolute; } }
+  .hero_three_up_tiles .hero-copy-content {
+    padding-bottom: 100px; }
+    @media (min-width: 992px) {
+      .hero_three_up_tiles .hero-copy-content {
+        align-self: flex-end; } }
+  .hero_three_up_tiles .intersect {
+    position: relative;
+    margin-top: -190px; }
+    @media (max-width: 991px) {
+      .hero_three_up_tiles .intersect {
+        margin-top: -75px; } }
+  .hero_three_up_tiles .three-up-shim {
+    background-color: #fbc600;
+    position: absolute;
+    height: 224px;
+    width: 85vw;
+    max-width: 1184px;
+    border-radius: 16px 0px 0px 16px;
+    right: 0px;
+    top: 75px; }
+    @media (max-width: 991px) {
+      .hero_three_up_tiles .three-up-shim {
+        height: 118px; } }
+.three-up {
+  padding-left: 16px;
+  padding-right: 16px;
+}

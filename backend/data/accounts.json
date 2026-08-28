@@ -1,0 +1,186 @@
+{
+  "user": {
+    "name": "Alex Johnson",
+    "email": "alex.johnson@email.com",
+    "memberSince": "2019",
+    "avatar": "AJ"
+  },
+  "accounts": [
+    {
+      "id": "hys-8842",
+      "type": "High Yield Savings",
+      "number": "•••• 8842",
+      "balance": 147950,
+      "apy": 3.3,
+      "interestEarned": 4712.5
+    },
+    {
+      "id": "mma-3319",
+      "type": "Money Market",
+      "number": "•••• 3319",
+      "balance": 28450,
+      "apy": 2.95,
+      "interestEarned": 821.25
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1787227073590,
+      "date": "2026-08-20",
+      "description": "Admin-approved deposit",
+      "amount": 5000,
+      "type": "credit",
+      "category": "Income"
+    },
+    {
+      "id": 1787227050276,
+      "date": "2026-08-20",
+      "description": "WOW",
+      "amount": 100,
+      "type": "credit",
+      "category": "INCOME"
+    },
+    {
+      "id": 1,
+      "date": "2026-08-18",
+      "description": "Direct Deposit — Employer",
+      "amount": 5230.15,
+      "type": "credit",
+      "category": "Income"
+    },
+    {
+      "id": 2,
+      "date": "2026-08-17",
+      "description": "Transfer to Checking",
+      "amount": -1000,
+      "type": "debit",
+      "category": "Transfer"
+    },
+    {
+      "id": 3,
+      "date": "2026-08-16",
+      "description": "Interest Earned",
+      "amount": 389.22,
+      "type": "credit",
+      "category": "Interest"
+    },
+    {
+      "id": 4,
+      "date": "2026-08-14",
+      "description": "Direct Deposit — Employer",
+      "amount": 5230.15,
+      "type": "credit",
+      "category": "Income"
+    },
+    {
+      "id": 5,
+      "date": "2026-08-12",
+      "description": "Transfer from Checking",
+      "amount": 2500,
+      "type": "credit",
+      "category": "Transfer"
+    },
+    {
+      "id": 6,
+      "date": "2026-08-10",
+      "description": "Withdrawal",
+      "amount": -800,
+      "type": "debit",
+      "category": "Withdrawal"
+    },
+    {
+      "id": 7,
+      "date": "2026-08-08",
+      "description": "Interest Earned",
+      "amount": 312.18,
+      "type": "credit",
+      "category": "Interest"
+    },
+    {
+      "id": 8,
+      "date": "2026-08-05",
+      "description": "Direct Deposit — Employer",
+      "amount": 5230.15,
+      "type": "credit",
+      "category": "Income"
+    },
+    {
+      "id": 9,
+      "date": "2026-08-03",
+      "description": "Transfer to Checking",
+      "amount": -1500,
+      "type": "debit",
+      "category": "Transfer"
+    },
+    {
+      "id": 10,
+      "date": "2026-08-01",
+      "description": "Interest Earned",
+      "amount": 401.05,
+      "type": "credit",
+      "category": "Interest"
+    }
+  ],
+  "balanceHistory": [
+    {
+      "month": "Feb",
+      "balance": 118200
+    },
+    {
+      "month": "Mar",
+      "balance": 122800
+    },
+    {
+      "month": "Apr",
+      "balance": 119600
+    },
+    {
+      "month": "May",
+      "balance": 128400
+    },
+    {
+      "month": "Jun",
+      "balance": 131200
+    },
+    {
+      "month": "Jul",
+      "balance": 137900
+    },
+    {
+      "month": "Aug",
+      "balance": 142850
+    }
+  ],
+  "pendingTransactions": [
+    {
+      "id": 101,
+      "type": "deposit",
+      "user": "Alex Johnson",
+      "account": "HYS •••• 8842",
+      "amount": 5000,
+      "date": "2026-08-20",
+      "status": "approved",
+      "notes": "Wire from employer"
+    },
+    {
+      "id": 102,
+      "type": "withdrawal",
+      "user": "Alex Johnson",
+      "account": "HYS •••• 8842",
+      "amount": 2000,
+      "date": "2026-08-19",
+      "status": "pending",
+      "notes": "Rent payment"
+    },
+    {
+      "id": 103,
+      "type": "deposit",
+      "user": "Alex Johnson",
+      "account": "MMA •••• 3319",
+      "amount": 1500,
+      "date": "2026-08-18",
+      "status": "pending",
+      "notes": "Investment transfer"
+    }
+  ]
+}

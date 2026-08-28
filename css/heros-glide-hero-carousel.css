@@ -1,0 +1,278 @@
+/* Universal breakpoints */
+.glide {
+  height: 600px; }
+  @media (min-width: 768px) and (max-width: 1080px) {
+    .glide {
+      height: 500px; } }
+  @media (max-width: 767px) {
+    .glide {
+      height: -moz-fit-content;
+      height: fit-content; } }
+  .glide .glide__track {
+    height: 100%; }
+    .glide .glide__track .glide__slides {
+      height: 100%; }
+      .glide .glide__track .glide__slides .glide__slide {
+        height: auto !important;
+        display: flex; }
+        .glide .glide__track .glide__slides .glide__slide .glide__slide__content {
+          box-sizing: border-box;
+          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transition-property: transform;
+          display: block; }
+          .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-1 .glide__slide__content__image {
+            background-image: url("../../img/syf_home_hero.png");
+            background-position: 80% 0%; }
+          .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-2 .glide__slide__content__image {
+            background-image: url("../../img/test-home-hero.jpg");
+            background-position: 30% 15%; }
+            @media (min-width: 768px) and (max-width: 1080px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-2 .glide__slide__content__image {
+                background-position: 40% 0%; } }
+            @media (max-width: 767px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-2 .glide__slide__content__image {
+                background-position: 75% 0%; } }
+          .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-3 .glide__slide__content__image {
+            background-image: url("../../img/test-home-hero-3.jpg"); }
+            @media (min-width: 768px) and (max-width: 1080px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-3 .glide__slide__content__image {
+                background-position: 50% 0%; } }
+            @media (max-width: 767px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content.banner-3 .glide__slide__content__image {
+                background-position: 80% 0%; } }
+          @media (max-width: 767px) {
+            .glide .glide__track .glide__slides .glide__slide .glide__slide__content {
+              height: auto !important; } }
+          .glide .glide__track .glide__slides .glide__slide .glide__slide__content .glide__slide__content__image {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-image: url("../../img/test-home-hero-3.jpg"); 
+            background-position: 73% 0%;
+
+          }
+           
+          .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy {
+            box-sizing: border-box;
+            position: relative;
+            font-size: 64px;
+            color: white;
+            height: 100%;
+            padding-left: 100px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1440px; }
+            .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo {
+              position: absolute;
+              right: 80px;
+              bottom: 80px; }
+              @media (max-width: 1079px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo {
+                  right: 40px;
+                  bottom: 40px; } }
+              @media (max-width: 767px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo {
+                  position: static;
+                  width: 100%;
+                  display: flex;
+                  justify-content: end;
+                  margin-bottom: 16px; } }
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo img {
+                width: 112px;
+                height: 112px; }
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo.custom-height img {
+                width: auto;
+                height: 160px; }
+                @media (max-width: 767px) {
+                  .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo img {
+                    width: 82px;
+                    height: 82px; } 
+                  .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .fixed-logo.custom-height img {
+                    width: auto;
+                    height: 140px; }
+                }
+            @media (min-width: 768px) and (max-width: 1080px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy {
+                padding-left: 60px; } }
+            @media (max-width: 767px) {
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy {
+                padding: 40px 20px 100px;
+                justify-content: end; } }
+            .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading {
+              color: white;
+              font-size: 64px;
+              line-height: 64px;
+              max-width: 630px; }
+              @media (max-width: 991px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading {
+                  font-size: 48px;
+                  line-height: 48px; } }
+              @media (max-width: 479px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading {
+                  font-size: 32px;
+                  line-height: 32px; } }
+            .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy p {
+              font-size: 18px;
+              margin-top: 20px;
+              max-width: 630px;
+             }
+              @media (max-width: 767px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy p {
+                  width: 100%; } }
+            .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta {
+              display: flex;
+              gap: 20px;
+              margin-top: 30px; }
+              @media (max-width: 479px) {
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta {
+                  flex-direction: column; } }
+              .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-gold {
+                cursor: pointer;
+                font-size: 16px;
+                width: 208px;
+                box-sizing: border-box;
+                color: #3b3d49; }
+                @media (max-width: 991px) {
+                  .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-gold {
+                    font-size: 14px; } }
+                @media (max-width: 767px) {
+                  .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-gold {
+                    width: 50%; } }
+                @media (max-width: 479px) {
+                  .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-gold {
+                    width: 100%; } }
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-white {
+                  cursor: pointer;
+                  font-size: 16px;
+                  width: 208px;
+                  box-sizing: border-box;
+                  color: #3b3d49; }
+                .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-white:hover {
+                  border: 2px solid #3b3d49;
+                  background-color: #3b3d49;
+                  color: #fff; }
+                  @media (max-width: 991px) {
+                    .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-white {
+                      font-size: 14px; } }
+                  @media (max-width: 767px) {
+                    .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-white {
+                      width: 50%; } }
+                  @media (max-width: 479px) {
+                    .glide .glide__track .glide__slides .glide__slide .glide__slide__content .hero-carousel-slide-copy .hero-heading-cta .button-white {
+                      width: 100%; } }
+        .glide .glide__track .glide__slides .glide__slide .fixed-logo {
+          position: absolute;
+          right: 80px;
+          bottom: 80px; }
+          @media (max-width: 1079px) {
+            .glide .glide__track .glide__slides .glide__slide .fixed-logo {
+              right: 40px;
+              bottom: 40px; } }
+          @media (max-width: 767px) {
+            .glide .glide__track .glide__slides .glide__slide .fixed-logo {
+              position: static;
+              width: 100%;
+              display: flex;
+              justify-content: end;
+              margin-bottom: 16px; } }
+          .glide .glide__track .glide__slides .glide__slide .fixed-logo img {
+            width: 112px;
+            height: 112px; }
+            @media (max-width: 767px) {
+              .glide .glide__track .glide__slides .glide__slide .fixed-logo img {
+                width: 82px;
+                height: 82px; } }
+  .glide .glide__bullets {
+    display: flex;
+    justify-content: center;
+    gap: 20px !important;
+    bottom: 70px !important; }
+    @media (max-width: 767px) {
+      .glide .glide__bullets {
+        bottom: 50px !important; } }
+    .glide .glide__bullets .glide__bullet {
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      opacity: 0.5;
+      transition: all 0.1s ease-in-out; }
+      .glide .glide__bullets .glide__bullet:hover {
+        opacity: 1; }
+      .glide .glide__bullets .glide__bullet--active {
+        width: 40px;
+        opacity: 1;
+        border-radius: 5px; }
+        .glide .glide__bullets .glide__bullet:focus-visible{
+          outline: 2px solid;
+        }
+
+.constrain-width {
+  position: relative;
+  width: 1440px;
+  margin: auto; }
+  @media (max-width: 1439px) {
+    .constrain-width {
+      width: 100%; } }
+  .constrain-width .home-hero-tiles {
+    z-index: 2;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: absolute;
+    bottom: -220px;
+    right: 85px;
+    max-width: 100vw; }
+    @media (max-width: 1279px) {
+      .constrain-width .home-hero-tiles {
+        bottom: -240px; } }
+    @media (max-width: 1439px) {
+      .constrain-width .home-hero-tiles {
+        right: 0;
+        left: 0;
+        margin: auto; } }
+    .constrain-width .home-hero-tiles .home-hero-tiles-container {
+      gap: 30px;
+      display: flex;
+      position: relative;
+      z-index: 2;
+      overflow-x: auto;
+      padding: 0px 50px 50px 50px;
+      box-sizing: border-box;
+      /* Scrollbar styles */ }
+      .constrain-width .home-hero-tiles .home-hero-tiles-container::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+        cursor: pointer; }
+      .constrain-width .home-hero-tiles .home-hero-tiles-container::-webkit-scrollbar-track {
+        background: #e8e9ec;
+        opacity: 0.7;
+        border-radius: 12px; }
+      .constrain-width .home-hero-tiles .home-hero-tiles-container::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        background: #62657b; }
+      .constrain-width .home-hero-tiles .home-hero-tiles-container::-webkit-scrollbar-thumb:hover {
+        background: #62657b; }
+      @media screen and (max-width: 1220px) {
+        .constrain-width .home-hero-tiles .home-hero-tiles-container {
+          padding-right: 20px; } }
+      @media screen and (max-width: 1280px) {
+        .constrain-width .home-hero-tiles .home-hero-tiles-container {
+          padding-left: 20px; } }
+    .constrain-width .home-hero-tiles .color-block {
+      width: calc(100% - 60px);
+      height: 210px;
+      background-color: #e8e9ec;
+      border-radius: 16px 0 0 16px;
+      position: absolute;
+      left: 145px;
+      bottom: 10px;
+      margin-bottom: 20px;}
+
+.logo-grid {
+  padding-top: 300px; }

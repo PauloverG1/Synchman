@@ -1,0 +1,621 @@
+<!DOCTYPE html><html class="no-js" lang="en"><head><link rel="preload" href="/synchrony/fonts/synchrony_sans_thin-v100-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preconnect" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://www.google-analytics.com"><meta charset="utf-8"><title>Credit Cards, Financing, Marketplace, Banking & More - Synchrony</title><meta name="description" content="Find great deals, promotional offers, credit cards, savings products, payment solutions, and more. See how Synchrony can help you today!"><meta name="keywords" content="consumer financing, Synchrony, synchrony, synchrony financial, retail credit cards, savings, healthcare financing"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="viewport" content="initial-scale=1"><meta name="format-detection" content=""><meta name="google-site-verification" content="w0o3NU2nYiCop5Tjfnupxs464hLdrLQyP5UI9ogTFKQ"><link sizes="196x196" rel="icon" href="images/apple-touch-icon-precomposed.png" type="image/x-icon"><link rel="canonical" href="https://www.synchrony.com">
+<meta property="og:type" content="website"><meta property="og:url" content="https://www.synchrony.com"><meta property="og:title" content="Credit Cards, Financing, Marketplace, Banking & More - Synchrony"><meta property="og:description" content="Find great deals, promotional offers, credit cards, savings products, payment solutions, and more. See how Synchrony can help you today!"><meta property="og:image" content="images/syf-july-2024-heroimage-final-v2.jpg"><meta property="og:image:width" content="1008"><meta property="og:image:height" content="529">
+	<link rel="preconnect" href="https://api.syf.com">
+	<script>var env ='SYC_PROD-DEL';var envHost ='https://www.synchrony.com';var apiURL ='https://api.syf.com/v1/marketing/offers';var siteSearchURL ='https://www.synchrony.com/sitesearch'; var apiKey ='xri6PXZp9trrTUMB4aEWA2xqgAM25qUE';var kevelApiURL ='';</script><script type="text/javascript">
+////get location from akamai & setting in global scope - start ////
+const AK_GEO_CODE = document.cookie.split('; ').find((row)=>row.startsWith('akloc'))?.split('=')[1];
+
+const ak_co = (AK_GEO_CODE || '').match(/Country Code:(\w{2})/)?AK_GEO_CODE.match(/Country Code:(\w{2})/)[1]:'';
+const ak_st = (AK_GEO_CODE || '').match(/Region Code:(\w{2})/)?AK_GEO_CODE.match(/Region Code:(\w{2})/)[1]:'';
+
+const AKLOC = {        
+   geolocationResponse: {        
+       stateCode:  ak_st,        
+       countryCode: ak_co,        
+       regionCode: '', // Optional parameter        
+   }        
+};  
+
+//// get location from akamai & setting in global scope - end ////
+</script><script type="text/javascript" class="RQ_SCRIPT"> 
+ var dyFlag=true;
+//// initiate values on page load/refresh since optanon takes some time to load
+window.DY = window.DY || {};
+DY.recommendationContext = {type: 'HOMEPAGE'};
+	//// setting DY consent on page load - start ///
+	const NO_CONSENT_STATES = ["CA"];
+ 
+	// if st is included in list of no-consent states then consent is false
+	dyFlag = (NO_CONSENT_STATES.indexOf(ak_st) > -1)? false : true ;
+	(function() { 
+		var cookieName = document.cookie.split('; ').find((row)=>row.startsWith('OptanonConsent'))?.split('groups')[1];
+		if (cookieName ) { //if OptanonConsent is detected, look for C0004:1 and de-activate DY if not found
+			dyFlag = cookieName.includes('CC0004%3A1') ? true: false;
+		} 
+		if(!dyFlag) {
+			document.cookie = "_dyid_server=;Secure;Domain=.synchrony.com;path=/;expires=" + new Date(0).toUTCString(); 
+		}
+		DY.userActiveConsent = { accepted: dyFlag}
+		
+	}());
+	//// setting DY consent n page load - end ///
+
+	//// update DY values on consent change: executes after OT consent applied and NOT on pageview refresh
+	if(NO_CONSENT_STATES.indexOf(ak_st) > -1){
+		window.addEventListener("OTConsentApplied",event =>{
+			// this code runs on consent update ONLY 
+			var dyConsentImp= false; 
+			var prevDyConsent = DYO.ActiveConsent.isUserOptOut() ? false : true ;
+			window.DY = window.DY || {};
+			
+			if (OnetrustActiveGroups && OnetrustActiveGroups.includes('C0004')){ // if marketing cookie is active
+				dyConsentImp=true;
+				dyFlag = true;
+			}else{
+				dyConsentImp=false;
+				dyFlag = false;
+				document.cookie = "_dyid_server=;Secure;Domain=.synchrony.com;path=/;expires=" + new Date(0).toUTCString(); 
+			}
+			//Update DY active consent	
+			DY.userActiveConsent = { accepted: dyConsentImp};	
+			DYO.ActiveConsent.updateConsentAcceptedStatus(dyConsentImp);
+			
+			
+			// check if dy consent changed from prev value and retrigger page context
+			if(dyConsentImp != prevDyConsent){
+				if (dyConsentImp){
+					DY.recommendationContext = { type: "OTHER" , data:["after_consent" ]};
+				}
+				else {
+					DY.recommendationContext = { type: "OTHER" , data:["after_consent_revoke" ]};
+				}
+
+					checkURL();		 
+			}
+			///// additional code for dyid itp cookie update ////			
+			getDYCookie();	
+			
+		});
+	}
+
+</script><link rel="preconnect" href="https://cdn.dynamicyield.com"><link rel="preconnect" href="https://st.dynamicyield.com"><link rel="preconnect" href="https://rcom.dynamicyield.com"><link rel="dns-prefetch" href="https://cdn.dynamicyield.com"><link rel="dns-prefetch" href="https://st.dynamicyield.com"><link rel="dns-prefetch" href="https://rcom.dynamicyield.com"><script type="text/javascript" src="js/api_dynamic.js"></script><script type="text/javascript" src="js/api_static.js"></script>
+<script type="text/javascript" src="js/syf_prod_nr_script.js" async=""></script><script type="text/javascript">
+var _SFDDL = _SFDDL || {};_SFDDL.pageInfo = _SFDDL.pageInfo || {};_SFDDL.pageInfo ={
+	"ClientName": "",
+        "PlatformName": "",
+	"Country_Language":"us|eng",
+	"CustomerType":"consumer",
+	"Device":"desk",
+	"PNL":"syf corp",
+	"PageKind":"home",
+	"PageFunction":"home",
+	"PageSubFunction":"",
+	"PageName":"landingpage",
+	"Product":"generic",
+	"SiteIdentifier":"SyfMarketing",
+	"Token":"",
+        "ABTestname": "",
+"domainidentifier":"newsynchrony",
+	"Message": ""}</script><link rel="stylesheet" type="text/css" href="css/global-navigation.css"><link rel="stylesheet" type="text/css" href="css/synchrony-global.css"><link rel="stylesheet" type="text/css" href="css/footer.css"><link rel="stylesheet" type="text/css" href="css/global.css"><link rel="stylesheet" type="text/css" href="css/hero_3up_tiles.css"><link rel="stylesheet" type="text/css" href="css/heros-glide-hero-carousel.css"><link rel="stylesheet" type="text/css" href="css/syf-home-hero-carousel.css"><link rel="stylesheet" type="text/css" href="css/tiles-home-hero-tile.css"><link rel="stylesheet" type="text/css" href="css/info-tile-reverse.css"><link rel="stylesheet" type="text/css" href="css/info-tile-wtp.css"><link rel="stylesheet" type="text/css" href="css/featured-deal-tile.css"><link rel="stylesheet" type="text/css" href="css/tile.css"><link rel="stylesheet" type="text/css" href="css/financing-tile.css"><link rel="stylesheet" type="text/css" href="css/category-tabs.css"><link rel="stylesheet" type="text/css" href="css/banking-carousel.css"><link rel="stylesheet" type="text/css" href="css/deal-offer_tile.css"><link rel="stylesheet" type="text/css" href="css/deal-offer-modal.css"><link rel="stylesheet" type="text/css" href="css/deals-by-category.css"><link rel="stylesheet" type="text/css" href="css/category-tile.css"><link rel="stylesheet" type="text/css" href="css/home-logo-grid-search.css"><link rel="stylesheet" type="text/css" href="css/logo-grid-copy.css"><link rel="stylesheet" type="text/css" href="css/ways-to-pay.css"><link rel="stylesheet" type="text/css" href="css/financing-block-lg.css"><link rel="stylesheet" type="text/css" href="css/partner-logo-box.css"><link rel="stylesheet" type="text/css" href="css/business-3up.css"><link rel="stylesheet" type="text/css" href="css/banking-carousel-slide.css"><link rel="stylesheet" type="text/css" href="css/syf-home-terms.css"><link rel="stylesheet" type="text/css" href="css/accessible-slick-theme.min.css"><link rel="stylesheet" type="text/css" href="css/glide.core.min.css"><link rel="stylesheet" type="text/css" href="css/glide.theme.min.css"><link rel="stylesheet" type="text/css" href="css/browse-by-category-buttons.css"> 
+	<!-- SEO: Organization Schema -->
+<script type="application/ld+json">            
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{			
+			"@context": "https://www.schema.org",		
+			"@type": "Corporation",		
+			"@id": "https://www.synchrony.com/#corporation",		
+			"name": "Synchrony",		
+			"legalName": "Synchrony Financial",		
+			"description": "Synchrony is a premier consumer financial services company that provides a diverse set of financing solutions and innovative digital capabilities to address the needs of our partners and consumers.",		
+			"foundingDate": "1932-12-9",		
+			"logo": "https://www.synchrony.com/syc/img/2023_synchrony_basic_logo.svg",		
+			"tickerSymbol": "SYF",		
+			"url": "https://www.synchrony.com/",		
+			"address": {		
+				"@type": "PostalAddress",	
+				"streetAddress": "777 Long Ridge Road",	
+				"addressLocality": "Stamford",	
+				"addressRegion": "CT",	
+				"postalCode": "06902",	
+				"addressCountry": "US"	
+			},		
+			"contactPoint": {		
+				"@type": "ContactPoint",	
+				"contactType": "customer support",	
+				"telephone": "1 (866) 419-4096"	
+			},		
+			"sameAs": [
+				"https://twitter.com/synchrony",
+				"https://www.instagram.com/synchrony/",
+				"https://www.linkedin.com/company/synchrony-financial/",
+				"https://www.youtube.com/synchrony",
+				"https://www.facebook.com/synchronyfinancial",
+				"https://en.wikipedia.org/wiki/Synchrony_Financial",
+				"https://finance.yahoo.com/quote/SYF/profile/",
+				"https://www.forbes.com/companies/synchrony-financial/"
+			],		
+			"subOrganization": [		
+				{	
+					"@type": "BankOrCreditUnion",
+					"@id": "https://www.synchrony.com/banking#bankorcreditunion",
+					"name": "Synchrony Bank",
+					"url": "https://www.synchrony.com/banking"
+				},	
+				{	
+					"@type": "Organization",
+					"@id": "https://www.synchrony.com/business#organization",
+					"name": "Synchrony Business",
+					"url": "https://www.synchrony.com/business"
+				}	
+			]		
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"url": "https://www.synchrony.com/",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://www.synchrony.com/search-results?keyword={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+	]
+}    
+</script><script type="text/javascript"> (function (a, b, c, d) { 
+a = 'https://tags.synchrony.com/synchrony-one/prod/utag.js'; b = document; c = 'script'; d = b.createElement(c); d.src = a; d.type = 'text/java' + c; d.async = true;
+a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a) 
+})(); 
+</script> 
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]);</script>
+                              <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="5QYRA-QTEEB-GK8AA-REZVV-GFYPW",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"5QYRA-QTEEB-GK8AA-REZVV-GFYPW",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="h2ct3ayxgvyiy2jj6uda-f-06b8f5faf-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"39","ak.cp":"291862","ak.ai":parseInt("463139",10),"ak.ol":"0","ak.cr":3,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"29099a8c","ak.r":48549,"ak.a2":e,"ak.m":"","ak.n":"essl","ak.bpcip":"62.133.61.0","ak.cport":38228,"ak.gh":"2.16.7.21","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1764357382","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==BvNwS6nwwKUimAULL58uWjtl0Gb+57KHOKDVcCqe6A/6uzGLGIYeac9PFfetgC7n+1AybddlESuylGiF9Mtr/mtLAl8VELE5D948Idw6yDzv4J5qOM6IFbGU9MgHRgaDp5mWooL4icnvIRqXktJGGd6Uofm4kot6FnVRm0Wdb35n2BJ9RjR5PLPCDxRFNwGUGIHVmHaQlBy/GL20DeuCaTeV4K4E5tgYPIkCFZkGTJjHi1sOlRU4rwpd+umu2D6XafCJ2HUPMXdAz85laUNKqXCOOolyQEZ/88FyvC6X0vdnjYIx2gqD25O7RhT6fyEC4+q6y2xp+Tbxpho75SiGtgDfRcBCQH8mm0Ey75hj5o1Mbququ2/Dg/64Yl6PgGbYjL0HtpCUB24av0/rA17JWTrh1o00iM7YqUR453aIkEU=","ak.pv":"150","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script><style>#onetrust-consent-sdk, #onetrust-banner-sdk, .onetrust-pc-dark-filter, #onetrust-pc-sdk { display: none !important; }</style></head><body>
+
+<script type="text/javascript" src="js/bankrates.js"></script>
+<div class="page-container">
+
+
+
+
+	
+	<nav class="global-nav sticky" id="syf-global-nav"><div class="utility-bar"><ul class="utility-bar__links"><li aria-controls="synchrony" id="synchrony" class="selected"><a href="javascript:location.reload()" data-object="top-bar" data-reason="Synchrony" data-type="link" class="syfclickevent selected" tabindex="1"> Synchrony</a></li><li aria-controls="synchrony-bank" id="synchrony-bank"><a href="banking/index.html" data-object="top-bar" data-reason="Synchrony Bank" data-type="link" class="syfclickevent"> Synchrony Bank</a></li><li aria-controls="business" id="business"><a href="business/index.html" data-object="top-bar" data-reason="Business" data-type="link" class="syfclickevent"> Business</a></li><li aria-controls="carecredit" id="carecredit"><a href="carecredit.html" data-object="top-bar" data-reason="CareCredit" data-type="link" class="syfclickevent" target="_blank"> CareCredit</a></li> </ul><div id="alert-wrapper"><div class="alert "><span>ALERT: Cardholders impacted by the U.S. Federal Government shutdown.<button class="emergency-alert-new__button syfclickevent" data-object="link" data-reason="Learn about the new site enhancements_click here" data-type="alert_top_bar" data-micromodal-trigger="modal-alert-0" id="alert-button-global">Learn More</button> </span></div> <div aria-hidden="true" class="modal micromodal-slide" id="modal-alert-0">
+                <div class="modal__overlay" tabindex="-1">
+                    <div aria-labelledby="modal-alert-title" aria-modal="true" class="modal__container" role="dialog">
+                        <header class="modal__header"><button aria-label="Close modal" class="modal__close" data-micromodal-close="modal-alert"><img alt="" src="images/modal_close_icon.png"></button></header>
+                        <div class="modal__content" id="modal-alert-content">
+                          We may be able to help if you have been affected by the U.S. Federal Government Shutdown. If you need assistance or have questions about your account, please <a class="blog-text__link ensightenCustomEvent" data-object="body-marketplace-text-content" data-reason="contact-us" data-type="link" href="https://www.synchrony.com/help/contact-us" target="_blank" title="synchrony"><span>get in touch</span></a> with our customer support team. You can log into your account and chat with us or call the number on the back of your card.
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+</div>
+<div class="main-nav">
+	<div class="main-nav__content-grid">
+		<div class="logo">
+          <button id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+	
+ 		<a href="javascript:location.reload()" data-object="header-left" data-reason="synchrony logo" data-type="link" class="syfclickevent home-link" title="Home"> <img alt="Synchrony" src="images/2023_synchrony_basic_logo.svg"></a>
+	   
+		</div><div class="grid-center alert-banner-on"><div class="left-links"><ul class="main-nav__main-menu "><li class="submenu-item "><button aria-controls="financing-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="financing" data-type="link" id="financing-nav" aria-expanded="false"><span>FINANCING</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 <div class="submenu" id="financing-sub-nav" aria-labelledby="financing-nav">
+			 	<div class="spacer"></div>
+				<div class="content"><div class="featured-link">	<a href="pages/synchrony.com_financing.html" data-object="header-topnav" data-reason="financing-Discover new ways to pay" data-type="link" class="syfclickevent submenu-link" title="Discover new ways to pay"> Discover new ways to pay</a></div><hr class="featured-link-divider"><div class="submenu-links-two-columns"><div class="submenu-links-column1"><h4 class="submenu-links-column-title">Credit Cards</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_financing_credit-cards.html" data-object="header-topnav" data-reason="financing-credit cards-retail credit cards" data-type="link" class="syfclickevent submenu-link"> Retail Credit Cards</a></li><li> <a href="pages/synchrony.com_financing_synchrony-mastercards.html" data-object="header-topnav" data-reason="financing-credit cards-synchrony master cards" data-type="link" class="syfclickevent submenu-link"> Synchrony Mastercards</a></li><li> <a href="pages/synchrony.com_financing_home_cardholder.html" data-object="header-topnav" data-reason="financing-credit cards-synchrony home" data-type="link" class="syfclickevent submenu-link"> Synchrony HOME"</a></li><li> <a href="pages/synchrony.com_financing_synchrony-project-card.html" data-object="header-topnav" data-reason="financing--synchrony project card" data-type="link" class="syfclickevent submenu-link"> Synchrony Project Card</a></li><li> <a href="pages/synchrony.com_financing_car-care_cardholder.html" data-object="header-topnav" data-reason="financing-credit cards-synchrony car care" data-type="link" class="syfclickevent submenu-link"> Synchrony Car Care"</a></li><li> <a href="pages/synchrony.com_financing_outdoors.html" data-object="header-topnav" data-reason="financing-outdoors" data-type="link" class="syfclickevent submenu-link"> Synchrony Outdoors"</a></li><li> <a href="pages/synchrony.com_financing_sport.html" data-object="header-topnav" data-reason="financing-synchrony-sport" data-type="link" class="syfclickevent submenu-link"> Synchrony Sport® </a></li><li> <a href="pages/synchrony.com_financing_sewing-more.html" data-object="header-topnav" data-reason="financing-synchrony-sewing" data-type="link" class="syfclickevent submenu-link"> Synchrony Sewing & More�</a></li><li> <a href="carecredit.html" data-object="header-topnav" data-reason="financing-credit cards-carecredit" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> CareCredit� <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li><li> <a href="pages/synchrony.com_financing_music-and-sound.html" data-object="header-topnav" data-reason="Financing-Synchrony Music & Sound" data-type="link" class="syfclickevent submenu-link"> Synchrony Music & Sound</a></li><li> <a href="https://www.synchrony.com/financing/digital-wallets" data-object="header-topnav" data-reason="financing-digital-wallets" data-type="link" class="syfclickevent submenu-link"> Digital Wallets</a></li><li> <a href="https://www.synchrony.com/financing/cutting-edge" data-object="header-topnav" data-reason="financing-credit cards-cuttingedge" data-type="link" class="syfclickevent submenu-link"> Cutting Edge</a></li><li> <a href="pages/synchrony.com_financing_how-it-works.html" data-object="header-topnav" data-reason="financing-credit cards-how it works" data-type="link" class="syfclickevent submenu-link"> How it works</a></li><li> <a href="pages/synchrony.com_mobile-app.html" data-object="header-topnav" data-reason="financing-credit cards-mysynchrony mobile app" data-type="link" class="syfclickevent submenu-link"> MySynchrony mobile app</a></li><li> <a href="pages/synchrony.com_registration.html" data-object="header-topnav" data-reason="financing-credit cards-register your credit card" data-type="link" class="syfclickevent submenu-link"> Register your credit card</a></li></ul></div><hr class="vertical-divider"><div class="submenu-links-column2"><h4 class="submenu-links-column-title">Pay Later</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_financing_paylater.html" data-object="header-topnav" data-reason="financing-pay later-pay in 4" data-type="link" class="syfclickevent submenu-link"> Pay in 4</a></li><li> <a href="pages/synchrony.com_financing_paylater.html" data-object="header-topnav" data-reason="financing-pay later-pay monthly" data-type="link" class="syfclickevent submenu-link"> Pay Monthly</a></li></ul></div></div><hr class="mobile-section-divider"></div>
+		  </div>		 
+			 
+		  </li><li class="submenu-item "><button aria-controls="banking-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="banking" data-type="link" id="banking-nav" aria-expanded="false"><span>BANKING</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 <div class="submenu" id="banking-sub-nav" aria-labelledby="banking-nav">
+			 	<div class="spacer"></div>
+				<div class="content"><div class="featured-link">	<a href="pages/synchrony.com_banking.html" data-object="header-topnav" data-reason="banking-Explore Synchrony Bank " data-type="link" class="syfclickevent submenu-link" title="Explore Synchrony Bank "> Explore Synchrony Bank </a></div><hr class="featured-link-divider"><div class="submenu-links-two-columns"><div class="submenu-links-column1"><h4 class="submenu-links-column-title">Savings</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_banking_products_high-yield-savings.html" data-object="header-topnav" data-reason="banking-highyieldksavings" data-type="link" class="syfclickevent submenu-link"> High Yield Savings</a></li><li> <a href="pages/synchrony.com_banking_products_money-market-account.html" data-object="header-topnav" data-reason="banking-moneymarket" data-type="link" class="syfclickevent submenu-link"> Money Markets</a></li><li> <a href="pages/synchrony.com_banking_products_cd.html" data-object="header-topnav" data-reason="banking-CDs" data-type="link" class="syfclickevent submenu-link"> CDs</a></li><li> <a href="https://www.synchrony.com/banking/products/ira/ira-cd" data-object="header-topnav" data-reason="banking-IRACDs" data-type="link" class="syfclickevent submenu-link"> IRA CDs</a></li><li> <a href="pages/synchrony.com_banking_products_ira_ira-money-market-account.html" data-object="header-topnav" data-reason="banking-iramoneymarkets" data-type="link" class="syfclickevent submenu-link"> IRA Money Markets</a></li><li> <a href="pages/synchrony.com_banking_products_compare-products.html" data-object="header-topnav" data-reason="banking-comparesavingsproducts" data-type="link" class="syfclickevent submenu-link"> Compare products</a></li><li> <a href="pages/synchrony.com_banking_products_ratesandterms.html" data-object="header-topnav" data-reason="banking-noniraproductrates" data-type="link" class="syfclickevent submenu-link"> Non-IRA product rates</a></li><li> <a href="pages/synchrony.com_banking_products_ira-rates-and-terms.html" data-object="header-topnav" data-reason="banking-iraproductrates" data-type="link" class="syfclickevent submenu-link"> IRA product rates</a></li></ul></div><hr class="vertical-divider"><div class="submenu-links-column2"><h4 class="submenu-links-column-title">Resources</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_banking_about.html" data-object="header-topnav" data-reason="banking-resources-aboutsynchronybank" data-type="link" class="syfclickevent submenu-link"> About Synchrony Bank</a></li><li> <a href="pages/synchrony.com_banking_contact-us.html" data-object="header-topnav" data-reason="banking-resources-contactus" data-type="link" class="syfclickevent submenu-link"> Contact us</a></li><li> <a href="pages/synchrony.com_banking_resources_faq.html" data-object="header-topnav" data-reason="banking-resources-bankFaqs" data-type="link" class="syfclickevent submenu-link"> Bank FAQs</a></li></ul></div></div><div class="blue-highlight half-width">   <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="open-an-account" data-type="link" class="syfclickevent link-plain submenu-link" title="Open an account ›" target="_blank">Open an account ›</a></div><hr class="mobile-section-divider"></div>
+		  </div>		 
+			 
+		  </li><li class="submenu-item "><button aria-controls="marketplace-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="marketplace" data-type="link" id="marketplace-nav" aria-expanded="false"><span>MARKETPLACE</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 		 
+			  <div class="submenu" id="marketplace-sub-nav" aria-labelledby="marketplace-nav">
+			 <div class="spacer"></div>
+            <div class="content"> <div class="featured-link">	<a href="pages/synchrony.com_marketplace.html" data-object="header-topnav" data-reason="marketplace-Explore Marketplace" data-type="link" class="syfclickevent submenu-link" title="Explore Marketplace"> Explore Marketplace</a></div><hr class="featured-link-divider"><div class="submenu-links-two-columns"><ul class="submenu-links"> 		 
+							 
+				 <li>  <a href="pages/synchrony.com_marketplace_deals.html" data-object="header-topnav" data-reason="marketplace-shopdeals" data-type="link" class="syfclickevent submenu-link"> Shop deals</a></li>
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_marketplace_brands.html" data-object="header-topnav" data-reason="marketplace-shopbrands" data-type="link" class="syfclickevent submenu-link"> Shop brands</a></li>
+						 
+					  <li class="sub-submenu-item" aria-controls="shop-by-retail-category-sub-submenu" tabindex="0"><div class="flex-items-center"><span class="submenu-link sub-submenu-title syfclickevent" id="shop-by-retail-category-nav" data-subsubmenuid="shop-by-retail-category" data-object="header-topnav" data-reason="marketplace-shop by retail category" data-type="link"> Shop by retail category <img alt="" src="images/menu_arrow_gray.png" class="submenu-link__arrow">  </span></div><div id="shop-by-retail-category-sub-submenu" data-subsubmenuid="shop-by-retail-category" aria-labelledby="shop-by-retail-category-nav" class="sub-submenu content">
+				<div class="submenu-links-two-columns"><ul class="submenu-links"><li><a href="/marketplace/search-results?category=All" data-object="header-topnav" data-reason="marketplace-shopbycategory-shop all categories" data-type="link" class="syfclickevent sub-submenu-link"> Shop all categories</a></li><li><a href="/marketplace/search-results?category=Apparel%20%26%20Accessories" data-object="header-topnav" data-reason="marketplace-shopbycategory-apparel&accessories" data-type="link" class="syfclickevent sub-submenu-link">Apparel & Accessories </a></li><li><a href="/marketplace/search-results?category=Art%20%26%20Decor" data-object="header-topnav" data-reason="marketplace-shopbycategory-art&decor" data-type="link" class="syfclickevent sub-submenu-link">Art & Decor </a></li><li><a href="pages/synchrony.com_marketplace_car-care-offers.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-automotive" data-type="link" class="syfclickevent sub-submenu-link">Automotive </a></li><li><a href="pages/synchrony.com_marketplace_electronics-and-appliance.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-electronics&appliances" data-type="link" class="syfclickevent sub-submenu-link">Electronics & Appliances </a></li><li><a href="pages/synchrony.com_marketplace_flooring.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-flooring" data-type="link" class="syfclickevent sub-submenu-link">Flooring </a></li><li><a href="/marketplace/search-results?category=Hardware" data-object="header-topnav" data-reason="marketplace-shopbycategory-hardware" data-type="link" class="syfclickevent sub-submenu-link">Hardware </a></li><li><a href="pages/synchrony.com_marketplace_heating-and-air-conditioning.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-heating&airconditioning" data-type="link" class="syfclickevent sub-submenu-link">Heating & Air Conditioning </a></li><li><a href="pages/synchrony.com_marketplace_home-furnishings.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-homefurnishings" data-type="link" class="syfclickevent sub-submenu-link">Home Furnishings </a></li><li><a href="pages/synchrony.com_marketplace_home-improvement.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-homeimprovement" data-type="link" class="syfclickevent sub-submenu-link">Home Improvement </a></li></ul>
+			<ul class="submenu-links"><li><a href="/marketplace/search-results?category=Home%20Specialty" data-object="header-topnav" data-reason="marketplace-shopbycategory-homespecialty" data-type="link" class="syfclickevent sub-submenu-link">Home Specialty </a></li><li><a href="pages/synchrony.com_financing_luxury_cardholder.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-jewelry" data-type="link" class="syfclickevent sub-submenu-link">Jewelry </a></li><li><a href="pages/synchrony.com_marketplace_lawn-and-garden.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-lawn&garden" data-type="link" class="syfclickevent sub-submenu-link">Lawn & Garden </a></li><li><a href="pages/synchrony.com_marketplace_music.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-music" data-type="link" class="syfclickevent sub-submenu-link">Music </a></li><li><a href="/marketplace/search-results?category=Online%20Shopping" data-object="header-topnav" data-reason="marketplace-shopbycategory-onlineshopping" data-type="link" class="syfclickevent sub-submenu-link">Online Shopping </a></li><li><a href="pages/synchrony.com_marketplace_powersports.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-powersports" data-type="link" class="syfclickevent sub-submenu-link">Powersports </a></li><li><a href="pages/synchrony.com_marketplace_sewing.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-sewing" data-type="link" class="syfclickevent sub-submenu-link">Sewing & More </a></li><li><a href="pages/synchrony.com_marketplace_sporting-goods.html" data-object="header-topnav" data-reason="marketplace-shopbycategory-sportinggoods" data-type="link" class="syfclickevent sub-submenu-link">Sporting Goods </a></li><li><a href="/marketplace/search-results?category=Travel" data-object="header-topnav" data-reason="marketplace-shopbycategory-travel" data-type="link" class="syfclickevent sub-submenu-link">Travel </a></li><li><a href="/marketplace/search-results?category=Warehouse%20Club" data-object="header-topnav" data-reason="marketplace-shopbycategory-warehouseclub" data-type="link" class="syfclickevent sub-submenu-link">Warehouse Club </a></li></ul>
+			
+				</div></div>
+            </li>		 
+				
+						 
+					  <li class="sub-submenu-item" aria-controls="shop-by-healthcare-category-sub-submenu" tabindex="0"><div class="flex-items-center"><span class="submenu-link sub-submenu-title syfclickevent" id="shop-by-healthcare-category-nav" data-subsubmenuid="shop-by-healthcare-category" data-object="header-topnav" data-reason="marketplace-shop by healthcare category" data-type="link"> Shop by healthcare category <img alt="" src="images/menu_arrow_gray.png" class="submenu-link__arrow">  </span></div><div id="shop-by-healthcare-category-sub-submenu" data-subsubmenuid="shop-by-healthcare-category" aria-labelledby="shop-by-healthcare-category-nav" class="sub-submenu content"><ul class="submenu-links"><li><a href="/marketplace/health-wellness-offers#all
+" data-object="header-topnav" data-reason="marketplace-shopbycategory-Shop all Health & Wellness categories" data-type="link" class="syfclickevent sub-submenu-link"> Shop all healthcare categories</a></li><li><a href="/marketplace/health-wellness-offers#cosmetic" data-object="header-topnav" data-reason="marketplace-healthcarecategory-cosmetic" data-type="link" class="syfclickevent sub-submenu-link">Cosmetic </a></li><li><a href="/marketplace/health-wellness-offers#dentistry" data-object="header-topnav" data-reason="marketplace-healthcarecategory-dentistry" data-type="link" class="syfclickevent sub-submenu-link">Dentistry </a></li><li><a href="/marketplace/health-wellness-offers#health-retail-partners" data-object="header-topnav" data-reason="marketplace-healthcarecategory-healthretail partners" data-type="link" class="syfclickevent sub-submenu-link">Health Retail Partners </a></li><li><a href="/marketplace/health-wellness-offers#hearing" data-object="header-topnav" data-reason="marketplace-healthcarecategory-hearing" data-type="link" class="syfclickevent sub-submenu-link">Hearing </a></li><li><a href="/marketplace/health-wellness-offers#healthcare-specialties" data-object="header-topnav" data-reason="marketplace-healthcarecategory-healthcare" data-type="link" class="syfclickevent sub-submenu-link">Healthcare Specialties </a></li><li><a href="/marketplace/health-wellness-offers#veterinary-and-pet-care" data-object="header-topnav" data-reason="marketplace-healthcarecategory-veterinary" data-type="link" class="syfclickevent sub-submenu-link">Veterinary & Pet Care </a></li><li><a href="/marketplace/health-wellness-offers#vision" data-object="header-topnav" data-reason="marketplace-healthcarecategory-vision" data-type="link" class="syfclickevent sub-submenu-link">Vision </a></li></ul>
+			</div>
+            </li>		 
+				
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_marketplace_locations.html" data-object="header-topnav" data-reason="marketplace-findalocation" data-type="link" class="syfclickevent submenu-link"> Find a location</a></li>
+				</ul></div><hr class="mobile-section-divider"></div></div> 
+		  </li><li class="submenu-item "><button aria-controls="business-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="business" data-type="link" id="business-nav" aria-expanded="false"><span>BUSINESS</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 		 
+			  <div class="submenu" id="business-sub-nav" aria-labelledby="business-nav">
+			 <div class="spacer"></div>
+            <div class="content"> <div class="featured-link">	<a href="pages/synchrony.com_business.html" data-object="header-topnav" data-reason="business-Synchrony for business" data-type="link" class="syfclickevent submenu-link" title="Synchrony for business"> Synchrony for business</a></div><hr class="featured-link-divider"><div class="submenu-links-two-columns"><ul class="submenu-links"> 		 
+							 
+				 <li>  <a href="pages/synchrony.com_contenthub_insights.html" data-object="header-topnav" data-reason="business-large retailers-insights & trends" data-type="link" class="syfclickevent submenu-link has-icon"> Insights & trends <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="https://www.synchronybusiness.com/why-synchrony.html?intcmp=home_header-topnav_syfbiz_int" data-object="header-topnav" data-reason="business-small business-work with us" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Work with us <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="https://www.synchronybusiness.com/consumer-financing.html?intcmp=home_header-topnav_syfbiz_int" data-object="header-topnav" data-reason="business-small business-financing solutions" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Financing solutions <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="https://www.synchrony.com/business/ecommerce-solutions?intcmp=home_header-topnav_syfbiz_int" data-object="header-topnav" data-reason="business-small business-eCommerce solutions" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> eCommerce solutions <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="https://www.synchronybusiness.com/partner-support.html?intcmp=home_header-topnav_syfbiz_int" data-object="header-topnav" data-reason="business-small business-partner tools" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Partner tools <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="https://www.synchronybusiness.com/synchrony-business-solutions?intcmp=home_header-topnav_syfbiz_int" data-object="header-topnav" data-reason="business-small business-Analytics Tools" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Analytics tools <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+						 
+							 
+				 <li>  <a href="carecredit.html" data-object="header-topnav" data-reason="business-small business-healthcare providers" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Healthcare providers <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li>
+				</ul></div><div class="blue-highlight">   <a href="https://www.synchronybusiness.com/?intcmp=home_header-topnav_syfbiz_int#syf-contactus-form" data-object="header-topnav" data-reason="business-small business-request information" data-type="link" class="syfclickevent submenu-link " title="Request information" target="_blank">Request information<img src="images/icon_chevron_next.png" alt="Submit search"></a></div><hr class="mobile-section-divider"></div></div> 
+		  </li></ul></div><hr class="grid-center__hr"><div class="right-links"><ul class="main-nav__main-menu "><li class="submenu-item "><button aria-controls="about us-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="about us" data-type="link" id="about us-nav" aria-expanded="false"><span>ABOUT US</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 <div class="submenu" id="about us-sub-nav" aria-labelledby="about us-nav">
+			 	<div class="spacer"></div>
+				<div class="content"><div class="featured-link">	<a href="pages/synchrony.com_about-us.html" data-object="header-topnav" data-reason="About-Learn about Synchrony" data-type="link" class="syfclickevent submenu-link" title="Learn about Synchrony"> Learn about Synchrony</a></div><hr class="featured-link-divider"><div class="submenu-links-two-columns"><div class="submenu-links-column1"><h4 class="submenu-links-column-title">Our Company</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_about-us_why-synchrony.html" data-object="header-topnav" data-reason="aboutus-whysynchrony" data-type="link" class="syfclickevent submenu-link"> Why Synchrony</a></li><li> <a href="pages/synchrony.com_about-us_leadership.html" data-object="header-topnav" data-reason="aboutus-synchrony-leadership" data-type="link" class="syfclickevent submenu-link"> Leadership</a></li><li> <a href="pages/synchrony.com_about-us_innovation.html" data-object="header-topnav" data-reason="aboutus-innovation" data-type="link" class="syfclickevent submenu-link"> Innovation</a></li><li> <a href="pages/synchrony.com_about-us_corporate-responsibility.html" data-object="header-topnav" data-reason="aboutus-diversity" data-type="link" class="syfclickevent submenu-link"> Corporate responsibility</a></li><li> <a href="pages/synchrony.com_about-us_suppliers.html" data-object="header-topnav" data-reason="aboutus-suppliers" data-type="link" class="syfclickevent submenu-link"> Suppliers</a></li><li> <a href="pages/synchrony.com_about-us_corporate-citizenship.html" data-object="header-topnav" data-reason="aboutus-citizenship" data-type="link" class="syfclickevent submenu-link"> Citizenship</a></li></ul></div><hr class="vertical-divider"><div class="submenu-links-column2"><h4 class="submenu-links-column-title">Resources</h4><ul class="submenu-links"><li> <a href="pages/synchrony.com_contenthub.html.html" data-object="header-topnav" data-reason="aboutus-news&insights" data-type="link" class="syfclickevent submenu-link"> News & insights</a></li><li> <a href="https://investors.synchrony.com/?intcmp=home_header-topnav_investors-synchrony_int" data-object="header-topnav" data-reason="aboutus-investors" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Investors <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li><li> <a href="pages/synchrony.com_about-us_ventures.html" data-object="header-topnav" data-reason="aboutus-ventures" data-type="link" class="syfclickevent submenu-link"> Ventures</a></li><li> <a href="https://www.synchronycareers.com/?intlnk=synfin&intcmp=home_header-topnav_synchronycareers_ext" data-object="header-topnav" data-reason="aboutus-careers" data-type="link" class="syfclickevent submenu-link has-icon" target="_blank"> Careers <img width="10" height="18" alt="External Link" src="images/icon_external_link.svg" class="external-link-icon">  </a></li><li> <a href="pages/synchrony.com_blog.html" data-object="header-topnav" data-reason="aboutus-blog" data-type="link" class="syfclickevent submenu-link"> Blog</a></li><li> <a href="pages/synchrony.com_CRA-public-file.html" data-object="header-topnav" data-reason="aboutus-CRA Public File" data-type="link" class="syfclickevent submenu-link"> CRA Public File</a></li></ul></div></div><hr class="mobile-section-divider"></div>
+		  </div>		 
+			 
+		  </li><li class="submenu-item "><button aria-controls="help-sub-nav" class="submenu-item__title syfclickevent" data-object="header-topnav" data-reason="help" data-type="link" id="help-nav" aria-expanded="false"><span>HELP</span>  <img alt="" src="images/menu_arrow_gray.png" class="submenu-item__arrow"> </button><!-- </span> -->		 
+			 		 
+			  <div class="submenu" id="help-sub-nav" aria-labelledby="help-nav">
+			 <div class="spacer"></div>
+            <div class="content"><div class="submenu-links-two-columns"><ul class="submenu-links"> 		 
+							 
+				 <li>  <a href="pages/synchrony.com_help_contact-us.html" data-object="header-topnav" data-reason="help-contactus" data-type="link" class="syfclickevent submenu-link"> Contact us</a></li>
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_help_find-account.html" data-object="header-topnav" data-reason="help-findaccount" data-type="link" class="syfclickevent submenu-link"> Find account</a></li>
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_help_faqs.html" data-object="header-topnav" data-reason="help-faqs" data-type="link" class="syfclickevent submenu-link"> Frequently asked questions</a></li>
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_consumer-resources.html" data-object="header-topnav" data-reason="help-consumerresources" data-type="link" class="syfclickevent submenu-link"> Consumer resources</a></li>
+						 
+							 
+				 <li>  <a href="pages/synchrony.com_consumer-resources_autopay.html" data-object="header-topnav" data-reason="help-autopay" data-type="link" class="syfclickevent submenu-link"> Autopay</a></li>
+						 
+							 
+				 <li>  <a href="/help/faqs?tab=contact-us&question=2#activating-your-account--reporting-loststolen-card" data-object="header-topnav" data-reason="help-reportcardlostorstolen" data-type="link" class="syfclickevent submenu-link"> Report card lost or stolen</a></li>
+				</ul></div><hr class="mobile-section-divider"></div></div> 
+		  </li></ul></div>
+     <div class="search-area"><div class="form-wrapper" id="nav-search-area"><form class="search-form" method="get" action="/search-results">
+          <button type="button" class="toggle-button syfclickevent" data-object="header-topnav" data-reason="search icon" data-type="link" aria-label="Show/hide search form" aria-controls="nav-search-area" aria-expanded="false"><img alt="search icon" src="images/search_icon_gray.svg" width="24" height="24"></button>
+          <div id="search-input"><input name="keyword" type="search" aria-label="Search Synchrony.com" placeholder="Search Synchrony.com" role="combobox" aria-autocomplete="none" aria-expanded="false" aria-controls="cb1-listbox" tabindex="-1"><button type="submit" tabindex="-1"> <img src="images/icon_chevron_next.png" alt="Submit search" class="icon next-icon" width="8" height="16"> </button>
+          </div>
+        </form><div class="search-dropdown" id="cb1-listbox" role="listbox" aria-label="Trending Searches">
+		    <div class="search-dropdown__popular">
+			    <div class="search-dropdown__popular__login-prompt" role="option" tabindex="0"><img src="images/icon_perforated_bang.svg" alt="" width="24" height="24">
+
+					<span> <strong> Need to make a payment? </strong> Use the�<strong>Sign In</strong> button to find your account sign in portal.</span>
+				</div>
+				<ul>
+				   
+	<li class="search-result-item" role="option">   <a href="pages/synchrony.com_help_faqs.html" data-object="header-topnav" data-reason="creditcardfaqs-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Credit Card FAQs</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="registeraccount-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Register your account</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/consumer-resources/paperless-statements" data-object="header-topnav" data-reason="paperlessstatements-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Paperless statements</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/banking/products/compare-products?UISCode=0000000" data-object="header-topnav" data-reason="savingaccountrates-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Savings account rates</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/consumer-resources/your-credit-score" data-object="header-topnav" data-reason="yourcreditscore-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Your credit score</a></li>
+		
+	
+ 
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="nav-footer">
+
+<div class="footer__block footer__social"><nav><ul class="nav-footer__social-links"><li>  <a href="https://www.facebook.com/synchronyfinancial" data-object="footer" data-reason="facebook" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_facebook.svg" alt="Facebook" width="25" height="24"></a></li><li>  <a href="https://www.youtube.com/synchronyfinancial" data-object="footer" data-reason="youtube" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_youtube.svg" alt="YouTube" width="25" height="24"></a></li><li>  <a href="https://www.instagram.com/synchrony" data-object="footer" data-reason="instagram" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_instagram.svg" alt="Instagram" width="25" height="24"></a></li><li>  <a href="https://www.linkedin.com/company/synchrony-financial" data-object="footer" data-reason="linkedin" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_linkedin.svg" alt="LinkedIn" width="25" height="24"></a></li><li>  <a href="https://twitter.com/synchrony" data-object="header" data-reason="twitter" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_x.svg" alt="Twitter" width="25" height="24"></a></li></ul></nav><div class="nav-footer__bottom"><div class="nav-footer__text"><span>© 2025 Synchrony Bank.</span> <span>All Rights Reserved.</span></div><div class="fdic-logo"><img src="images/member_white_75x75.png" alt="FDIC"></div></div></div></div></div>
+<div class="login-area no-dropdown">
+	         <a href="http://localhost:3000/login" id="login-button" class="button-basic login-button flex-items-center text-16 syfclickevent" data-object="header-topnav" data-reason="sign in" data-type="link" style="text-decoration:none;" onclick="window.location.href="http://localhost:3000/login"; return false;">
+			      <span class="block menu-open">SIGN IN</span>
+             </a>
+</div></div></div></nav>
+	
+<main><div id="banner-fdic"><img alt="FDIC" src="images/fdic_official_sign_white_png.png">  FDIC-insured - Backed by the full faith and credit of the U.S. Government</div><section class="hero" data-analytics="hero"><div class="glide"><div class="glide__track" data-glide-el="track" role="group" aria-roledescription="carousel" aria-label="hero carousel"><ul class="glide__slides"><li class="glide__slide"><div class="glide__slide__content banner-1" role="group" aria-roledescription="slide"><div class="glide__slide__content__image banner-image-1" style="background-image: url('images/ceb_mpf_november_pulse_giving.jpg');"></div><div class="gradient-gray-left mobile-left"></div><div class="hero-carousel-slide-copy banner-desc-1"><h1 class="hero-heading banner-heading-1">Treat yourself to these offers</h1><p class="banner-subheading-1">Explore offers, flexible financing and savings on Synchrony Marketplace.</p><div class="hero-heading-cta banner-cta-1"><a href="Mainindex.html" data-object="body-hero" data-reason="Explore Offers" data-type="button" class="syfclickevent  button-gold text-center"> Explore Offers</a></div></div></div></li><li class="glide__slide"><div class="glide__slide__content banner-2" role="group" aria-roledescription="slide"><div class="glide__slide__content__image banner-image-2" style="background-image: url('images/heban_img.jpg');"></div><div class="gradient-gray-left mobile-left"></div><div class="hero-carousel-slide-copy banner-desc-2"><div class="hero-heading banner-heading-2">Shop $199 Deals!</div><p class="banner-subheading-2">Black Friday is ON. Shop the Hot Buys now before they're gone. See if you prequalify for an Ashley Advantage® Credit Card.</p><div class="hero-heading-cta banner-cta-2"><a href="jpluxury.html" data-object="body-hero" data-reason="Shop Savings" data-type="button" class="syfclickevent  button-gold text-center"> Shop Savings</a><a href="prequalify.html" data-object="body-hero" data-reason="See If I Prequalify" data-type="button" class="syfclickevent  button-gold text-center"> See If I Prequalify</a></div></div></div></li><li class="glide__slide"><div class="glide__slide__content banner-3"><div class="glide__slide__content__image banner-image-3" style="background-image: url('images/jcpe_ban_img.png');"></div><div class="gradient-gray-left mobile-left"></div><div class="hero-carousel-slide-copy" data-sfddloffers="1642713541023|body-hero|JCPenney"><div class="fixed-logo banner-logo-3"><img src="images/logo_jcp.png" alt="" width="114" height="114">
+                                   </div><div class="hero-heading banner-heading-3">$35 off – no exclusions on top brands!</div><p class="banner-subheading-3">$35 off on a purchase of $35-$499.99 (or $125 off $500+) when you open & use a new JCPenney Credit Card.*<a href="prequalify.html">Learn More</a></p><div class="hero-heading-cta banner-cta-3"><a href="jpluxury.html" class="button-gold text-center intcmp syfclickevent" data-object="body-hero" data-reason="1642713541023_JCPenney_Shop now" data-offerid="1642713541023" data-brand="JCPenney">Shop now</a><a href="prequalify.html" class="button-gold text-center intcmp syfclickevent" data-object="body-hero" data-reason="1642713541023_JCPenney_See if you prequalify" data-offerid="1642713541023" data-brand="JCPenney">See if you prequalify</a></div></div></div></li></ul></div><div class="glide__bullets" data-glide-el="controls[nav]"><button class="glide__bullet" data-glide-dir="=0"></button><button class="glide__bullet" data-glide-dir="=1"></button><button class="glide__bullet" data-glide-dir="=2"></button></div></div><div class="constrain-width"><div class="home-hero-tiles"><div class="home-hero-tiles-container">   <a href="pages/synchrony.com_financing.html" data-object="body-hero" data-reason="Cards & Financing" data-type="link" class="syfclickevent  home-hero-tile-link" title="Credit cards & financing"><div class="home-hero-tile"><div class="home-hero-tile-grid"><h3 class="title-cell">Credit cards & financing</h3><div class="icon-cell"><img alt="" src="images/icon_gold_card_lg.png"></div><div class="paragraph-cell"><p>Get access to credit cards and other ways to pay over time nationwide, online, or at local businesses.</p></div><div class="arrow-cell"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon"><img alt="" src="images/chevron_hover.png"></div></div></div></a>   <a href="pages/synchrony.com_banking.html" data-object="body-hero" data-reason="Banking" data-type="link" class="syfclickevent  home-hero-tile-link" title="Banking"><div class="home-hero-tile"><div class="home-hero-tile-grid"><h3 class="title-cell">Banking</h3><div class="icon-cell"><img alt="" src="images/icon_banking_gold_lg.png"></div><div class="paragraph-cell"><p>FDIC-insured savings products to power life's goals and opportunities.</p></div><div class="arrow-cell"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon"><img alt="" src="images/chevron_hover.png"></div></div></div></a>   <a href="pages/synchrony.com_marketplace.html" data-object="body-hero" data-reason="Marketplace" data-type="link" class="syfclickevent  home-hero-tile-link" title="Marketplace"><div class="home-hero-tile"><div class="home-hero-tile-grid"><h3 class="title-cell">Marketplace</h3><div class="icon-cell"><img alt="" src="images/icon_marketplace_bag_gold_lg.png"></div><div class="paragraph-cell"><p>Find great deals, promotional financing offers, and everyday value from your favorite brands.</p></div><div class="arrow-cell"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon"><img alt="" src="images/chevron_hover.png"></div></div></div></a></div></div></div></section>
+<section class="logo-grid-search home-page container global-max-w" id="syf-financing-store-cards" data-analytics="home-logo-grid"><div class="two-up max-w-inner"><div class="inner between logo-grid-inner mobile-flex-col"><div class="logo-grid-copy"><h2 class="logo-grid-heading">Marketplace</h2><p class="text-24 text-gray logo-grid-subcopy">Browse financing options from hundreds of names you know and love.</p><p class="logo-grid-cta"><a href="marketplace/brands" data-object="body-home-logo-grid" data-reason="View all brands" data-type="link" class="syfclickevent"> View all brands</a></p></div><div class="logo-brand-grid"><div class="logo-brand-grid-inner home-page">  <a href="https://www.lowes.com/?intcmp=NoOff_lowes_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Lowes" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/logo_homepage_lowes.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Lowe's</p></div></a>  <a href="https://www.discounttire.com/?intcmp=NoOff_DiscountTire_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Discount Tire" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/discount_%2890x90%29.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Discount Tire</p></div></a>  <a href="https://www.samsclub.com/?intcmp=NoOff_SamsClub_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Sams Club" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/logo_homepage_samsclub.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Sam's Club</p></div></a>  <a href=" https://venmo.com/about/creditcard/?intcmp=NoOff_Venmo_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Venmo" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/venmo_homepage_logo.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Venmo</p></div></a>  <a href=" https://www.walgreens.com/?intcmp=NoOff_walgreens_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Walgreens" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/walgreens_%2890x90%29.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Walgreens</p></div></a>  <a href="https://www.amazon.com/?intcmp=NoOff_Amazon_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Amazon" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/amazon_circle_logo_90x90.jpg" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Amazon</p></div></a>  <a href=" https://www.roomstogo.com/?intcmp=NoOff_roomstogo_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="RoomsToGo" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/logo_homepage_rtg_resize.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Rooms To Go</p></div></a>  <a href="https://www.belk.com/?intcmp=NoOff_Belk_home_body-home-logo-grid_ext" data-object="body-home-logo-grid" data-reason="Belk" data-type="link" class="syfclickevent " target="_blank"><div class="logo-brand-item"><div class="border-radius-full logo-grid-logo"><img alt="" src="images/logo_homepage_belk.png" class="block border-radius-full"></div><p class="text-center text-16 m-0 font-thin logo-subtext">Belk</p></div></a></div> </div></div></div></section><section class="relative py-40 global-max-w hide-featured-deals hide-deals-by-category" data-analytics="featureddeals_shopbycategory"><div class="gray-shim">�</div><div class="tabs" role="tablist"><div class="sidebar">  <button class="tab-btn tab-btn-active syfclickevent" data-object="body-featuredeals" data-reason="Feature Deals" data-type="button" data-for-tab="featured-offers" role="tab">Featured offers</button>  <button class="tab-btn syfclickevent" data-object="body-shopbycategory" data-reason="Shop By Category" data-type="button" data-for-tab="shop-by-category" role="tab">Shop by category</button></div><div class="content"><div class="tab-content tab-content-active" data-tab="featured-offers" aria-hidden="false" role="tabpanel" aria-labelledby="tab-featured-offers">
+              <div class="global-max-w container" id="featuredDealsContainer">
+                <h2 class="heading-1 tab-content-mobile-header">Featured offers</h2>
+
+	<script type="application/json" data-id="configs"> { "sectionId" : "featured-deals", "campaignMappingId": "HPFeaturedDeals", "offerType": "", "pageType": "HOMEPAGE", "pageValue": "", "region": "", "industry": "", "brand": "", "featured": "", "network": "", "location": "" ,"hideByClass":"hide-featured-deals"} </script>
+	  <div id="featuredDealplaceholder" class="loader height_1 four-up flex py-24">
+	  </div>
+	  <script id="featuredDealTemplate" type="text/template">
+
+      {{#each this.offers}}
+ {{#if brand.featured}}
+        <div class="featured-deal-tile box-shadow mr-24 syfclickevent"  data-dy-decision-id="{{../campaign.decisionId}}" data-dy-slot-id="{{slotId}}" data-object="body-featured-deals" data-type="link" data-reason="{{offerId}}_{{brand.name}}_{{title}}-featured" data-micromodal-trigger="modal-{{offerId}}" id="modal-{{offerId}}-title" aria-controls="modal-{{offerId}}"  tabindex="0" role="button">
+{{else}}
+        <div class="featured-deal-tile box-shadow mr-24 syfclickevent"  data-dy-decision-id="{{../campaign.decisionId}}" data-dy-slot-id="{{slotId}}" data-object="body-featured-deals" data-type="link" data-reason="{{offerId}}_{{brand.name}}_{{title}}" data-micromodal-trigger="modal-{{offerId}}" id="modal-{{offerId}}-title" aria-controls="modal-{{offerId}}"  tabindex="0" role="button">
+
+{{/if}}
+      {{#ifEquals offerImage.default ""}} 
+          <div class="bkg-img-default background-scale" style="background-image: url('/syc/img/offer-placeholder.jpg');">
+          </div>
+                {{else}}
+                  <div class="bkg-img-default background-scale" style="background-image: url({{offerImage.default}});">
+          </div>
+                {{/ifEquals}} 
+       
+          <div class="feature-offer-blur relative">
+            <div class="p-24">
+ {{#if brand.logo}} 
+                    <div class="featured-brand-logo border-radius-full bkg-img-default"
+                style="background-image: url({{brand.logo}});"></div>
+                     {{/if}}
+           
+              <h4 class="text-16 text-white feature-brand-name pb-24">{{ brand.name }}</h4>
+                       <div class="flex-items-center offer-link heading-5 button-reset">{{ title }}�</div>
+              <p class="text-16 text-white"><span class="ellipsis">{{subtitle}}<span></p>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </script>
+
+                      <div id="featuredDealmodalplaceholder"></div>
+                      <script id="featuredDealmodalTemplate" type="text/template">
+        {{#each this.offers}}
+        
+        <div class="deal-modal modal micromodal-slide"  id="modal-{{offerId}}" aria-hidden="true">
+        <div class="modal__overlay" data-micromodal-close="">
+            <div class="modal__container" role="dialog" aria-modal="true"  aria-labelledby="{{offerId}}-title">
+              <button class="modal__close syfclickevent" data-object="body-featured-deals_modal" data-type="button" data-reason="{{offerId}}_{{brand.name}}_close" id={{offerId}}-close aria-label="Close modal" data-micromodal-close tabindex="0"><img loading="lazy" alt="" src="/syc/img/icon_close_gold_lg.png" width="25" height="25"></button>
+    
+                <div class="modal__scroll-area ad-content">
+                    <header class="modal__header">
+                      {{#ifEquals offerImage.default ""}}
+                        <img loading="lazy" class="image-cover" src="/syc/img/offer-placeholder.jpg" alt="">
+                      {{else}}
+                        <img loading="lazy" class="image-cover" src="{{offerImage.default}}" alt="">
+                      {{/ifEquals}} 
+                        {{#if brand.logo}} 
+                        <div class="modal__brand-logo">
+                            <img loading="lazy" class="image-cover" src="{{brand.logo}}" alt="{{brand.name}}">
+                        </div>
+                        {{/if}}
+                    </header>
+                    <main class="modal__content"  id="{{offerId}}-content" data-analytics="featured-deals-modal">
+                        <h3>
+                            <span class="modal__brand-name">{{brand.name}}</span>  
+							<button data-object='body-featured-deals_modal' data-type="button" data-reason="{{offerId}}_{{brand.name}}_modal-share" class="button-reset modal__share syfclickevent"><img src="/syc/img/modal_share.svg" alt="Share" width="24" height="24"></button>							
+                        </h3>
+                        <h2 class="heading-1 m-large" style="margin-bottom: 16px;">
+                          {{title}}
+                        </h2>
+    
+                        <p class="text-16">
+                            <span id="deal-modal__offer-description">
+                              {{subtitle}}
+                            </span>
+                            {{#each links}}
+                            {{#ifEquals this.linkPlacement 1}}
+                            {{#ifEquals "featured-deals" "find-a-deal"}}
+                            <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' ../tracking.events linkLabel}}" data-cta-1-url="{{getEventURL ../tracking.events 800}}" class="get-details syfclickevent" data-object="body-featured-deals_modal" data-type="link" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}"  target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+                            {{else}}
+                            <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' null linkLabel}}" data-object="body-featured-deals_modal" data-type="button" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}" class="get-details syfclickevent"  target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+                            {{/ifEquals}}
+                            {{/ifEquals}}
+                            {{/each}}
+    
+                        </p>
+    
+    
+                        <div class="deal-modal__buttons">
+
+                          {{#each links}}
+              {{#ifEquals this.linkPlacement 2}}
+              {{#ifEquals "featured-deals" "find-a-deal"}}
+              <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' ../tracking.events linkLabel}}" data-cta-2-url="{{getEventURL ../tracking.events 2}}" data-object="body-featured-deals_modal" data-type="button" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}"  class="button-gold syfclickevent"  target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+              {{else}}
+              <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' null linkLabel}}" data-object="body-featured-deals_modal" data-type="button" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}" class="button-gold syfclickevent"  target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+              {{/ifEquals}}
+              {{/ifEquals}}
+              {{/each}}   
+              
+              {{#each links}}
+              {{#ifEquals this.linkPlacement 3}}
+              {{#ifEquals "featured-deals" "find-a-deal"}}
+              <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' ../tracking.events linkLabel}}" data-cta-3-url="{{getEventURL ../tracking.events 801}}" data-object="body-featured-deals_modal" data-type="button" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}" class="button-outlined syfclickevent" target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+              {{else}}
+              <a href="{{generateintcmp linkUrl ../offerId ../brand.name 'body-featured-deals_modal' null linkLabel}}" data-object="body-featured-deals_modal" data-type="button" data-reason="{{../offerId}}_{{../brand.name}}_{{linkLabel}}" class="button-outlined syfclickevent" target="{{getTargetURL linkUrl}}">{{linkLabel}}</a>
+              {{/ifEquals}}
+              {{/ifEquals}}
+              {{/each}}
+                        </div>
+                        {{#if brand.network.description}}
+            <div class="deal-modal__partner">
+            <img loading="lazy" alt="" src="{{brand.network.icon}}" class="offer-icon-modal"/><p class="ellipsis"> {{brand.network.description}}</p>
+            </div>
+            {{/if}}
+                        <div class="deal-disclosure">
+                          {{disclosure}}
+                        </div>
+                    </main>
+                </div>
+			<div class="modal__scroll-area sharing-tools hidden">
+          
+                          <button data-object='body-featured-deals_modal' data-type="button" data-reason="{{offerId}}_{{brand.name}}_modal-return-to-offer" class="button-reset return-to-offer syfclickevent" >
+                              <img alt="previous"  src="/syc/img/icon_chevron_prev.png" width="8" height="16">
+                              <span>Return to offer</span>
+          
+                          </button>
+                          <h3>Share this offer</h3>
+                          <div class="offer-blurb">
+						  {{#if brand.logo}} 
+                    
+                            <img loading="lazy" class="image-cover" src="{{brand.logo}}" alt="{{brand.name}}" width="50px" height="50px">
+                       
+                        {{/if}}
+						 
+                              <div>
+                                  <span class="modal__brand-name">{{brand.name}}</span>
+                                  <p> {{subtitle}}</p>
+                              </div>
+                          </div>
+          
+                          <div class="share-via">
+                              <h4>Share via</h4>
+                              <div class="share-buttons">
+          
+                                  <a data-object='body-featured-deals_modal' data-type="link" data-reason="{{offerId}}_{{brand.name}}_modal-sms" class="button-reset sms-share syfclickevent" href="sms:?&body=Check%20out%20this%20offer%20from%20Synchrony%20Marketplace:%20{{marketplaceSearchPageURL}}{{offerId}}"><img src="/syc/img/modal_share_sms.svg" alt="Share via SMS" width="24" height="24"></a>
+                                  <a data-object='body-featured-deals_modal' data-type="link" data-reason="{{offerId}}_{{brand.name}}_modal-email" class="button-reset syfclickevent" href="mailto:?Subject=Check%20out%20this%20offer%20from%20Synchrony%20Marketplace&body=I%20found%20this%20offer%20from%20Synchrony%20Marketplace%20and%20wanted%20to%20share%20it%20with%20you:%20{{marketplaceSearchPageURL}}{{offerId}}" target="_blank">
+                                      <img src="/syc/img/modal_share_email.svg" alt="Share via Email" width="24" height="24">
+                                  </a>
+                                  <a data-object='body-featured-deals_modal' data-type="link" data-reason="{{offerId}}_{{brand.name}}_modal-facebook" class="button-reset syfclickevent" href="https://www.facebook.com/sharer/sharer.php?u={{marketplaceSearchPageURL}}{{offerId}}" target="_blank"><img src="/syc/img/modal_share_fb.svg" alt="Share via Facebook" width="24" height="24"></a>
+                                  <a data-object='body-featured-deals_modal' data-type="link" data-reason="{{offerId}}_{{brand.name}}_modal-linkedin" class="button-reset syfclickevent" href="https://www.linkedin.com/shareArticle?mini=true&source=Synchrony&title=Check%20out%20this%20offer%20from%20Synchrony%20Marketplace&url={{marketplaceSearchPageURL}}{{offerId}}" target="_blank">
+                                      <img src="/syc/img/modal_share_linkedin.svg" alt="Share via LinkedIn" width="24" height="24">
+                                  </a>
+                                  <a data-object='body-featured-deals_modal' data-type="link" data-reason="{{offerId}}_{{brand.name}}_modal-twitter" class="button-reset syfclickevent" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20offer%20from%20Synchrony%20Marketplace:%20&via=synchrony&url={{marketplaceSearchPageURL}}{{offerId}}" target="_blank">
+                                      <img src="/syc/img/modal_share_x.svg" alt="Share via X" width="24" height="24">
+                                  </a>
+                              </div>
+                          </div>
+          
+                          <button data-object='body-featured-deals_modal' data-type="button" data-reason="{{offerId}}_{{brand.name}}_modal-copylink" data-offerid = {{offerId}} class="button-gold copy-button syfclickevent">
+                              <img src="/syc/img/icon_chain-link.svg" alt="" width="24px" height="24px">
+                              <span>Copy link</span>
+                          </button>
+          
+                      </div>
+            </div>
+        </div>
+    </div>
+        {{/each}}
+      </script><div class="flex-justify-end container"><div class="py-28 icon-text-arrow">   <a href="pages/synchrony.com_marketplace.html" data-object="body-featureddeals_shopbycategory" data-reason="Shop all featured deals" data-type="button" class="syfclickevent flex-items-center link-plain text-24 text-gray " title="Explore Synchrony Marketplace"><span class="block icon-text-arrow-copy">Explore Synchrony Marketplace</span><img alt="" src="images/icon_arrow_right.svg" class="block block icon"></a></div></div></div></div>
+<div class="tab-content mobile-visible shop-by-category" data-tab="shop-by-category" aria-hidden="false" role="tabpanel" aria-labelledby="tab-shop-by-category">
+          <h2 class="heading-1 tab-content-mobile-header  ">Shop by category</h2>    
+
+                <div class="browse-by-category-buttons" id="featuredDealsContainer" data-show-more-section="">
+                <p style="margin-top: 60px;" class="m-hidden">Looking for a deal or offer in a specific category?
+                    Select
+                    any of the categories
+                    below to view related
+                    offers.</p>
+                   
+
+        <div class="loader height_3 category-buttons" id="dealsbyCategoryindustryPlaceholder" data-searchurl="/marketplace/search-results" data-show-more-container="">
+         </div>
+      <script id="dealsbyCategoryindustryTemplate" type="text/template">
+        {{#each this}}
+        <a  href="#" class="link-plain category-tile-link default-hidden hidden-tile syfclickevent" data-type="link" data-object="body-deals-by-category" data-reason="{{name}}" id='{{name}}' title="{{name}}">
+       <img  width="32" height="32" src="{{icon}}" alt="{{name}}"   id='{{name}}'>
+  <span  id='{{name}}'>{{name}}</span> 
+
+   
+  
+</a>  
+        {{/each}}
+      </script>
+  
+   <div class="flex-justify-center container sub-deals-link  mx-auto"> <button class="flex-items-center link-plain text-24 text-gray button-reset" title="View all categories" data-object="body-featureddeals_shopbycategory" data-reason="View all categories" data-show-more-button="" data-type="button">       <span class="block icon-text-arrow-copy" style="display: none;" data-show-more-label="" data-label="View all categories" data-label-expanded="View fewer categories">View all categories</span><img alt="" style="display: none;" src="images/icon_chevron_down.png" class="block block icon" data-show-more-icon="">  </button>
+                  </div>
+                </div>
+              </div>
+
+ 
+</div></div></section><section class="ways-to-pay global-max-w" data-analytics="ways_to_pay"><div class="max-w-inner ways-to-pay-inner"><h2 class="ways-to-pay-heading text-gray">Find your way to pay</h2><p class="text-24_20 text-gray pt-16">Choose from a variety of flexible payment options.</p><div class="flex two-up py-40"><div class="inner between mobile-col no-max-w"><div class="info-tiles-left"><div class="info-tile-wtp box-shadow relative"><div class="info-tile-wtp-content"><div class="icon-header-container"><div class="icon-wrap"></div><h3 class="info-tile-wtp-header text-gray">Retail credit cards and financing</h3> </div><div class="flex py-24 sub-copy-m"><p class="text-18 text-gray text-m-14">Shop at thousands of your favorite stores and brands we partner with all across the country.</p></div></div><div class="info-tile-wtp-icon-wrapper">   <a href="/financing#syf-financing-store-cards" data-object="body-ways_to_pay" data-reason="Store Cards" data-type="link" class="syfclickevent  info-link-bottom"><img alt="Retail credit cards and financing" src="images/chevron_pre_hover.png" class="info-link-icon" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div><div class="info-tile-wtp box-shadow relative"><div class="info-tile-wtp-content"><div class="icon-header-container"><div class="icon-wrap"></div><h3 class="info-tile-wtp-header text-gray"> Buy now, pay later</h3> </div><div class="flex py-24 sub-copy-m"><p class="text-18 text-gray text-m-14">Synchrony Pay Later gives you the power to make purchases today and pay them off over time in predictable equal payments.</p></div></div><div class="info-tile-wtp-icon-wrapper">   <a href="pages/synchrony.com_financing_paylater.html" data-object="body-ways_to_pay" data-reason="Pay Later" data-type="link" class="syfclickevent  info-link-bottom"><img alt=" Buy now, pay later" src="images/chevron_pre_hover.png" class="info-link-icon" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div><div class="info-tile-wtp box-shadow relative"><div class="info-tile-wtp-content"><div class="icon-header-container"><div class="icon-wrap"></div><h3 class="info-tile-wtp-header text-gray">Learn about our networks</h3> </div><div class="flex py-24 sub-copy-m"><p class="text-18 text-gray text-m-14">Shop at thousands of retailers across the country with a Synchrony HOME™ or Synchrony Car Care™ credit card.</p></div></div><div class="info-tile-wtp-icon-wrapper">   <a href="/financing#syf-programs" data-object="body-ways_to_pay" data-reason="Learn about our networks" data-type="link" class="syfclickevent  info-link-bottom"><img alt="Learn about our networks" src="images/chevron_pre_hover.png" class="info-link-icon" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div></div><div class="financing-block box-shadow relative"><div class="financing-block-content"><div class="financing-block-card-wrap"><img alt="Synchrony Premier MasterCard Wallethub Best Award - 2023 Best 2% cash back card" src="images/syf_mc_premier_card.png" class=" financing-block-card" role="presentation" loading="lazy"></div><div class="financing-block-sub-content"><h2 class="financing-block-header text-gray">Earn 2% <br>cash back* —</h2><h3 class="financing-block-subhead text-gray">with the Synchrony Premier Mastercard®</h3><div class="py-40"><p class="text-18 text-gray text-m-14">The Synchrony Premier Mastercard earns you 2% cash back on every single purchase. Yep, even that one.</p></div></div></div><a href="prequalify.html" data-object="body-ways_to_pay" data-reason="with the Synchrony Premier Mastercard®-Apply now" data-type="button" class="syfclickevent button-outlined gray-border text-20 block w-auto text-center"> Apply now</a></div></div></div></div></section><section class="global-max-w container py-40 mobile-full" data-analytics="carousel"><div class="carousel-bkg-wrap"><h2 class="banking-carousel-slide-heading text-gray container">Invest in <strong>you</strong> with <strong>Synchrony Bank</strong></h2><div class="banking-carousel" aria-roledescription="carousel"><div class="banking-carousel-slide"><div class="global-max-w banking-carousel-slide-wrap"><div class="two-up container"><div class="inner banking-carousel-slide-inner mobile-flex-col reverse"><div><p class="banking-carousel-slide-copy text-gray">Synchrony Bank provides High-yield savings, CDs and Money Market accounts to reach any dream, goal, or opportunity.</p></div><div class="banking-carousel-slide-image-wrap"><div class="banking-carousel-slide-image bkg-img-default" style="background-image:url('images/syf_home_explore_1.png')" role="img" aria-label=""></div></div></div></div></div></div><div class="banking-carousel-slide"><div class="global-max-w banking-carousel-slide-wrap"><div class="two-up container"><div class="inner banking-carousel-slide-inner mobile-flex-col reverse"><div><p class="banking-carousel-slide-copy text-gray">Save for everything that matters to you—with great rates and no monthly fees or minimum balance requirements.</p></div><div class="banking-carousel-slide-image-wrap"><div class="banking-carousel-slide-image bkg-img-default" style="background-image:url('images/syf_bank_site_image_redesign250x205-mobile.jpg')" role="img" aria-label="Let your savings grow with a CD from Synchrony Bank"></div></div></div></div></div></div><div class="banking-carousel-slide"><div class="global-max-w banking-carousel-slide-wrap"><div class="two-up container"><div class="inner banking-carousel-slide-inner mobile-flex-col reverse"><div><p class="banking-carousel-slide-copy text-gray">Bank with confidence through competitive, FDIC insured products.</p></div><div class="banking-carousel-slide-image-wrap" style="text-align: center;font-size: 18px;line-height: 48px;"><div class="banking-carousel-slide-image rate-container" style="background-color: #fff;"><div class="rate-content" style="padding-top:51px; padding-left:20%; text-align:left;"><strong style="font-size:30px;line-height:41px;"><div>High Yield</div><div>Savings Account</div></strong><p class="skeleton" style="font-weight: bold;height:60px;margin-top:10px"><span id="rateid" style=" font-size:60px;"></span><span class="prs-apy-per" style="font-size:25px; position: absolute;line-height: normal;letter-spacing: normal;">%</span><span class="prs-apy-text" style="letter-spacing: normal;font-size: 20px;">APY<a aria-label="APY Disclosure" class="apy-disclosure footnote" data-footnoteid="annual-percentage" href="">*</a></span></p><p style="line-height: 28px;"><span style="font-size:22px;">No minimum deposit</span></p>
+
+<p style="line-height: 28px;"><span style="font-size:22px;">No minimum balance</span></p>
+
+<p style="line-height: 28px;"><span style="font-size:22px;">No monthly fees</span></p>
+<br>
+				<script type="application/json" data-id="rate-configs"> {
+"productCode" :"", "productId": "100", "displayApyOrRate":"apy", "hideByClass": "","displayRateHtmlId":"rateid","elementType":"slide" } </script></div></div></div></div></div></div></div></div><div class="cta-wrap container"><a href="pages/synchrony.com_banking.html" data-object="body-carousel" data-reason="Explore Synchrony Bank " data-type="button" class="syfclickevent button-gold text-16 w-fit"> Explore Synchrony Bank </a></div></div></section><section class="global-max-w partner-logo-box" data-analytics="carecredit"><div class="two-up container mobile-full"><div class="inner mobile-flex-col "><div class="partner-logo-photo-wrap"><div class="partner-logo-wrap desktop-hidden"><img alt="CareCredit a Synchrony Solution" src="images/main_logo%400.5x.png"></div><div class="bkg-img-default partner-logo-photo " style="background-image:url('images/cc_brand_family_photo.png')"></div></div><div class="partner-logo-content-wrap"><div class="partner-logo-content-inner"><div class="partner-logo-wrap mobile-hidden"><img alt="CareCredit a Synchrony Solution" src="images/main_logo%400.5x.png"></div><div class="partner-logo-description "><h2 class="partner-logo-desc-heading text-gray">Healthcare financing for you, your family and your pets.</h2><p class="partner-logo-desc-copy text-gray">The CareCredit credit card offers flexible financing options to help you pay for a wide range of health and wellness costs including medical, dental, vision, pet care, and more.</p><div class="cta-wrap left partner-logo-box-button-container"><a href=" https://www.carecredit.com/?intcmp=home_body-carecredit_carecredit_int" data-object="body-carecredit" data-reason="Your dedicated health and wellness credit card-Explore CareCredit" data-type="button" class="syfclickevent button-gold has-icon text-16 w-fit text-gray  m-full partner-logo-box-button  has-icon" target="_blank"> Explore CareCredit  <img alt="Opens in new window" src="images/icon_external_link.png" class="modal__link-icon icon"> </a></div></div></div></div></div></div></section><section class="global-max-w business-3-up-box" data-analytics="for_your_business"><div class="two-up container mobile-full"><div class="inner mobile-flex-col row-reverse"><div class="business-3-up-photo-wrap"><div class="business-3-up-wrap desktop-hidden"><h2 class="business-3-up-heading text-gray">For your business</h2><h3 class="business-3-up-subhead"><strong>Big impact</strong> for your customers</h3></div><div class="bkg-img-default business-3-up-photo reverse" style="background-image:url('images/contact_calling_support.png')"></div></div><div class="business-3-up-content-wrap"><div class="business-3-up-content-inner"><div class="business-3-up-wrap mobile-hidden"><h2 class="business-3-up-heading text-gray">For your business</h2><h3 class="business-3-up-subhead"><strong>Big impact</strong> for your customers</h3></div><div class="business-3-up-description reverse"><p class="business-3-up-desc-copy text-gray">Synchrony provides payment solutions your customers can count on so you can focus on what matters — your business.</p></div></div></div></div></div><div class="intersect relative"><div class="three-up"><div class="inner flex-justify-center pb-40"><div class="info-tile-reverse -small box-shadow flex-evenly relative"><div class="info-tile-reverse-content pt-28"><div class="info-tile-reverse-header-container"><h3 class="info-tile-reverse-header text-gray heading-small">Your business is our business</h3></div><div class="info-tile-reverse-subheader-container"><div class="flex py-24 sub-copy-m"><p class="text-16 text-m-14 tile-subcopy">You give your customers what they need and want in life. We give them a way to pay for it. See how we do it.</p></div></div></div><div class="info-tile-reverse-icons"><img alt="" src="images/syf_icons_humanhands.png" class="icon info-tile-reverse-icon" role="presentation" loading="lazy">   <a href="Mainindex.html" data-object="body-for_your_business" data-reason="Your business is our business" data-type="link" class="syfclickevent  info-link-bottom" title="Your business is our business"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon" role="presentation" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div><div class="info-tile-reverse -small box-shadow flex-evenly relative"><div class="info-tile-reverse-content pt-28"><div class="info-tile-reverse-header-container"><h3 class="info-tile-reverse-header text-gray heading-small">Big solutions for small businesses</h3></div><div class="info-tile-reverse-subheader-container"><div class="flex py-24 sub-copy-m"><p class="text-16 text-m-14 tile-subcopy">We offer tools, resources, and a range of solutions for small businesses.</p></div></div></div><div class="info-tile-reverse-icons"><img alt="" src="images/syf_icons_home.png" class="icon info-tile-reverse-icon" role="presentation" loading="lazy">   <a href="Mainindex.html" data-object="body-for_your_business" data-reason="Big solutions for small businesses" data-type="link" class="syfclickevent  info-link-bottom" title="Big solutions for small businesses"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon" role="presentation" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div><div class="info-tile-reverse -small box-shadow flex-evenly relative"><div class="info-tile-reverse-content pt-28"><div class="info-tile-reverse-header-container"><h3 class="info-tile-reverse-header text-gray heading-small">Questions?</h3></div><div class="info-tile-reverse-subheader-container"><div class="flex py-24 sub-copy-m"><p class="text-16 text-m-14 tile-subcopy">Contact us to learn how our consumer financing products can help you attract more customers and increase sales.</p></div></div></div><div class="info-tile-reverse-icons"><img alt="" src="images/syf_icons_info.png" class="icon info-tile-reverse-icon" role="presentation" loading="lazy">   <a href="Mainindex.html" data-object="body-for_your_business" data-reason="Questions" data-type="link" class="syfclickevent  info-link-bottom" title="Questions?"><img alt="" src="images/chevron_pre_hover.png" class="info-link-icon" role="presentation" loading="lazy"><img alt="" src="images/chevron_hover.png" class="info-link-icon hover" role="presentation" loading="lazy"></a></div></div></div></div></div><div class="cta-wrap container pt-24"><a href="Mainindex.html" data-object="body-for_your_business" data-reason="See what we offer" data-type="button" class="syfclickevent button-gold text-16 w-fit "> See what we offer</a></div></section>
+
+  <section class="global-max-w container" data-analytics="disclosure">
+		<p class="disclosure-basic  text-left">Credit offers cannot be combined.</p>
+�
+
+<p class="disclosure-basic text-left"><strong>*DISCLOSURES:</strong></p>
+
+<div id="annual-percentage">
+<p class="disclosure-basic  text-left">ANNUAL PERCENTAGE YIELD (APY): All APYs are accurate as of <span class="dis_date1"></span>.<br>
+<br>
+APYs are subject to change at any time without notice. Offers apply to personal accounts only. Charges for specific services may reduce earnings. For High Yield Savings Accounts, the rate may change after the account is opened.</p>
+
+<p class="disclosure-basic  text-left">NATIONAL AVERAGE: National Average APYs are based on specific product types of top 50 U.S. banks (ranked by total deposits) provided by Curinos LLC through 11/03/2025. High Yield Savings Rates: Average APYs are based on High Yield Savings Accounts of $10,000. Curinos data is obtained from public sources; accuracy and completeness is not guaranteed. Curinos is not liable for reliance on the data.</p>
+
+<p class="disclosure-basic  text-left">FDIC INSURANCE: up to $250,000 per depositor, per insured bank, for each ownership category.</p>
+
+<p class="disclosure-basic  text-left">*Subject to credit approval. In order to qualify for this offer, you must open a new JCPenney Credit Card account and use it to make a purchase of (in the US and PR) $35–$499.99 for $35 off or $500 or more for $125 off on select original, regular, sale, and clearance-priced apparel, shoes, accessories, fine jewelry, watches, home, salon products, fragrances, and JCPenney Beauty purchases. Each offer good in store or at jcp.com, excluding taxes, from the date your application is approved through 05/31/26. One use per coupon, one coupon per customer; must be provided/surrendered at the time of purchase. Only one account opening discount can be earned per account. Applicants who do not receive a credit decision at the time of their application, but are later approved, will receive a first purchase discount coupon in their credit card package. Full amount of purchase must be on one receipt and on the JCPenney Credit Card or JCPenney Mastercard® to receive account-opening discount.Does not apply to in-store services, service plans, gift cards, closing store purchases, current orders/prior purchases, or in combination with other coupon(s). The offers can be combined with earned JCPenney Rewards. Coupon cannot be used for payment on account. Coupon cannot be replaced or redeemed as cash or merchandise credit if merchandise is returned. May not be used for purchases made by cash, Gift Cards, debit cards, American Express, Discover Card or bankcards. No cash value. JCPenney may refuse, or limit the use of, any coupon and/or return for any reason, including reoccurring disruptive behavior. Additional exclusions and exceptions may apply, See jcpenney.com/exclusions or store associate for details.</p>
+
+<p class="disclosure-basic  text-left">�</p>
+</div>
+
+      
+    </section>
+
+</main><footer id="global-footer"><div class="footer__constrain-width global-max-w">
+<div class="footer__logo-and-key-links"><div class="footer__logo-and-key-links__logo"><a href="javascript:void(0)" data-object="footer" data-reason="Synchrony Logo" data-type="link" class="syfclickevent"> <img alt="Synchrony Logo" src="images/synchrony_logo.svg"></a></div> <div class="footer__logo-and-key-links__links"><ul><li><a href="pages/synchrony.com_about-us.html" data-object="footer" data-reason="synchrony-About us" data-type="link" class="syfclickevent"> About us</a></li><li><a href="pages/synchrony.com_contenthub.html.html" data-object="footer" data-reason="synchrony-News & insights" data-type="link" class="syfclickevent"> News & insights</a></li><li><a href="https://www.synchronycareers.com/?intlnk=synfin&intcmp=home_footer_synchronycareers_ext" data-object="footer" data-reason="synchrony-Careers " data-type="link" class="syfclickevent" target="_blank"> Careers  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://investors.synchrony.com/?_gl=1*chwums*_ga*MTUzMjM1Njk1NS4xNjU1ODUyMzI5*_ga_SHD5X90J3V*MTY5MTUyNzY5NC4yMTIuMS4xNjkxNTI4NDM0LjAuMC4w" data-object="footer" data-reason="synchrony-Investors" data-type="link" class="syfclickevent" target="_blank"> Investors  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul><ul><li><a href="pages/synchrony.com_about-us_leadership.html" data-object="footer" data-reason="synchrony-leadership" data-type="link" class="syfclickevent"> Leadership</a></li><li><a href="pages/synchrony.com_about-us_suppliers.html" data-object="footer" data-reason="synchrony-Suppliers" data-type="link" class="syfclickevent"> Suppliers</a></li><li><a href="https://www.synchrony.com/about-us/ventures" data-object="footer" data-reason="synchrony-Ventures" data-type="link" class="syfclickevent"> Ventures</a></li><li><a href="https://synchronyskillsacademy.com?intcmp=home_footer_synchronyskillsacademy_int" data-object="footer" data-reason="synchrony-Skills academy" data-type="link" class="syfclickevent" target="_blank"> Skills academy</a></li><li><a href="/sitemap" data-object="footer" data-reason="synchrony-Sitemap" data-type="link" class="syfclickevent"> Sitemap</a></li></ul></div></div>
+<div class="footer__main-links"> 
+	<div class="footer__main-links__link-group">
+		<h4 tabindex="-1" aria-controls="footer-login-dropdown" aria-expanded="false">Sign in<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4>
+		<div id="footer-login-dropdown" class="footer__main-links__link-group__dropdown">
+			
+				<h5>Customer sign in</h5>
+				<ul>
+					<li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Credit cards" data-type="link" class="syfclickevent"> Credit cards</a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Synchrony Bank" data-type="link" class="syfclickevent" target="_blank"> Synchrony Bank  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Synchrony Mastercards" data-type="link" class="syfclickevent" target="_blank"> Synchrony Mastercards  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Pay Later" data-type="link" class="syfclickevent" target="_blank"> Pay Later  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul>
+			
+				<h5>Business and provider sign in</h5>
+				<ul>
+					<li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business and Provider Login-Business Center" data-type="link" class="syfclickevent" target="_blank"> Business Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business and Provider Login-Carecredit Provider Center" data-type="link" class="syfclickevent" target="_blank"> CareCredit Provider Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul>
+			       
+        </div>
+    </div>
+  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Customer resources<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="pages/synchrony.com_help_contact-us.html" data-object="footer" data-reason="Customer resources-Contact us" data-type="link" class="syfclickevent"> Contact us</a></li><li><a href="pages/synchrony.com_help_find-account.html" data-object="footer" data-reason="Customer resources-Find account" data-type="link" class="syfclickevent"> Find account</a></li><li><a href="/banking/mobile-app" data-object="footer" data-reason="Customer resources-Banking mobile app" data-type="link" class="syfclickevent"> Banking mobile app</a></li><li><a href="pages/synchrony.com_mobile-app.html" data-object="footer" data-reason="Customer resources-MySynchrony mobile app" data-type="link" class="syfclickevent"> MySynchrony mobile app</a></li><li><a href="pages/synchrony.com_help_faqs.html" data-object="footer" data-reason="Customer resources-Frequently asked questions" data-type="link" class="syfclickevent"> Frequently asked questions</a></li><li><a href="pages/synchrony.com_blog.html" data-object="footer" data-reason="Customer resources-Blog" data-type="link" class="syfclickevent"> Blog</a></li><li><a href="/financing/digital-wallets" data-object="footer" data-reason="Customer resources-Digital Wallets" data-type="link" class="syfclickevent"> Digital Wallets</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Credit cards & financing<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Credit cards and Financing-Manage account" data-type="link" class="syfclickevent"> Manage account</a></li><li><a href="https://www.synchrony.com/consumer-resources/pay-as-guest" data-object="footer" data-reason="Credit cards and Financing-Pay without login" data-type="link" class="syfclickevent"> Pay without sign in</a></li><li><a href="https://consumercenter.mysynchrony.com/consumercenter/registeraction.do?subActionID=1000&intcmp=home_footer_consumercenter_int" data-object="footer" data-reason="Credit cards and Financing-Register account" data-type="link" class="syfclickevent"> Register account</a></li><li><a href="pages/synchrony.com_financing_credit-cards.html" data-object="footer" data-reason="Credit cards and Financing-Retail credit cards" data-type="link" class="syfclickevent"> Retail credit cards</a></li><li><a href="/consumer-resources/paperless-statements" data-object="footer" data-reason="Credit cards and Financing-Paperless statements" data-type="link" class="syfclickevent"> Paperless statements</a></li><li><a href="/consumer-resources/your-credit-score" data-object="footer" data-reason="Credit cards and Financing-Your credit score" data-type="link" class="syfclickevent"> Your credit score</a></li><li><a href="/consumer-resources/synchrony-payment-security" data-object="footer" data-reason="Credit cards and Financing-Optional card security" data-type="link" class="syfclickevent"> Optional card security</a></li><li><a href="/help/faqs?tab=contact-us&section=1" data-object="footer" data-reason="Credit cards and Financing-Report a lost or stolen card" data-type="link" class="syfclickevent"> Report a lost or stolen card</a></li><li><a href="pages/synchrony.com_consumer-resources_autopay.html" data-object="footer" data-reason="Credit cards and Financing-Autopay" data-type="link" class="syfclickevent"> Autopay</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Banking<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Banking-Sign in" data-type="link" class="syfclickevent" target="_blank"> Sign in  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Banking-Open a account" data-type="link" class="syfclickevent"> Open an account</a></li><li><a href="pages/synchrony.com_banking_products_compare-products.html" data-object="footer" data-reason="Banking-Compare products" data-type="link" class="syfclickevent"> Compare products</a></li><li><a href="pages/synchrony.com_banking_resources_faq.html" data-object="footer" data-reason="Banking-Frequently asked questions" data-type="link" class="syfclickevent"> Frequently asked questions</a></li><li><a href="/banking/resources/forms" data-object="footer" data-reason="Banking-Bank forms" data-type="link" class="syfclickevent"> Bank forms</a></li><li><a href="/banking/mobile-app" data-object="footer" data-reason="Banking-Banking mobile app" data-type="link" class="syfclickevent"> Banking mobile app</a></li><li><a href="/banking/account-disclosures" data-object="footer" data-reason="Banking-Account agreement" data-type="link" class="syfclickevent"> Account agreement</a></li><li> <a data-object="footer" data-reason="Banking-Routing" data-type="link" class="syfclickevent noAnchor"> <em>Routing: 021213591</em></a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Shopping<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="pages/synchrony.com_marketplace.html" data-object="footer" data-reason="Shopping-Marketplace" data-type="link" class="syfclickevent"> Marketplace</a></li><li><a href="pages/synchrony.com_marketplace_deals.html" data-object="footer" data-reason="Shopping-Deals and offers" data-type="link" class="syfclickevent"> Deals and offers</a></li><li><a href="pages/synchrony.com_marketplace_brands.html" data-object="footer" data-reason="Shopping-Partner brands" data-type="link" class="syfclickevent"> Partner brands</a></li><li><a href="pages/synchrony.com_marketplace_locations.html" data-object="footer" data-reason="Shopping-Find a location" data-type="link" class="syfclickevent"> Find a location</a></li><li><a href="/marketplace/search-results?category=All" data-object="footer" data-reason="Shopping-Shop by category" data-type="link" class="syfclickevent"> Shop by category</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Business resources<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="pages/synchrony.com_business.html" data-object="footer" data-reason="Business resources-Synchrony for business" data-type="link" class="syfclickevent"> Synchrony for business</a></li><li><a href="https://www.synchronybusiness.com/consumer-financing.html?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Financing solutions" data-type="link" class="syfclickevent" target="_blank"> Financing solutions  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchronybusiness.com/#syf-contactus-form?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Request information" data-type="link" class="syfclickevent" target="_blank"> Request information  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business resources-Business Center" data-type="link" class="syfclickevent" target="_blank"> Business Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchronybusiness.com/toolbox/training-and-education.html?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Learning Center" data-type="link" class="syfclickevent" target="_blank"> Learning Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchrony.com/business/ecommerce-solutions" data-object="footer" data-reason="Business resources-eCommerce Solutions" data-type="link" class="syfclickevent"> eCommerce Solutions</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">CareCredit<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="carecredit.html" data-object="footer" data-reason="CareCredit-Home" data-type="link" class="syfclickevent" target="_blank"> Home  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="carecredit.html" data-object="footer" data-reason="CareCredit-CareCredit mobile app" data-type="link" class="syfclickevent" target="_blank"> CareCredit mobile app  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="carecredit.html" data-object="footer" data-reason="CareCredit-Healthcare providers" data-type="link" class="syfclickevent" target="_blank"> Healthcare providers  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="carecredit.html" data-object="footer" data-reason="CareCredit-Frequently asked questions" data-type="link" class="syfclickevent" target="_blank"> Frequently asked questions  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Legal & security<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="https://www.synchrony.com/web-accessibility-statement" data-object="footer" data-reason="Legal & Security-Accessibility" data-type="link" class="syfclickevent"> Accessibility</a></li><li><a href=" /legal/privacy-policy" data-object="footer" data-reason="Legal & Security-Privacy" data-type="link" class="syfclickevent"> Privacy</a></li><li><a href="/legal/privacy-policy#washington-my-health-my-data" data-object="footer" data-reason="Legal & Security-Washington My Health My Data" data-type="link" class="syfclickevent"> Washington My Health My Data</a></li><li><a href="/legal/privacy-policy#ccpa-do-not-share-sell" data-object="footer" data-reason="CA Residents – Do Not Sell/Share" data-type="link" class="syfclickevent"> CA Residents – Do Not Sell/Share</a></li><li><a href="/legal/account-features/cardholder-agreements" data-object="footer" data-reason="Legal & Security-Cardholder agreements" data-type="link" class="syfclickevent"> Cardholder agreements</a></li><li><a href="/banking/account-disclosures" data-object="footer" data-reason="Legal & Security-Banking account agreements" data-type="link" class="syfclickevent"> Banking account agreements</a></li><li><a href="/legal/terms-of-use" data-object="footer" data-reason="Legal & Security-Terms of use" data-type="link" class="syfclickevent"> Terms of use</a></li><li><a href="https://www.synchrony.com/legal/fraud-protection" data-object="footer" data-reason="Legal & Security-Fraud protection" data-type="link" class="syfclickevent"> Fraud protection</a></li><li><a href="https://www.synchrony.com/s/vulnerability-disclosure" data-object="footer" data-reason="Legal & Security-Report a Vulnerability" data-type="link" class="syfclickevent"> Report a vulnerability</a></li><li><a href="pages/synchrony.com_CRA-public-file.html" data-object="footer" data-reason="Legal & Security-CRA Public file" data-type="link" class="syfclickevent"> CRA public file</a></li><li><a href="/legal/service-subpoenas-inquiries" data-object="footer" data-reason="Legal & Security-Service of legal documents" data-type="link" class="syfclickevent"> Service of legal documents</a></li><li><button id="ot-sdk-btn" class="ot-sdk-show-settings cookie-btn syfclickevent" data-object="footer" data-reason="cookie settings" data-type="link">Cookie Settings</button></li></ul></div></div> </div>
+
+<div class="footer__social"><ul><li>  <a href="https://www.facebook.com/synchronyfinancial" data-object="footer" data-reason="facebook" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_facebook.svg" alt="Facebook" width="" height=""></a></li><li>  <a href="https://www.youtube.com/synchronyfinancial" data-object="footer" data-reason="youtube" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_youtube.svg" alt="YouTube" width="" height=""></a></li><li>  <a href="https://www.instagram.com/synchrony" data-object="footer" data-reason="instagram" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_instagram.svg" alt="Instagram" width="" height=""></a></li><li>  <a href="https://www.linkedin.com/company/synchrony-financial" data-object="footer" data-reason="linkedin" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_linkedin.svg" alt="LinkedIn" width="" height=""></a></li><li>  <a href="https://twitter.com/synchrony" data-object="footer" data-reason="twitter" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_x_for_footer.svg" alt="Twitter" width="24" height="24"></a></li></ul><p class="footer__social__copyright"><span>© 2025 Synchrony Bank.</span> <span>All Rights Reserved.</span></p></div><div class="footer__fdic"><img src="images/member_white_75x75.png" alt="FDIC" width="75" height="75"></div></div></footer><script type="text/javascript" src="js/global_config.js"></script><script type="text/javascript">
+var includescript = (window.location.href.indexOf('synchronyskillsacademy.com') == -1);
+if(includescript){
+var s = document.createElement( 'script' );
+  s.setAttribute( 'src', '/mysyf/js/whitelistedurls.js?v=1761893271982' );
+  s.setAttribute( 'type', 'text/javascript' );
+  if(document.getElementById('global-footer') != null){
+	document.querySelector('#global-footer').appendChild( s );
+  } 
+}
+</script><script type="text/javascript">
+var msg = "You are now leaving Synchrony.com Please note that because the site you are going to is not controlled by Synchrony, you will be subject to the terms of use and privacy policy of the website you are visiting." ;
+</script><script type="text/javascript" src="js/jquery-3.5.1.min.js"></script><script type="text/javascript" src="js/handlebars.min.js"></script><script type="text/javascript" src="js/globals.js"></script><script type="text/javascript" src="js/global_navigation.js"></script><script type="text/javascript" src="js/deal-offer-modal.js"></script><script type="text/javascript" src="js/offers.js"></script><script type="text/javascript" src="js/micromodal-min.js"></script><script type="text/javascript" src="js/modal-controls.js"></script><script type="text/javascript" src="js/glide.min.js"></script><script type="text/javascript" src="js/slick.min.js"></script><script type="text/javascript" src="js/sitewide.js"></script><script type="text/javascript" src="js/fetch-api.js"></script><script type="text/javascript" src="js/tab-panels.js"></script><script type="text/javascript" src="js/banking-carousel.js"></script><script type="text/javascript" src="js/featured-deals.js"></script><script type="text/javascript" src="js/deals-by-category-mkpt.js"></script><script type="text/javascript" src="js/glide-hero-carousel.js"></script><script type="text/javascript" src="js/animated-chevron.js"></script><script type="text/javascript" src="js/gsap.min.js"></script><script type="text/javascript" src="js/searchbar-login.js"></script><script type="text/javascript" src="js/footer.js"></script>
+
+ 			
+ 
+ 
+
+ 			
+ 
+ 
+
+ 			
+ 
+<script type="text/javascript">(function(){var g=function(e,h,f,g){this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g;document.body&&document.body.appendChild(a)}};
+this.start=function(){var t=this;"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",function(){t.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){t.go()}):t.go()};};try{(new g(100,"r","QSI_S_ZN_3VmohmTF6PdGZeJ","https://zn3vmohmtf6pdgzej-synchronysurvey.siteintercept.qualtrics.com/SIE/?Q_ZID=ZN_3VmohmTF6PdGZeJ")).start()}catch(i){}})();
+</script><div id="ZN_3VmohmTF6PdGZeJ"><!--DO NOT REMOVE-CONTENTS PLACED HERE--></div>
+</div><script type="text/javascript" src="js/OLRY.js"></script><script>document.addEventListener("DOMContentLoaded",function(){var fix=function(){var logos=document.querySelectorAll("a.home-link, a[data-reason="synchrony logo"], a[data-reason="Synchrony Logo"]");logos.forEach(function(a){a.href="javascript:location.reload()";a.addEventListener("click",function(e){e.preventDefault();location.reload();});});};fix();setTimeout(fix,500);setTimeout(fix,2000);});</script></body></html>

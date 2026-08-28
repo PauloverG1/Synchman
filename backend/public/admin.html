@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Synchrony — Admin Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002B5B;--navy2:#003A7A;--nbg:rgba(0,43,91,.06);
+  --gold:#F4C500;--gbg:rgba(244,197,0,.12);
+  --bg:#EEF2F7;--card:#fff;--border:#E2E8F0;
+  --text:#0F172A;--mid:#475569;--light:#94A3B8;
+  --green:#10B981;--gnbg:#ECFDF5;
+  --red:#EF4444;--rnbg:#FEF2F2;
+  --blue:#3B82F6;--bnbg:#EFF6FF;
+  --purple:#8B5CF6;--pnbg:#F5F3FF;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --sh2:0 6px 24px rgba(0,0,0,.1);
+  --r:12px;--rs:8px;--ease:.18s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── LOGIN ── */
+#login-screen{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:999}
+.login-box{background:#fff;border-radius:20px;width:360px;padding:40px;box-shadow:0 30px 80px rgba(0,0,0,.3);text-align:center}
+.login-logo{font-size:28px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.login-logo em{color:var(--gold);font-style:normal}
+.login-tag{font-size:13px;color:var(--light);margin-bottom:28px}
+.login-box input{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;outline:none;margin-bottom:14px;transition:border-color var(--ease)}
+.login-box input:focus{border-color:var(--navy)}
+.btn-login-admin{width:100%;padding:12px;background:var(--navy);color:#fff;font-size:14px;font-weight:700;border:none;border-radius:var(--rs);cursor:pointer;font-family:inherit;transition:background var(--ease)}
+.btn-login-admin:hover{background:var(--navy2)}
+.login-err{color:var(--red);font-size:13px;margin-top:10px;display:none}
+
+/* ── LAYOUT ── */
+#admin-ui{display:none}
+.banner{background:var(--rnbg);color:var(--red);padding:11px 20px;text-align:center;font-size:13px;font-weight:600;border-bottom:1px solid rgba(239,68,68,.2)}
+.topbar{background:var(--navy);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.tb-brand{font-size:16px;font-weight:700;color:#fff}
+.tb-brand em{color:var(--gold);font-style:normal}
+.tb-r{display:flex;align-items:center;gap:10px}
+.tb-time{font-size:12px;color:rgba(255,255,255,.45);font-weight:500}
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+
+/* ── CARDS ── */
+.card{background:var(--card);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--sh);padding:20px}
+.card-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all var(--ease)}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy2)}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:#e6b800}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#059669}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#dc2626}
+.btn-out{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-out:hover{background:var(--nbg)}
+.btn-sm{padding:5px 12px;font-size:12px}
+.btn-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;padding:0;margin-bottom:16px;font-family:inherit}
+.btn-back:hover{color:var(--navy)}
+
+/* ── STATS ROW ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh)}
+.stat-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--light);margin-bottom:6px}
+.stat-val{font-size:24px;font-weight:800;color:var(--navy)}
+
+/* ── USERS TABLE ── */
+.users-grid{display:grid;gap:12px}
+.user-row{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;box-shadow:var(--sh);transition:all var(--ease)}
+.user-row:hover{box-shadow:var(--sh2);transform:translateY(-1px);border-color:var(--navy)}
+.u-left{display:flex;align-items:center;gap:14px;min-width:0}
+.u-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c9a200);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--navy);flex-shrink:0}
+.u-info{min-width:0}
+.u-name{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.u-email{font-size:12px;color:var(--light);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.u-meta-right{display:flex;align-items:center;gap:18px;flex-shrink:0}
+.u-bal{text-align:right}
+.u-bal .label{font-size:11px;color:var(--light);font-weight:500}
+.u-bal .val{font-size:15px;font-weight:800;color:var(--navy)}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.b-gr{background:var(--gnbg);color:var(--green)}
+.b-rd{background:var(--rnbg);color:var(--red)}
+.b-gd{background:var(--gbg);color:#8A6C00}
+.b-bl{background:var(--bnbg);color:var(--blue)}
+
+/* ── USER DETAIL ── */
+#view-user{display:none}
+.section-head{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--light);margin:22px 0 10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field label{font-size:12px;font-weight:600;color:var(--mid)}
+.field input,.field select{padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;color:var(--text);outline:none;width:100%;transition:border-color var(--ease)}
+.field input:focus,.field select:focus{border-color:var(--navy)}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:18px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab{padding:10px 18px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all var(--ease);white-space:nowrap}
+.tab:hover{color:var(--navy)}
+.tab.on{color:var(--navy);border-bottom-color:var(--navy)}
+.tab-pane{display:none}
+.tab-pane.on{display:block}
+
+/* ── TABLE ── */
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:540px}
+th{font-size:11px;font-weight:600;color:var(--light);text-transform:uppercase;letter-spacing:.5px;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:10px 10px;border-bottom:1px solid rgba(226,232,240,.5);color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg)}
+
+/* ── INVESTMENT ROW ── */
+.inv-row{display:grid;grid-template-columns:auto 1fr auto auto auto auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(226,232,240,.5)}
+.inv-row:last-child{border-bottom:none}
+.inv-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:var(--rs);font-size:13px;font-weight:500;box-shadow:var(--sh2);transform:translateY(80px);opacity:0;transition:all .3s ease;z-index:9999;max-width:320px}
+
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.modal-bg.on{display:flex}
+.modal-box{background:#fff;border-radius:18px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:90vh;overflow-y:auto}
+.modal-head{background:linear-gradient(135deg,var(--navy),#004080);padding:18px 22px;border-radius:18px 18px 0 0;display:flex;align-items:center;justify-content:space-between}
+.modal-body{padding:22px}
+.modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+
+@media(max-width:900px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .g2,.g3{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .container{padding:14px 12px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:10px}
+  .stat-box{padding:12px 14px}
+  .stat-val{font-size:20px}
+  .topbar{height:auto;padding:12px 14px;flex-direction:column;align-items:flex-start;gap:10px}
+  .tb-r{width:100%;justify-content:space-between}
+  .tb-time{display:none}
+  
+  .search-action-wrap{flex-direction:column;align-items:stretch !important;width:100%;gap:10px !important}
+  .search-inputs{flex-direction:column;width:100%;gap:8px !important}
+  .search-inputs input{width:100% !important}
+  .search-inputs button{width:100%}
+
+  .user-row{
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:14px;
+  }
+  .u-left{width:100%}
+  .u-meta-right{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    border-top:1px solid var(--border);
+    padding-top:10px;
+    align-items:center;
+  }
+  .u-bal{text-align:left}
+  .u-arrow{display:none}
+
+  .inv-row{
+    grid-template-columns:auto 1fr auto;
+    gap:8px;
+  }
+  .inv-actions{
+    grid-column:1 / -1;
+    display:flex;
+    justify-content:flex-end;
+    gap:6px;
+    border-top:1px dashed var(--border);
+    padding-top:8px;
+    margin-top:4px;
+  }
+
+  .modal-bg{padding:10px}
+  .modal-box{border-radius:14px;max-width:100% !important}
+  .modal-body{padding:16px}
+  .modal-grid-2,.modal-grid-3{grid-template-columns:1fr !important;gap:8px !important}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">synchrony<em>.</em></div>
+    <div class="login-tag">Admin Portal · Restricted Access</div>
+    <input type="password" id="admin-pw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')adminLogin()">
+    <button class="btn-login-admin" onclick="adminLogin()">Enter Admin Panel →</button>
+    <div class="login-err" id="login-err">Incorrect password. Access denied.</div>
+  </div>
+</div>
+
+<!-- ADMIN UI -->
+<div id="admin-ui">
+  <div class="banner">⚠️ ADMIN ACCESS — Changes made here directly affect live client accounts. Proceed with caution.</div>
+  <div class="topbar">
+    <div class="tb-brand">synchrony<em>.</em> <span style="color:rgba(255,255,255,.4);font-weight:400;font-size:13px;margin-left:8px">Admin Panel</span></div>
+    <div class="tb-r">
+      <span class="tb-time" id="admin-clock"></span>
+      <button class="btn btn-gold btn-sm" onclick="loadUsers()">↺ Refresh</button>
+      <button class="btn btn-sm" style="background:rgba(255,255,255,.1);color:#fff" onclick="adminLogout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- USERS LIST VIEW -->
+    <div id="view-users">
+      <!-- Stats -->
+      <div class="stats-row" id="admin-stats">
+        <div class="stat-box"><div class="stat-lbl">Total Clients</div><div class="stat-val" id="st-clients">—</div></div>
+        <div class="stat-box"><div class="stat-lbl">Total AUM</div><div class="stat-val" id="st-aum">—</div></div>
+        <div class="stat-box"><div class="stat-lbl">Pending Approvals</div><div class="stat-val" id="st-pending">—</div></div>
+        <div class="stat-box"><div class="stat-lbl">Total Investments</div><div class="stat-val" id="st-inv">—</div></div>
+      </div>
+
+      <!-- Search and Actions -->
+      <div class="search-action-wrap" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+        <div style="font-size:16px;font-weight:700">All Clients</div>
+        <div class="search-inputs" style="display:flex;gap:10px;align-items:center">
+          <input type="text" id="user-search" placeholder="🔍 Search by name or email…" oninput="filterUsers()" style="padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none;width:240px">
+          <button class="btn btn-navy btn-sm" onclick="openCreateUserModal()">+ Create Client Account</button>
+        </div>
+      </div>
+      <div class="users-grid" id="users-grid"></div>
+    </div>
+
+    <!-- USER DETAIL VIEW -->
+    <div id="view-user">
+      <button class="btn-back" onclick="showUsersList()">← Back to All Clients</button>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap">
+        <div class="u-av" id="ud-av" style="width:52px;height:52px;font-size:18px">?</div>
+        <div>
+          <div style="font-size:20px;font-weight:800" id="ud-name">—</div>
+          <div style="font-size:13px;color:var(--light);display:flex;align-items:center;gap:8px;margin-top:2px;flex-wrap:wrap">
+            <span id="ud-email">—</span>
+            <span>·</span>
+            <span>Member since</span>
+            <input type="text" id="ud-since-input" style="width:65px;padding:3px 6px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:12px;font-weight:700;color:var(--navy);text-align:center;font-family:inherit" placeholder="2019">
+            <button class="btn btn-navy btn-sm" style="padding:4px 8px;font-size:11px" onclick="saveMemberSince()">Save Year</button>
+          </div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button class="btn btn-navy btn-sm" onclick="openAddTxnModal()">+ Add Transaction</button>
+        </div>
+      </div>
+
+      <!-- Account balance cards (HYS, MMA, Investment) -->
+      <div class="section-head">Account Balances & Portfolio</div>
+      <div id="ud-accounts" class="g3" style="margin-bottom:20px"></div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab on" onclick="switchTab('tab-pending')">Pending Approvals</div>
+        <div class="tab" onclick="switchTab('tab-investments')">Investments & Activity</div>
+        <div class="tab" onclick="switchTab('tab-history')">Transaction History</div>
+      </div>
+
+      <!-- Pending tab -->
+      <div class="tab-pane on" id="tab-pending">
+        <div id="ud-pending-list"></div>
+      </div>
+
+      <!-- Investments tab -->
+      <div class="tab-pane" id="tab-investments">
+        <!-- Asset Allocation -->
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+            <div style="font-size:15px;font-weight:700">📊 Asset Allocation Portfolio</div>
+            <button class="btn btn-navy btn-sm" onclick="openAddInvModal()">+ Add Investment Asset</button>
+          </div>
+          <div id="ud-inv-list"></div>
+        </div>
+
+        <!-- Performance Overview Editor -->
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+            <div>
+              <div style="font-size:15px;font-weight:700">📈 Performance Overview</div>
+              <div style="font-size:12px;color:var(--light)">Directly controls the metrics shown on client's Investments page</div>
+            </div>
+            <button class="btn btn-navy btn-sm" onclick="savePerformance()">💾 Save Performance</button>
+          </div>
+          <div class="g3" style="margin-bottom:10px">
+            <div class="field"><label>Since Inception</label><input type="text" id="ud-perf-inc" placeholder="+10.3%"></div>
+            <div class="field"><label>Year to Date</label><input type="text" id="ud-perf-ytd" placeholder="+8.4%"></div>
+            <div class="field"><label>1-Month Return</label><input type="text" id="ud-perf-1m" placeholder="+1.2%"></div>
+          </div>
+          <div class="g2" style="margin-bottom:10px">
+            <div class="field"><label>Dividend Yield (YTD)</label><input type="text" id="ud-perf-div" placeholder="$1,842.30"></div>
+            <div class="field"><label>Strategy</label><input type="text" id="ud-perf-strat" placeholder="Balanced Growth"></div>
+          </div>
+          <div class="g2">
+            <div class="field"><label>Rebalancing</label><input type="text" id="ud-perf-rebal" placeholder="Quarterly"></div>
+            <div class="field"><label>Inception Date</label><input type="text" id="ud-perf-incdate" placeholder="March 2019"></div>
+          </div>
+        </div>
+
+        <!-- Recent Investment Activity Manager -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+            <div>
+              <div style="font-size:15px;font-weight:700">🔔 Recent Investment Activity</div>
+              <div style="font-size:12px;color:var(--light)">Custom events shown under client's Recent Investment Activity</div>
+            </div>
+            <button class="btn btn-navy btn-sm" onclick="openAddActModal()">+ Add Investment Activity</button>
+          </div>
+          <div id="ud-act-list"></div>
+        </div>
+      </div>
+
+      <!-- History tab -->
+      <div class="tab-pane" id="tab-history">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Type</th></tr></thead>
+              <tbody id="ud-txn-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD TRANSACTION MODAL -->
+<div class="modal-bg" id="txn-modal" onclick="if(event.target===this)closeTxnModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div style="font-size:16px;font-weight:700;color:#fff">Add Manual Transaction</div>
+      <button class="modal-close" onclick="closeTxnModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label>Description</label><input type="text" id="mt-desc" placeholder="e.g. Admin credit adjustment"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Amount ($)</label><input type="number" id="mt-amt" placeholder="0.00" step="0.01"></div>
+        <div class="field"><label>Type</label><select id="mt-type"><option value="credit">Credit (+)</option><option value="debit">Debit (−)</option></select></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Category</label><select id="mt-cat"><option>Income</option><option>Interest</option><option>Adjustment</option><option>Withdrawal</option><option>Transfer</option><option>Investment</option></select></div>
+        <div class="field"><label>Account</label><select id="mt-acct"></select></div>
+      </div>
+      <button class="btn btn-gold" style="width:100%;margin-top:4px" onclick="submitManualTxn()">Add Transaction →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD INVESTMENT MODAL -->
+<div class="modal-bg" id="inv-modal" onclick="if(event.target===this)closeInvModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div style="font-size:16px;font-weight:700;color:#fff" id="inv-modal-title">Add Investment</div>
+      <button class="modal-close" onclick="closeInvModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label>Investment Name</label><input type="text" id="inv-name" placeholder="e.g. S&P 500 ETF"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Ticker Symbol</label><input type="text" id="inv-ticker" placeholder="e.g. VOO"></div>
+        <div class="field"><label>Category</label><select id="inv-cat"><option value="equity">Equity</option><option value="bond">Bond</option><option value="real_estate">Real Estate</option><option value="international">International</option><option value="crypto">Crypto</option></select></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Allocation (%)</label><input type="number" id="inv-pct" placeholder="0.0" step="0.1"></div>
+        <div class="field"><label>Current Value ($)</label><input type="number" id="inv-val" placeholder="0.00" step="0.01"></div>
+      </div>
+      <div class="field"><label>Color (hex)</label><input type="color" id="inv-color" value="#002B5B" style="height:38px;padding:4px 8px"></div>
+      <input type="hidden" id="inv-edit-id">
+      <button class="btn btn-gold" style="width:100%;margin-top:4px" onclick="submitInvestment()">Save Investment →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITY MODAL -->
+<div class="modal-bg" id="act-modal" onclick="if(event.target===this)closeActModal()">
+  <div class="modal-box" style="max-width:480px">
+    <div class="modal-head">
+      <div style="font-size:16px;font-weight:700;color:#fff" id="act-modal-title">Add Investment Activity</div>
+      <button class="modal-close" onclick="closeActModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:90px 1fr;gap:12px" class="modal-grid-2">
+        <div class="field">
+          <label>Icon</label>
+          <input type="text" id="act-icon" placeholder="⬇" style="text-align:center;font-size:16px" value="⬇">
+        </div>
+        <div class="field">
+          <label>Activity Title</label>
+          <input type="text" id="act-title" placeholder="e.g. Quarterly Rebalance">
+        </div>
+      </div>
+      <div class="field">
+        <label>Date &amp; Details (Subtitle)</label>
+        <input type="text" id="act-subtitle" placeholder="e.g. Aug 1, 2026 · Auto · Completed">
+      </div>
+      <div class="field">
+        <label>Amount / Badge Text</label>
+        <input type="text" id="act-badge" placeholder="e.g. Rebalanced or +$392.60">
+      </div>
+      <input type="hidden" id="act-edit-id">
+      <button class="btn btn-gold" style="width:100%;margin-top:8px" onclick="submitActivity()">Save Activity →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE USER MODAL -->
+<div class="modal-bg" id="create-user-modal" onclick="if(event.target===this)closeCreateUserModal()">
+  <div class="modal-box" style="max-width:520px">
+    <div class="modal-head">
+      <div style="font-size:16px;font-weight:700;color:#fff">Create New Client Account</div>
+      <button class="modal-close" onclick="closeCreateUserModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Full Name</label><input type="text" id="nu-name" placeholder="e.g. Sarah Jenkins"></div>
+        <div class="field"><label>Member Since (Year)</label><input type="text" id="nu-since" placeholder="e.g. 2019" value="2019"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="modal-grid-2">
+        <div class="field"><label>Email Address</label><input type="email" id="nu-email" placeholder="client@synchrony.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="nu-pw" placeholder="••••••••"></div>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin:12px 0 8px;text-transform:uppercase;letter-spacing:.5px">Initial Account Balances</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px" class="modal-grid-3">
+        <div class="field"><label>High Yield ($)</label><input type="number" id="nu-hys" placeholder="50000" step="100" value="50000"></div>
+        <div class="field"><label>Money Mkt ($)</label><input type="number" id="nu-mma" placeholder="10000" step="100" value="10000"></div>
+        <div class="field"><label>Investment ($)</label><input type="number" id="nu-inv" placeholder="25000" step="100" value="25000"></div>
+      </div>
+      <div style="padding:10px 12px;background:var(--nbg);border-radius:var(--rs);font-size:12px;color:var(--mid);margin-bottom:14px">
+        💡 This user will be immediately active and can log in with their email & password.
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="submitCreateUser()">Create Client Account →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+
+<script>
+let allUsers = [];
+let currentUser = null;
+
+// ── CLOCK ──────────────────────────────────────────────────────────────────
+setInterval(() => {
+  const el = document.getElementById('admin-clock');
+  if (el) el.textContent = new Date().toLocaleString();
+}, 1000);
+
+// ── AUTH ───────────────────────────────────────────────────────────────────
+async function adminLogin() {
+  const pw = document.getElementById('admin-pw').value;
+  const err = document.getElementById('login-err');
+  const res = await fetch('/admin/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }) });
+  const d = await res.json();
+  if (d.success) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-ui').style.display = 'block';
+    loadUsers();
+  } else {
+    err.style.display = 'block';
+    err.textContent = d.message || 'Incorrect password.';
+  }
+}
+
+function adminLogout() {
+  fetch('/admin/auth/logout', { method: 'POST' }).then(() => location.reload());
+}
+
+// Check if already logged in as admin
+fetch('/admin/auth/me').then(r => r.json()).then(d => {
+  if (d.isAdmin) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-ui').style.display = 'block';
+    loadUsers();
+  }
+});
+
+// ── TOAST ──────────────────────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.transform = 'translateY(0)';
+  t.style.opacity = '1';
+  setTimeout(() => { t.style.transform = 'translateY(80px)'; t.style.opacity = '0'; }, 3200);
+}
+
+const fmt = n => new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+
+// ── USERS LIST ─────────────────────────────────────────────────────────────
+async function loadUsers() {
+  try {
+    const res = await fetch('/admin/api/users');
+    if (res.status === 401) return;
+    allUsers = await res.json();
+    renderUsers(allUsers);
+    renderStats(allUsers);
+  } catch (e) { toast('⚠️ Error loading data'); }
+}
+
+function renderStats(users) {
+  document.getElementById('st-clients').textContent = users.length;
+  const totalAUM = users.reduce((s, u) => s + (u.totalBalance || 0), 0);
+  const totalInv = users.reduce((s, u) => s + (u.totalInvested || 0), 0);
+  const totalPending = users.reduce((s, u) => s + (u.pendingCount || 0), 0);
+  document.getElementById('st-aum').textContent = '$' + fmt(totalAUM);
+  document.getElementById('st-inv').textContent = '$' + fmt(totalInv);
+  document.getElementById('st-pending').textContent = totalPending;
+}
+
+function renderUsers(users) {
+  const grid = document.getElementById('users-grid');
+  if (!users.length) { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--light)">No clients found</div>'; return; }
+  grid.innerHTML = users.map(u => `
+    <div class="user-row" onclick="loadUserDetail(${u.id})">
+      <div class="u-left">
+        <div class="u-av">${u.avatar || u.name[0]}</div>
+        <div class="u-info">
+          <div class="u-name">${u.name}</div>
+          <div class="u-email">${u.email} · Member since ${u.member_since}</div>
+        </div>
+      </div>
+      <div class="u-meta-right">
+        <div class="u-bal">
+          <div class="label">Savings Balance</div>
+          <div class="val">$${fmt(u.totalBalance)}</div>
+        </div>
+        <div class="u-bal">
+          <div class="label">Investments</div>
+          <div class="val" style="color:var(--green)">$${fmt(u.totalInvested)}</div>
+        </div>
+        <div>
+          ${u.pendingCount > 0 ? `<span class="badge b-rd">⏳ ${u.pendingCount} pending</span>` : '<span class="badge b-gr">✓ All clear</span>'}
+        </div>
+        <div class="u-arrow" style="color:var(--light);font-size:18px">›</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterUsers() {
+  const q = document.getElementById('user-search').value.toLowerCase();
+  const filtered = allUsers.filter(u => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q));
+  renderUsers(filtered);
+}
+
+// ── USER DETAIL ────────────────────────────────────────────────────────────
+async function loadUserDetail(uid) {
+  try {
+    const res = await fetch('/admin/api/user/' + uid);
+    const d = await res.json();
+    currentUser = d;
+    document.getElementById('view-users').style.display = 'none';
+    document.getElementById('view-user').style.display = 'block';
+
+    document.getElementById('ud-av').textContent = d.user.avatar || d.user.name[0];
+    document.getElementById('ud-name').textContent = d.user.name;
+    document.getElementById('ud-email').textContent = d.user.email;
+    document.getElementById('ud-since-input').value = d.user.member_since || '2019';
+
+    renderAccounts(d.accounts, d.investments);
+    renderPending(d.pending);
+    renderInvestments(d.investments);
+    renderPerformance(d.performance);
+    renderActivities(d.activities);
+    renderTxnHistory(d.transactions);
+
+    // Populate account select in add transaction modal
+    const sel = document.getElementById('mt-acct');
+    sel.innerHTML = d.accounts.map(a => `<option value="${a.id}">${a.type} (${a.number})</option>`).join('');
+  } catch (e) { toast('⚠️ Error loading user'); }
+}
+
+function showUsersList() {
+  document.getElementById('view-users').style.display = 'block';
+  document.getElementById('view-user').style.display = 'none';
+  currentUser = null;
+  loadUsers();
+}
+
+// ── ACCOUNTS & PORTFOLIO ───────────────────────────────────────────────────
+function renderAccounts(accounts, investments = []) {
+  const totalInv = (investments || []).reduce((s, i) => s + (i.value || 0), 0);
+  const accCards = accounts.map(a => `
+    <div class="card" style="border-top:4px solid ${a.type.includes('High') ? 'var(--navy)' : 'var(--gold)'}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div style="font-size:14px;font-weight:700">${a.type}</div>
+          <div style="font-size:12px;color:var(--light)">${a.number} · ${a.apy}% APY</div>
+        </div>
+        <span class="badge b-gr">Active</span>
+      </div>
+      <div style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:12px">$${fmt(a.balance)}</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="number" id="bal-${a.id}" value="${a.balance}" step="0.01" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
+        <button class="btn btn-navy btn-sm" onclick="saveBalance('${a.id}')">Save</button>
+      </div>
+    </div>
+  `).join('');
+
+  const invCard = `
+    <div class="card" style="border-top:4px solid var(--green)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div style="font-size:14px;font-weight:700">Investment Portfolio</div>
+          <div style="font-size:12px;color:var(--light)">Total Portfolio · ${investments.length} Assets</div>
+        </div>
+        <span class="badge b-gr">Active</span>
+      </div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);margin-bottom:12px">$${fmt(totalInv)}</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="number" id="bal-investments" value="${totalInv.toFixed(2)}" step="0.01" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
+        <button class="btn btn-navy btn-sm" onclick="saveTotalInvestment()">Save</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('ud-accounts').innerHTML = accCards + invCard;
+}
+
+async function saveBalance(accountId) {
+  const inp = document.getElementById('bal-' + accountId);
+  if (!inp) return;
+  const val = inp.value;
+  if (val === '' || isNaN(val)) { toast('⚠️ Please enter a valid number'); return; }
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/balance', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ accountId, newBalance: parseFloat(val) })
+    });
+    if (res.status === 401) {
+      toast('⚠️ Admin session expired. Please log in again.');
+      return;
+    }
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Balance updated!');
+      loadUserDetail(currentUser.user.id);
+    } else {
+      toast('⚠️ ' + (d.error || 'Error saving balance'));
+    }
+  } catch (e) {
+    toast('⚠️ Error connecting to server');
+  }
+}
+
+async function saveTotalInvestment() {
+  const inp = document.getElementById('bal-investments');
+  if (!inp) return;
+  const val = inp.value;
+  if (val === '' || isNaN(val)) { toast('⚠️ Please enter a valid number'); return; }
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/total-investment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ newTotal: parseFloat(val) })
+    });
+    if (res.status === 401) {
+      toast('⚠️ Admin session expired. Please log in again.');
+      return;
+    }
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Investment portfolio balance updated!');
+      loadUserDetail(currentUser.user.id);
+    } else {
+      toast('⚠️ ' + (d.error || 'Error saving investment balance'));
+    }
+  } catch (e) {
+    toast('⚠️ Error connecting to server');
+  }
+}
+
+// ── MEMBER SINCE UPDATE ───────────────────────────────────────────────────
+async function saveMemberSince() {
+  const val = document.getElementById('ud-since-input').value.trim();
+  if (!val) { toast('⚠️ Please enter a year'); return; }
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ memberSince: val })
+    });
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Member year updated to ' + val + '!');
+      currentUser.user.member_since = val;
+    } else {
+      toast('⚠️ Error updating member year');
+    }
+  } catch (e) {
+    toast('⚠️ Server error updating member year');
+  }
+}
+
+// ── CREATE CLIENT MODAL ────────────────────────────────────────────────────
+function openCreateUserModal() {
+  document.getElementById('nu-name').value = '';
+  document.getElementById('nu-since').value = '2019';
+  document.getElementById('nu-email').value = '';
+  document.getElementById('nu-pw').value = '';
+  document.getElementById('nu-hys').value = '50000';
+  document.getElementById('nu-mma').value = '10000';
+  document.getElementById('nu-inv').value = '25000';
+  document.getElementById('create-user-modal').classList.add('on');
+}
+
+function closeCreateUserModal() {
+  document.getElementById('create-user-modal').classList.remove('on');
+}
+
+async function submitCreateUser() {
+  const name = document.getElementById('nu-name').value.trim();
+  const memberSince = document.getElementById('nu-since').value.trim() || '2019';
+  const email = document.getElementById('nu-email').value.trim();
+  const password = document.getElementById('nu-pw').value;
+  const hysBalance = document.getElementById('nu-hys').value;
+  const mmaBalance = document.getElementById('nu-mma').value;
+  const investBalance = document.getElementById('nu-inv').value;
+
+  if (!name || !email || !password) {
+    toast('⚠️ Please fill in Name, Email, and Password');
+    return;
+  }
+
+  try {
+    const res = await fetch('/admin/api/user/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, memberSince, email, password, hysBalance, mmaBalance, investBalance })
+    });
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Client account created successfully!');
+      closeCreateUserModal();
+      loadUsers();
+    } else {
+      toast('⚠️ ' + (d.error || 'Failed to create client'));
+    }
+  } catch (e) {
+    toast('⚠️ Server error creating client');
+  }
+}
+
+// ── PENDING ────────────────────────────────────────────────────────────────
+function renderPending(pending) {
+  const el = document.getElementById('ud-pending-list');
+  const pendingItems = pending.filter(t => t.status === 'pending');
+  if (!pendingItems.length) {
+    el.innerHTML = '<div style="text-align:center;padding:30px;color:var(--light);background:#fff;border-radius:var(--r);border:1px solid var(--border)">No pending transactions</div>';
+    return;
+  }
+  el.innerHTML = `<div class="card" style="padding:0;overflow:hidden"><div class="table-wrap"><table>
+    <thead><tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Description</th><th>Actions</th></tr></thead>
+    <tbody>${pendingItems.map(t => `
+      <tr>
+        <td>${t.date}</td>
+        <td><span class="badge ${t.type === 'deposit' ? 'b-gr' : 'b-rd'}">${t.type}</span></td>
+        <td><span class="badge b-bl">${t.tx_category}</span></td>
+        <td style="font-weight:700;color:${t.type === 'deposit' ? 'var(--green)' : 'var(--red)'}">$${fmt(t.amount)}</td>
+        <td style="color:var(--mid)">${t.description}${t.notes ? '<br><span style="font-size:11px;color:var(--light)">' + t.notes + '</span>' : ''}</td>
+        <td style="display:flex;gap:6px;padding:10px 10px">
+          <button class="btn btn-green btn-sm" onclick="handleTxn(${t.id},'approve')">✓ Approve</button>
+          <button class="btn btn-red btn-sm" onclick="handleTxn(${t.id},'reject')">✗ Reject</button>
+        </td>
+      </tr>`).join('')}
+    </tbody></table></div></div>`;
+}
+
+async function handleTxn(id, action) {
+  const res = await fetch(`/admin/api/transaction/${id}/${action}`, { method: 'POST' });
+  const d = await res.json();
+  if (d.success) { toast(action === 'approve' ? '✅ Transaction approved!' : '🚫 Transaction rejected.'); loadUserDetail(currentUser.user.id); }
+  else toast('⚠️ Error');
+}
+
+// ── INVESTMENTS ────────────────────────────────────────────────────────────
+function renderInvestments(investments) {
+  const el = document.getElementById('ud-inv-list');
+  if (!investments || !investments.length) { el.innerHTML = '<div style="text-align:center;padding:20px;color:var(--light)">No investment assets yet</div>'; return; }
+  const total = investments.reduce((s, i) => s + i.value, 0) || 1;
+  el.innerHTML = investments.map(inv => `
+    <div class="inv-row">
+      <div class="inv-dot" style="background:${inv.color}"></div>
+      <div>
+        <div style="font-size:13px;font-weight:700">${inv.name} <span style="font-size:11px;color:var(--light);font-weight:500">${inv.ticker || ''}</span></div>
+        <div style="font-size:11px;color:var(--light)">${inv.category}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:14px;font-weight:700">$${fmt(inv.value)}</div>
+        <div style="font-size:11px;color:var(--light)">${((inv.value/total)*100).toFixed(1)}%</div>
+      </div>
+      <div style="text-align:right"><span style="font-size:13px;font-weight:600;color:var(--navy)">${inv.allocation_pct}%</span><div style="font-size:11px;color:var(--light)">target</div></div>
+      <div class="inv-actions">
+        <button class="btn btn-out btn-sm" onclick="editInv(${inv.id},'${inv.name.replace(/'/g,"\\'")}','${(inv.ticker||'').replace(/'/g,"\\'")}','${inv.category}',${inv.allocation_pct},${inv.value},'${inv.color}')">Edit</button>
+        <button class="btn btn-red btn-sm" onclick="deleteInv(${inv.id})">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function editInv(id, name, ticker, category, pct, value, color) {
+  document.getElementById('inv-modal-title').textContent = 'Edit Investment Asset';
+  document.getElementById('inv-name').value = name;
+  document.getElementById('inv-ticker').value = ticker;
+  document.getElementById('inv-cat').value = category;
+  document.getElementById('inv-pct').value = pct;
+  document.getElementById('inv-val').value = value;
+  document.getElementById('inv-color').value = color;
+  document.getElementById('inv-edit-id').value = id;
+  document.getElementById('inv-modal').classList.add('on');
+}
+
+function openAddInvModal() {
+  document.getElementById('inv-modal-title').textContent = 'Add Investment Asset';
+  document.getElementById('inv-name').value = '';
+  document.getElementById('inv-ticker').value = '';
+  document.getElementById('inv-pct').value = '';
+  document.getElementById('inv-val').value = '';
+  document.getElementById('inv-color').value = '#002B5B';
+  document.getElementById('inv-edit-id').value = '';
+  document.getElementById('inv-modal').classList.add('on');
+}
+
+function closeInvModal() { document.getElementById('inv-modal').classList.remove('on'); }
+
+async function submitInvestment() {
+  const editId = document.getElementById('inv-edit-id').value;
+  const body = {
+    action: editId ? 'update' : 'add',
+    investmentId: editId || undefined,
+    name: document.getElementById('inv-name').value,
+    ticker: document.getElementById('inv-ticker').value,
+    category: document.getElementById('inv-cat').value,
+    allocation_pct: document.getElementById('inv-pct').value,
+    value: document.getElementById('inv-val').value,
+    color: document.getElementById('inv-color').value,
+  };
+  const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const d = await res.json();
+  if (d.success) { toast('✅ Investment asset saved!'); closeInvModal(); loadUserDetail(currentUser.user.id); }
+  else toast('⚠️ Error saving investment');
+}
+
+async function deleteInv(id) {
+  if (!confirm('Delete this investment asset?')) return;
+  const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'delete', investmentId: id }) });
+  const d = await res.json();
+  if (d.success) { toast('🗑️ Investment asset deleted.'); loadUserDetail(currentUser.user.id); }
+}
+
+// ── PERFORMANCE OVERVIEW ───────────────────────────────────────────────────
+function renderPerformance(perf) {
+  if (!perf) return;
+  document.getElementById('ud-perf-inc').value = perf.since_inception || '+10.3%';
+  document.getElementById('ud-perf-ytd').value = perf.ytd_return || '+8.4%';
+  document.getElementById('ud-perf-1m').value = perf.one_month_return || '+1.2%';
+  document.getElementById('ud-perf-div').value = perf.dividend_yield || '$1,842.30';
+  document.getElementById('ud-perf-strat').value = perf.strategy || 'Balanced Growth';
+  document.getElementById('ud-perf-rebal').value = perf.rebalancing || 'Quarterly';
+  document.getElementById('ud-perf-incdate').value = perf.inception_date || 'March 2019';
+}
+
+async function savePerformance() {
+  const body = {
+    since_inception: document.getElementById('ud-perf-inc').value.trim(),
+    ytd_return: document.getElementById('ud-perf-ytd').value.trim(),
+    one_month_return: document.getElementById('ud-perf-1m').value.trim(),
+    dividend_yield: document.getElementById('ud-perf-div').value.trim(),
+    strategy: document.getElementById('ud-perf-strat').value.trim(),
+    rebalancing: document.getElementById('ud-perf-rebal').value.trim(),
+    inception_date: document.getElementById('ud-perf-incdate').value.trim()
+  };
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment-performance', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Performance overview saved!');
+      currentUser.performance = d.performance;
+    } else {
+      toast('⚠️ Error saving performance metrics');
+    }
+  } catch (e) {
+    toast('⚠️ Server error saving performance');
+  }
+}
+
+// ── RECENT INVESTMENT ACTIVITY ─────────────────────────────────────────────
+function renderActivities(acts) {
+  const el = document.getElementById('ud-act-list');
+  if (!acts || !acts.length) {
+    el.innerHTML = '<div style="text-align:center;padding:20px;color:var(--light)">No investment activities configured</div>';
+    return;
+  }
+  el.innerHTML = acts.map(a => `
+    <div class="inv-row">
+      <div style="font-size:20px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--nbg);border-radius:8px">${a.icon || '⬇'}</div>
+      <div>
+        <div style="font-size:13px;font-weight:700">${a.title}</div>
+        <div style="font-size:11px;color:var(--light)">${a.subtitle}</div>
+      </div>
+      <div style="text-align:right">
+        <span class="badge b-gd" style="font-size:12px;font-weight:700">${a.amount_badge}</span>
+      </div>
+      <div></div>
+      <div class="inv-actions">
+        <button class="btn btn-out btn-sm" onclick="openEditActModal(${a.id},'${(a.icon||'').replace(/'/g,"\\'")}','${a.title.replace(/'/g,"\\'")}','${a.subtitle.replace(/'/g,"\\'")}','${a.amount_badge.replace(/'/g,"\\'")}')">Edit</button>
+        <button class="btn btn-red btn-sm" onclick="deleteActivity(${a.id})">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openAddActModal() {
+  document.getElementById('act-modal-title').textContent = 'Add Investment Activity';
+  document.getElementById('act-icon').value = '⬇';
+  document.getElementById('act-title').value = '';
+  document.getElementById('act-subtitle').value = 'Aug 1, 2026 · Auto · Completed';
+  document.getElementById('act-badge').value = 'Rebalanced';
+  document.getElementById('act-edit-id').value = '';
+  document.getElementById('act-modal').classList.add('on');
+}
+
+function openEditActModal(id, icon, title, subtitle, badge) {
+  document.getElementById('act-modal-title').textContent = 'Edit Investment Activity';
+  document.getElementById('act-icon').value = icon;
+  document.getElementById('act-title').value = title;
+  document.getElementById('act-subtitle').value = subtitle;
+  document.getElementById('act-badge').value = badge;
+  document.getElementById('act-edit-id').value = id;
+  document.getElementById('act-modal').classList.add('on');
+}
+
+function closeActModal() {
+  document.getElementById('act-modal').classList.remove('on');
+}
+
+async function submitActivity() {
+  const editId = document.getElementById('act-edit-id').value;
+  const icon = document.getElementById('act-icon').value.trim() || '⬇';
+  const title = document.getElementById('act-title').value.trim();
+  const subtitle = document.getElementById('act-subtitle').value.trim();
+  const amount_badge = document.getElementById('act-badge').value.trim();
+
+  if (!title || !subtitle || !amount_badge) {
+    toast('⚠️ Please fill in Title, Subtitle, and Amount/Badge');
+    return;
+  }
+
+  const body = {
+    action: editId ? 'update' : 'add',
+    activityId: editId || undefined,
+    icon,
+    title,
+    subtitle,
+    amount_badge
+  };
+
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment-activity', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const d = await res.json();
+    if (d.success) {
+      toast('✅ Investment activity saved!');
+      closeActModal();
+      currentUser.activities = d.activities;
+      renderActivities(d.activities);
+    } else {
+      toast('⚠️ Error saving activity');
+    }
+  } catch (e) {
+    toast('⚠️ Server error saving activity');
+  }
+}
+
+async function deleteActivity(id) {
+  if (!confirm('Delete this investment activity?')) return;
+  try {
+    const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment-activity', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'delete', activityId: id })
+    });
+    const d = await res.json();
+    if (d.success) {
+      toast('🗑️ Activity deleted.');
+      currentUser.activities = d.activities;
+      renderActivities(d.activities);
+    } else {
+      toast('⚠️ Error deleting activity');
+    }
+  } catch (e) {
+    toast('⚠️ Server error deleting activity');
+  }
+}
+
+// ── TRANSACTION HISTORY ────────────────────────────────────────────────────
+function renderTxnHistory(txns) {
+  document.getElementById('ud-txn-tbody').innerHTML = txns.map(t => `
+    <tr>
+      <td>${t.date}</td>
+      <td>${t.description}</td>
+      <td>${t.category}</td>
+      <td style="font-weight:700;color:${t.type === 'credit' ? 'var(--green)' : 'var(--red)'}">
+        ${t.type === 'credit' ? '+' : '-'}$${fmt(Math.abs(t.amount))}
+      </td>
+      <td><span class="badge ${t.type === 'credit' ? 'b-gr' : 'b-rd'}">${t.type}</span></td>
+    </tr>
+  `).join('') || '<tr><td colspan="5" style="text-align:center;color:var(--light);padding:20px">No transactions</td></tr>';
+}
+
+// ── MANUAL TRANSACTION ─────────────────────────────────────────────────────
+function openAddTxnModal() { document.getElementById('txn-modal').classList.add('on'); }
+function closeTxnModal() { document.getElementById('txn-modal').classList.remove('on'); }
+
+async function submitManualTxn() {
+  const body = {
+    description: document.getElementById('mt-desc').value,
+    amount: document.getElementById('mt-amt').value,
+    type: document.getElementById('mt-type').value,
+    category: document.getElementById('mt-cat').value,
+    accountId: document.getElementById('mt-acct').value,
+  };
+  if (!body.description || !body.amount) { toast('⚠️ Fill in description and amount.'); return; }
+  const res = await fetch('/admin/api/user/' + currentUser.user.id + '/transaction', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const d = await res.json();
+  if (d.success) { toast('✅ Transaction added!'); closeTxnModal(); loadUserDetail(currentUser.user.id); }
+  else toast('⚠️ Error');
+}
+
+// ── TABS ───────────────────────────────────────────────────────────────────
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    const panes = ['tab-pending','tab-investments','tab-history'];
+    t.classList.toggle('on', panes[i] === id);
+  });
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('on', p.id === id));
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+/* Universal breakpoints */
+.business-landing-power-business {
+  background-color: #2d2e35;
+  padding-bottom: 50px; }
+  @media (max-width: 991px) {
+    .business-landing-power-business .icon-tile {
+      margin-right: 24px; } }
+  .business-landing-power-business.bg-white {
+    background-color: #FFF; }
+  .business-landing-power-business.bg-grey {
+    background-color: #F3F6F6; }
+/*Manisha - align tiles on center purchase order */
+.business-landing-power-business.bg-grey .four-up .inner {
+      justify-content: center;
+      padding: 0 0 24px ;	  } 
+	  
+    @media (min-width: 1200px) {
+     .business-landing-power-business.bg-grey .four-up .inner {
+        width: 100%;
+        flex-wrap: wrap; }
+       .business-landing-power-business.bg-grey .four-up .inner > * {
+          max-width: 20%; }
+        .business-landing-power-business.bg-grey  .four-up .inner > *:nth-child(4n + 4) {
+            margin-right: 0; } }
+            @media (min-width: 992px) {
+              .icon-tile-cta .icon-tile-header {
+                font-size: 28px;
+              }}        
+/* Manisha fix for cta button  */
+            @media (min-width: 1079px) {
+              #become-supplier .button-outlined.w-inherit{
+                max-width: 415px;
+              }
+              #supplier-diversity .button-outlined.w-inherit{
+                max-width: 415px;
+              }
+            }
+           
+
+.power-business-header {
+  padding-top: 82px; }
+
+.icon-tile-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+  @media (min-width: 768px) {
+    .icon-tile-wrap {
+      padding-left: 10px;
+      overflow-x: auto; } }
+  @media (max-width: 480px) {
+    .icon-tile-wrap {
+      padding-left: 10px;
+      justify-content: normal; } }
+  @media (min-width: 992px) {
+    .icon-tile-wrap {
+      flex-wrap: nowrap; } }

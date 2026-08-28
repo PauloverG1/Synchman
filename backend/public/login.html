@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<title>Synchrony Bank — Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#EEF2F7;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  min-height:640px;
+  width:100%;
+  max-width:1040px;
+  background:#ffffff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,25,55,.18);
+  position:relative;
+}
+
+/* Left brand panel (Desktop) */
+.left{
+  background:linear-gradient(145deg,#002B5B 0%,#003c78 55%,#00244d 100%);
+  padding:48px 44px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+}
+.left::before{
+  content:'';
+  position:absolute;
+  top:-70px;
+  right:-70px;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(244,197,0,.15) 0%,rgba(244,197,0,0) 70%);
+  pointer-events:none;
+}
+.left::after{
+  content:'';
+  position:absolute;
+  bottom:-80px;
+  left:-50px;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(244,197,0,.1) 0%,rgba(244,197,0,0) 70%);
+  pointer-events:none;
+}
+
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.brand-bars{display:flex;flex-direction:column;gap:3.5px}
+.brand-bars span{display:block;height:4px;border-radius:2px;background:#F4C500}
+.brand-bars span:nth-child(1){width:20px}
+.brand-bars span:nth-child(2){width:14px;opacity:.7}
+.brand-bars span:nth-child(3){width:17px;opacity:.45}
+.brand-name{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.brand-name em{color:#F4C500;font-style:normal}
+
+.hero h1{font-size:35px;font-weight:800;color:#fff;line-height:1.22;margin-bottom:16px;letter-spacing:-.5px}
+.hero h1 span{color:#F4C500}
+.hero p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.65;max-width:340px}
+
+.features{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.feat{display:flex;align-items:center;gap:12px}
+.feat-ico{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border:1px solid rgba(255,255,255,.1)}
+.feat-text{font-size:13.5px;color:rgba(255,255,255,.75);font-weight:500}
+
+.fdic{display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,.07);border-radius:10px;border:1px solid rgba(255,255,255,.12)}
+.fdic-badge{background:#F4C500;color:#002B5B;font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:3px;flex-shrink:0}
+.fdic-text{font-size:11.5px;color:rgba(255,255,255,.6)}
+
+/* Right Form Panel */
+.right{
+  background:#ffffff;
+  padding:50px 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+
+/* Mobile top branding (Hidden on Desktop) */
+.mobile-brand-header{
+  display:none;
+}
+
+.view-card{
+  width:100%;
+}
+
+.welcome-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  font-weight:700;
+  color:#002B5B;
+  background:rgba(0,43,91,.07);
+  padding:5px 12px;
+  border-radius:20px;
+  margin-bottom:14px;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+}
+.welcome-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#10B981;
+  display:inline-block;
+  box-shadow:0 0 0 2px rgba(16,185,129,.2);
+}
+
+.login-h{font-size:28px;font-weight:800;color:#0F172A;margin-bottom:8px;letter-spacing:-.5px;line-height:1.2}
+.login-h .gold-dot{color:#F4C500}
+.login-sub{font-size:14px;color:#64748B;margin-bottom:26px;line-height:1.5}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.field label{font-size:13px;font-weight:600;color:#334155}
+.input-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.input-ico{
+  position:absolute;
+  left:14px;
+  font-size:16px;
+  color:#94A3B8;
+  pointer-events:none;
+  transition:color .2s;
+}
+.input-wrap input{
+  width:100%;
+  padding:13px 16px 13px 42px;
+  border:1.5px solid #E2E8F0;
+  border-radius:12px;
+  font-size:14.5px;
+  font-family:inherit;
+  color:#0F172A;
+  background:#FAFBFD;
+  outline:none;
+  transition:all .2s;
+}
+.input-wrap input:focus{
+  border-color:#002B5B;
+  background:#ffffff;
+  box-shadow:0 0 0 3.5px rgba(0,43,91,.08);
+}
+.input-wrap input:focus + .input-ico,
+.input-wrap input:focus ~ .input-ico{
+  color:#002B5B;
+}
+.pw-toggle{
+  position:absolute;
+  right:12px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  color:#94A3B8;
+  padding:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:color .2s;
+}
+.pw-toggle:hover{color:#002B5B}
+
+.auth-opts{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:-4px;
+  margin-bottom:24px;
+  font-size:13px;
+}
+.rem-me{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#475569;
+  font-weight:500;
+  cursor:pointer;
+  user-select:none;
+}
+.rem-me input{
+  accent-color:#002B5B;
+  cursor:pointer;
+  width:15px;
+  height:15px;
+}
+.forgot-link{
+  font-size:13px;
+  color:#002B5B;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:color .2s;
+}
+.forgot-link:hover{
+  color:#004080;
+  text-decoration:underline;
+}
+
+.btn-primary{
+  width:100%;
+  padding:14px;
+  background:linear-gradient(135deg,#002B5B 0%,#003870 100%);
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:inherit;
+  transition:all .2s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  box-shadow:0 6px 18px rgba(0,43,91,.22);
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg,#00346e 0%,#00458a 100%);
+  transform:translateY(-1px);
+  box-shadow:0 8px 22px rgba(0,43,91,.28);
+}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.btn-secondary{
+  width:100%;
+  padding:13px;
+  background:#F8FAFC;
+  color:#334155;
+  font-size:14px;
+  font-weight:600;
+  border:1.5px solid #E2E8F0;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:12px;
+  transition:all .2s;
+}
+.btn-secondary:hover{
+  background:#F1F5F9;
+  border-color:#CBD5E1;
+  color:#0F172A;
+}
+
+.err-msg{
+  background:#FEF2F2;
+  color:#DC2626;
+  padding:12px 16px;
+  border-radius:10px;
+  font-size:13.5px;
+  font-weight:500;
+  margin-bottom:20px;
+  display:none;
+  border:1px solid rgba(220,38,38,.2);
+}
+
+.success-state{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:10px 0;
+}
+.success-icon-wrap{
+  width:64px;
+  height:64px;
+  background:#ECFDF5;
+  border:2px solid #A7F3D0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#059669;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(16,185,129,.15);
+}
+
+.footer-note{
+  font-size:11.5px;
+  color:#94A3B8;
+  text-align:center;
+  margin-top:28px;
+  line-height:1.6;
+}
+
+/* Security Trust Bar */
+.trust-badge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:12px;
+  color:#64748B;
+  font-weight:600;
+  margin-top:22px;
+  padding:10px 14px;
+  background:#F8FAFC;
+  border-radius:10px;
+  border:1px solid #E2E8F0;
+}
+
+/* Mobile Styling */
+@media(max-width:768px){
+  body{
+    padding:16px 12px;
+    background:linear-gradient(180deg,#002B5B 0%,#001a38 240px,#EEF2F7 240px,#EEF2F7 100%);
+    align-items:flex-start;
+  }
+  .wrap{
+    grid-template-columns:1fr;
+    border-radius:24px;
+    box-shadow:0 14px 40px rgba(0,25,55,.18);
+    min-height:auto;
+    margin-top:10px;
+    overflow:hidden;
+  }
+  .left{
+    display:none;
+  }
+  .mobile-brand-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:28px 20px 22px 20px;
+    background:linear-gradient(145deg,#002B5B 0%,#003870 100%);
+    color:#ffffff;
+    position:relative;
+  }
+  .mobile-brand-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .mobile-brand-logo .brand-name{
+    font-size:24px;
+  }
+  .mobile-badge{
+    font-size:11px;
+    color:rgba(255,255,255,.85);
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18);
+    padding:4px 12px;
+    border-radius:20px;
+    letter-spacing:.3px;
+    font-weight:600;
+  }
+  .right{
+    padding:32px 24px 28px 24px;
+  }
+  .login-h{
+    font-size:24px;
+  }
+  .login-sub{
+    font-size:13.5px;
+    margin-bottom:22px;
+  }
+  .btn-primary{
+    padding:13.5px;
+    font-size:15px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- LEFT: Brand panel (Desktop) -->
+  <div class="left">
+    <div>
+      <div class="brand">
+        <div class="brand-bars"><span></span><span></span><span></span></div>
+        <span class="brand-name">synchrony<em>.</em></span>
+      </div>
+      <div class="hero">
+        <h1>Banking built for<br><span>your future.</span></h1>
+        <p>Industry-leading APY on savings, flexible financing, and a secure dashboard to manage all your accounts.</p>
+        <div class="features">
+          <div class="feat"><div class="feat-ico">🏦</div><span class="feat-text">Up to 3.30% APY on High Yield Savings</span></div>
+          <div class="feat"><div class="feat-ico">💳</div><span class="feat-text">2% Unlimited cash back on Premier Mastercard</span></div>
+          <div class="feat"><div class="feat-ico">🔒</div><span class="feat-text">256-bit SSL bank-grade encryption</span></div>
+          <div class="feat"><div class="feat-ico">📊</div><span class="feat-text">Real-time account tracking &amp; instant alerts</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="fdic">
+      <span class="fdic-badge">FDIC</span>
+      <span class="fdic-text">Member FDIC · Deposits insured up to $250,000 per depositor</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: Login & Recovery Forms -->
+  <div class="right">
+    
+    <!-- Mobile top banner header -->
+    <div class="mobile-brand-header">
+      <div class="mobile-brand-logo">
+        <div class="brand-bars"><span></span><span></span><span></span></div>
+        <span class="brand-name">synchrony<em>.</em></span>
+      </div>
+      <span class="mobile-badge">🔒 Secure Online Banking</span>
+    </div>
+
+    <!-- VIEW 1: Main Login Form -->
+    <div class="view-card" id="login-view">
+      <div class="welcome-tag"><span class="welcome-dot"></span> Online Banking</div>
+      <h1 class="login-h">Welcome Back<span class="gold-dot">.</span></h1>
+      <p class="login-sub">Sign in to access your accounts, savings, and investments.</p>
+
+      <div class="err-msg" id="err-msg">Invalid email or password. Please try again.</div>
+
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <span class="input-ico">✉️</span>
+          <input type="email" id="email" placeholder="name@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')doLogin()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <div class="input-wrap">
+          <span class="input-ico">🔒</span>
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+          <button type="button" class="pw-toggle" onclick="togglePassword()" title="Toggle password visibility">👁</button>
+        </div>
+      </div>
+
+      <div class="auth-opts">
+        <label class="rem-me">
+          <input type="checkbox" id="remember-me" checked>
+          <span>Remember me</span>
+        </label>
+        <a class="forgot-link" onclick="showForgotView()">Forgot password?</a>
+      </div>
+
+      <button class="btn-primary" id="login-btn" onclick="doLogin()">
+        <span>Sign In</span> →
+      </button>
+
+      <div class="trust-badge">
+        <span>🛡️</span> 256-Bit SSL Encryption · Member FDIC
+      </div>
+
+      <p class="footer-note">
+        By signing in you agree to Synchrony's <a href="#" style="color:#64748B;">Terms of Use</a> and <a href="#" style="color:#64748B;">Privacy Policy</a>.<br>
+        © 2026 Synchrony Bank. All rights reserved.
+      </p>
+    </div>
+
+    <!-- VIEW 2: Forgot Password Form -->
+    <div class="view-card" id="forgot-view" style="display:none;">
+      <div class="welcome-tag"><span class="welcome-dot"></span> Password Recovery</div>
+      <h1 class="login-h">Reset your password<span class="gold-dot">.</span></h1>
+      <p class="login-sub">Enter your email address and we will send you a secure password recovery link.</p>
+
+      <div class="err-msg" id="forgot-err-msg">Please enter a valid email address.</div>
+
+      <div class="field">
+        <label>Registered Email Address</label>
+        <div class="input-wrap">
+          <span class="input-ico">✉️</span>
+          <input type="email" id="forgot-email" placeholder="name@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')sendResetLink()">
+        </div>
+      </div>
+
+      <button class="btn-primary" id="forgot-btn" onclick="sendResetLink()">
+        Send Recovery Link
+      </button>
+      
+      <button class="btn-secondary" onclick="showLoginView()">
+        ← Back to Sign In
+      </button>
+
+      <p class="footer-note">
+        Need immediate help? Call 1-866-226-5638 for 24/7 customer assistance.
+      </p>
+    </div>
+
+
+    <!-- VIEW 3: Reset Link Sent Confirmation -->
+    <div class="view-card" id="sent-view" style="display:none;">
+      <div class="success-state">
+        <div class="success-icon-wrap">✓</div>
+        <div class="login-h">Recovery link sent!</div>
+        <p style="color:#475569; font-size:14.5px; line-height:1.6; margin:12px 0 24px 0;">
+          We've sent password reset instructions to <br>
+          <strong id="sent-email-display" style="color:#0F172A;">your email</strong>.
+        </p>
+        <p style="font-size:13px; color:#64748B; margin-bottom:24px; line-height:1.5;">
+          Please check your inbox (and spam folder) and follow the link to create a new password. The link will expire in 30 minutes.
+        </p>
+        <button class="btn-primary" onclick="showLoginView()">
+          Return to Sign In
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+function showForgotView(){
+  document.getElementById('login-view').style.display='none';
+  document.getElementById('sent-view').style.display='none';
+  document.getElementById('forgot-view').style.display='block';
+  document.getElementById('forgot-err-msg').style.display='none';
+  const emailVal = document.getElementById('email').value.trim();
+  if(emailVal){
+    document.getElementById('forgot-email').value = emailVal;
+  }
+}
+
+function showLoginView(){
+  document.getElementById('forgot-view').style.display='none';
+  document.getElementById('sent-view').style.display='none';
+  document.getElementById('login-view').style.display='block';
+  document.getElementById('err-msg').style.display='none';
+}
+
+function sendResetLink(){
+  const forgotEmail = document.getElementById('forgot-email').value.trim();
+  const errMsg = document.getElementById('forgot-err-msg');
+  const btn = document.getElementById('forgot-btn');
+
+  if(!forgotEmail || !forgotEmail.includes('@')){
+    errMsg.textContent = 'Please enter a valid registered email address.';
+    errMsg.style.display = 'block';
+    return;
+  }
+
+  errMsg.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Sending link…';
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.textContent = 'Send Recovery Link';
+    document.getElementById('sent-email-display').textContent = forgotEmail;
+    document.getElementById('forgot-view').style.display = 'none';
+    document.getElementById('sent-view').style.display = 'block';
+  }, 700);
+}
+
+function togglePassword(){
+  const pw = document.getElementById('password');
+  const btn = document.querySelector('.pw-toggle');
+  if(!pw) return;
+  if(pw.type === 'password'){
+    pw.type = 'text';
+    if(btn) btn.textContent = '🔒';
+  } else {
+    pw.type = 'password';
+    if(btn) btn.textContent = '👁';
+  }
+}
+
+// Remember me storage
+try {
+  const savedEmail = localStorage.getItem('synchrony_saved_email');
+  if(savedEmail && document.getElementById('email')){
+    document.getElementById('email').value = savedEmail;
+    if(document.getElementById('remember-me')) document.getElementById('remember-me').checked = true;
+  }
+} catch(e){}
+
+async function doLogin(){
+  const email=document.getElementById('email').value.trim();
+  const password=document.getElementById('password').value;
+  const btn=document.getElementById('login-btn');
+  const errMsg=document.getElementById('err-msg');
+  const remMe = document.getElementById('remember-me');
+
+  if(!email||!password){
+    errMsg.textContent='Please enter both your email and password.';
+    errMsg.style.display='block';
+    return;
+  }
+
+  try {
+    if(remMe && remMe.checked){
+      localStorage.setItem('synchrony_saved_email', email);
+    } else {
+      localStorage.removeItem('synchrony_saved_email');
+    }
+  } catch(e){}
+
+  btn.disabled=true;
+  btn.innerHTML='<span>Signing in…</span>';
+  errMsg.style.display='none';
+
+  try{
+    const res=await fetch('/auth/login',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email,password})
+    });
+    const d=await res.json();
+    if(d.success){
+      window.location.href='/';
+    } else {
+      errMsg.textContent=d.message||'Invalid email or password.';
+      errMsg.style.display='block';
+      btn.disabled=false;
+      btn.innerHTML='<span>Sign In</span> →';
+    }
+  }catch(e){
+    errMsg.textContent='Unable to connect to server. Please try again.';
+    errMsg.style.display='block';
+    btn.disabled=false;
+    btn.innerHTML='<span>Sign In</span> →';
+  }
+}
+
+// Inactivity security alert
+if (new URLSearchParams(window.location.search).get('timeout') === '1') {
+  const errMsg = document.getElementById('err-msg');
+  if (errMsg) {
+    errMsg.style.backgroundColor = '#FEF9C3';
+    errMsg.style.color = '#854D0E';
+    errMsg.style.borderColor = '#FDE68A';
+    errMsg.textContent = '🔒 You were signed out due to inactivity for your security.';
+    errMsg.style.display = 'block';
+  }
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* Universal breakpoints */
+.home-hero-tile-link {
+  color: inherit; margin-top:5px;}
+
+.home-hero-tile {
+  outline: 10px solid transparent;
+  width: 370px;
+  height: 210px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 4px 14px 40px rgba(59, 61, 73, 0.3); }
+  @media (max-width: 1079px) {
+    .home-hero-tile {
+      width: 300px; } }
+  .home-hero-tile .home-hero-tile-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 100px auto;
+    padding: 0px 24px 24px 24px; }
+    @media (max-width: 991px) {
+      .home-hero-tile .home-hero-tile-grid {
+        padding: 0px 12px 12px 24px; } }
+    @media (max-width: 1079px) {
+      .home-hero-tile .home-hero-tile-grid {
+        grid-template-rows: 100px auto; } }
+    .home-hero-tile .home-hero-tile-grid .title-cell {
+      font-size: 32px;
+      line-height: 32px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 20px;
+      margin: 0; }
+      @media (max-width: 1079px) {
+        .home-hero-tile .home-hero-tile-grid .title-cell {
+          font-size: 24px;
+          font-weight: 500; } }
+    .home-hero-tile .home-hero-tile-grid .icon-cell {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+      .home-hero-tile .home-hero-tile-grid .icon-cell img {
+        width: 62px;
+        height: 62px; }
+        @media (max-width: 1079px) {
+          .home-hero-tile .home-hero-tile-grid .icon-cell img {
+            width: 45px;
+            height: 45px; } }
+    .home-hero-tile .home-hero-tile-grid .paragraph-cell {
+      font-size: 16px;
+      line-height: 24px;
+      color: #727377;
+	  font-weight:500 }
+      @media (max-width: 1079px) {
+        .home-hero-tile .home-hero-tile-grid .paragraph-cell {
+          font-size: 14px;
+          line-height: 20px; } }
+    .home-hero-tile .home-hero-tile-grid .arrow-cell {
+      margin-left: 25px;
+      width: 40px;
+      height: 80px;
+      position: relative; }
+      .home-hero-tile .home-hero-tile-grid .arrow-cell img {
+        height: 40px;
+        width: auto;
+        position: absolute;
+        bottom: 0;
+        transition: opacity 0.2s ease-in-out; }
+      .home-hero-tile .home-hero-tile-grid .arrow-cell > :last-child {
+        opacity: 0; }
+  .home-hero-tile:hover {
+    cursor: pointer; }
+    .home-hero-tile:hover .arrow-cell > :first-child {
+      opacity: 0; }
+    .home-hero-tile:hover .arrow-cell > :last-child {
+      opacity: 1; }
+	  a {
+  text-decoration: none; }

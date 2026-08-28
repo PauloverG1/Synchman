@@ -1,0 +1,61 @@
+/* Universal breakpoints */
+.financing-block {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 75px 75px 50px 50px;
+  min-height: 475px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  margin: 0 0 0 10px; }
+  @media (max-width: 991px) {
+    .financing-block {
+      width: auto;
+      min-height: auto;
+      margin: 30px 0;
+      padding: 25px 25px; } }
+  .financing-block .financing-block-header {
+    margin: 0 0 10px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px; }
+    @media (min-width: 992px) {
+      .financing-block .financing-block-header {
+        font-size: 48px;
+        margin: 0;
+        line-height: 44px;
+        font-weight: 700; } }
+  .financing-block .financing-block-subhead {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px; }
+    @media (min-width: 992px) {
+      .financing-block .financing-block-subhead {
+        font-size: 22px;
+        line-height: 26px;
+        margin: 0;
+        font-weight: 700; } }
+  .financing-block .financing-block-card-wrap {
+    position: absolute;
+    top: -20px; }
+    .financing-block .financing-block-card-wrap img {
+      border-radius: 8px;
+      max-width: 220px; }
+      @media (max-width: 991px) {
+        .financing-block .financing-block-card-wrap img {
+          max-width: 105px; } }
+  .financing-block .financing-block-sub-content {
+    margin-top: 100px; }
+    @media (max-width: 991px) {
+      .financing-block .financing-block-sub-content {
+        margin-top: 50px; } }
+  .financing-block .financing-block-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .financing-block .financing-block-cta-wrap {
+    position: relative; }

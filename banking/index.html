@@ -1,0 +1,976 @@
+<!DOCTYPE html><html class="no-js" lang="en"><head><link rel="preload" href="/synchrony/fonts/synchrony_sans_thin-v100-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/synchrony/fonts/SynchronySans-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preconnect" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://www.google-analytics.com"><meta charset="utf-8"><title>Synchrony Bank - Start Saving With Award-Winning Online Banking</title><meta name="description" content="Put your money to work by opening an FDIC-insured online account with Synchrony Bank. Choose from a variety of options like High Yield Savings, CDs & more!
+"><meta name="keywords" content="banking, consumer financing, Synchrony, synchrony, synchrony financial, retail credit cards, savings, healthcare financing"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="viewport" content="initial-scale=1"><meta name="format-detection" content=""><meta name="google-site-verification" content="w0o3NU2nYiCop5Tjfnupxs464hLdrLQyP5UI9ogTFKQ"><link sizes="196x196" rel="icon" href="images/apple-touch-icon-precomposed.png" type="image/x-icon"><link rel="canonical" href="https://www.synchrony.com/banking">
+<meta property="og:type" content="website"><meta property="og:url" content="https://www.synchrony.com/banking"><meta property="og:title" content="Synchrony Bank - Start Saving With Award-Winning Online Banking"><meta property="og:description" content="Put your money to work by opening an FDIC-insured online account with Synchrony Bank. Choose from a variety of options like High Yield Savings, CDs & more!
+"><meta property="og:image" content="images/pause.svg"><meta property="og:image:width" content="1008"><meta property="og:image:height" content="529">
+	<link rel="preconnect" href="https://api.syf.com">
+	<script>var env ='SYC_PROD-DEL';var envHost ='https://www.synchrony.com';var apiURL ='https://api.syf.com/v1/marketing/offers';var siteSearchURL ='https://www.synchrony.com/sitesearch'; var apiKey ='xri6PXZp9trrTUMB4aEWA2xqgAM25qUE';var kevelApiURL ='';</script><script type="text/javascript">
+////get location from akamai & setting in global scope - start ////
+const AK_GEO_CODE = document.cookie.split('; ').find((row)=>row.startsWith('akloc'))?.split('=')[1];
+
+const ak_co = (AK_GEO_CODE || '').match(/Country Code:(\w{2})/)?AK_GEO_CODE.match(/Country Code:(\w{2})/)[1]:'';
+const ak_st = (AK_GEO_CODE || '').match(/Region Code:(\w{2})/)?AK_GEO_CODE.match(/Region Code:(\w{2})/)[1]:'';
+
+const AKLOC = {        
+   geolocationResponse: {        
+       stateCode:  ak_st,        
+       countryCode: ak_co,        
+       regionCode: '', // Optional parameter        
+   }        
+};  
+
+//// get location from akamai & setting in global scope - end ////
+</script><script type="text/javascript" class="RQ_SCRIPT"> 
+ var dyFlag=true;
+//// initiate values on page load/refresh since optanon takes some time to load
+window.DY = window.DY || {};
+DY.recommendationContext = {type: 'OTHER'};
+	//// setting DY consent on page load - start ///
+	const NO_CONSENT_STATES = ["CA"];
+ 
+	// if st is included in list of no-consent states then consent is false
+	dyFlag = (NO_CONSENT_STATES.indexOf(ak_st) > -1)? false : true ;
+	(function() { 
+		var cookieName = document.cookie.split('; ').find((row)=>row.startsWith('OptanonConsent'))?.split('groups')[1];
+		if (cookieName ) { //if OptanonConsent is detected, look for C0004:1 and de-activate DY if not found
+			dyFlag = cookieName.includes('CC0004%3A1') ? true: false;
+		} 
+		if(!dyFlag) {
+			document.cookie = "_dyid_server=;Secure;Domain=.synchrony.com;path=/;expires=" + new Date(0).toUTCString(); 
+		}
+		DY.userActiveConsent = { accepted: dyFlag}
+		
+	}());
+	//// setting DY consent n page load - end ///
+
+	//// update DY values on consent change: executes after OT consent applied and NOT on pageview refresh
+	if(NO_CONSENT_STATES.indexOf(ak_st) > -1){
+		window.addEventListener("OTConsentApplied",event =>{
+			// this code runs on consent update ONLY 
+			var dyConsentImp= false; 
+			var prevDyConsent = DYO.ActiveConsent.isUserOptOut() ? false : true ;
+			window.DY = window.DY || {};
+			
+			if (OnetrustActiveGroups && OnetrustActiveGroups.includes('C0004')){ // if marketing cookie is active
+				dyConsentImp=true;
+				dyFlag = true;
+			}else{
+				dyConsentImp=false;
+				dyFlag = false;
+				document.cookie = "_dyid_server=;Secure;Domain=.synchrony.com;path=/;expires=" + new Date(0).toUTCString(); 
+			}
+			//Update DY active consent	
+			DY.userActiveConsent = { accepted: dyConsentImp};	
+			DYO.ActiveConsent.updateConsentAcceptedStatus(dyConsentImp);
+			
+			
+			// check if dy consent changed from prev value and retrigger page context
+			if(dyConsentImp != prevDyConsent){
+				if (dyConsentImp){
+					DY.recommendationContext = { type: "OTHER" , data:["after_consent" ]};
+				}
+				else {
+					DY.recommendationContext = { type: "OTHER" , data:["after_consent_revoke" ]};
+				}
+
+					checkURL();		 
+			}
+			///// additional code for dyid itp cookie update ////			
+			getDYCookie();	
+			
+		});
+	}
+
+</script><link rel="preconnect" href="https://cdn.dynamicyield.com"><link rel="preconnect" href="https://st.dynamicyield.com"><link rel="preconnect" href="https://rcom.dynamicyield.com"><link rel="dns-prefetch" href="https://cdn.dynamicyield.com"><link rel="dns-prefetch" href="https://st.dynamicyield.com"><link rel="dns-prefetch" href="https://rcom.dynamicyield.com"><script type="text/javascript" src="js/api_dynamic.js"></script><script type="text/javascript" src="js/api_static.js"></script>
+<script type="text/javascript" src="js/syf_prod_nr_script.js" async=""></script><script type="text/javascript">
+var _SFDDL = _SFDDL || {};_SFDDL.pageInfo = _SFDDL.pageInfo || {};_SFDDL.pageInfo ={
+	"ClientName": "d2c_bank",
+    "ArticleDuration": "",
+	"Country_Language":"us|eng",
+	"CustomerType":"consumer",
+	"Device":"desk",
+	"PNL":"bank",
+	"PageKind":"home",
+	"PageFunction":"home",
+	"PageSubFunction":"",
+	"PageName":"landing_page",
+	"Product":"",
+	"SiteIdentifier":"SyfMarketing",
+	"Token":"",
+    "ABTestname": "",
+	"ArticleGrouping": "",
+     "domainidentifier":"bank-marketing",
+	"Message": ""}</script><link rel="stylesheet" type="text/css" href="css/global-navigation.css"><link rel="stylesheet" type="text/css" href="css/synchrony-global.css"><link rel="stylesheet" type="text/css" href="css/footer.css"><link rel="stylesheet" type="text/css" href="css/global.css"><link rel="stylesheet" type="text/css" href="css/logo-grid-copy.css"><link rel="stylesheet" type="text/css" href="css/syf-home-terms.css"><link rel="stylesheet" type="text/css" href="css/syc-bk-bootstrap-custom.min.css"><link rel="stylesheet" type="text/css" href="css/blog-tile-group.css"><link rel="stylesheet" type="text/css" href="css/syc-bk-common.min.css"><link rel="stylesheet" type="text/css" href="css/syc-bk-top-nav.min.css"><link rel="stylesheet" type="text/css" href="css/syc-bk-home.min.css"> 
+	<script type="text/javascript"> var termsArray = [303,306,309,312,313,314,315,316,318,319,324,336,348,360,611,624]; </script>
+<!-- SEO: Organization Schema -->
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@context": "https://schema.org",
+			"@type": "BankOrCreditUnion",
+			"@id": "https://www.synchrony.com/banking#bankorcreditunion",
+			"name": "Synchrony Bank",
+			"description": "Synchrony Bank is an online bank offering FDIC-insured savings products in addition to offering premium credit solutions.",
+  			"url": "https://www.synchrony.com/banking",
+			"logo": "https://www.synchrony.com/syc/img/2023_synchrony_basic_logo.svg",
+			"contactPoint" : [
+				{
+					"@type": "ContactPoint",
+					"telephone" : "+1-866-226-5638",
+					"contactType" : "customer support for savings products",
+					"areaServed" : "US"
+				},
+				{
+					"@type": "ContactPoint",
+					"telephone" : "+1-866-406-7427",
+					"contactType" : "customer support for Synchrony Mastercard",
+					"areaServed" : "US"
+				}],
+			"sameAs": [
+				"https://www.facebook.com/SynchronyBank",
+				"https://www.instagram.com/synchronybank/"
+			],
+			"parentOrganization": {
+				"@type": "Corporation",
+				"@id": "https://www.synchrony.com/#corporation",
+				"name": "Synchrony",
+				"url": "https://www.synchrony.com/"
+			},
+			"address": {		
+				"@type": "PostalAddress",	
+				"streetAddress": "777 Long Ridge Road",	
+				"addressLocality": "Stamford",	
+				"addressRegion": "CT",	
+				"postalCode": "06902",	
+				"addressCountry": "US"	
+			}
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"url": "https://www.synchrony.com/banking",
+			"description": "Put your money to work by opening an FDIC-insured online account with Synchrony Bank. Choose from a variety of options like High Yield Savings, CDs & more!",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": " https://www.synchrony.com/search-results?search={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+	]
+}
+</script>
+<style>
+#syc_bk_home .rate-tile-eyebrow {
+max-width: calc(100% - 48px);
+}
+@media (max-width: 767.98px){
+   #banner-fdic+.text-flex {
+    top: 161px;
+    height: calc(100% - 40px);
+}
+}
+.feature-cta-container {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+margin-top: 16px;
+}
+.feature-cta-container a {
+text-wrap: nowrap;
+}
+#syc-feature-tiles .feature-tiles-container .feature-tile a.btn {
+margin-top: 0;
+}
+</style><script type="text/javascript"> (function (a, b, c, d) { 
+a = 'https://tags.synchrony.com/synchrony-one/prod/utag.js'; b = document; c = 'script'; d = b.createElement(c); d.src = a; d.type = 'text/java' + c; d.async = true;
+a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a) 
+})(); 
+</script> 
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]);</script>
+                              <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="5QYRA-QTEEB-GK8AA-REZVV-GFYPW",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"5QYRA-QTEEB-GK8AA-REZVV-GFYPW",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="h2ct3ayccsmti2jj7i4q-f-0a2d9166a-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"39","ak.cp":"291862","ak.ai":parseInt("463139",10),"ak.ol":"0","ak.cr":4,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"1babc8c1","ak.r":48545,"ak.a2":e,"ak.m":"b","ak.n":"essl","ak.bpcip":"62.133.61.0","ak.cport":43124,"ak.gh":"2.20.138.96","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1764358713","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==cltPoxtkvrBfMlE3Cj776xc/gWxjURpaEjl/fCk7g6okZkHw/dMT4J78lCTtCfsQePGgJBbkMHu5Bj7fuSsthl8gO29hT2ZQnMTFqeWefVCn7hqTwXrVzi2GkVbk2cP4pbPYD11DPHP6bIW/GIDkE2OjCy2faX/TpyUwxI9ArXpj8567wogZzbsBh8kQrRtAAsSwBKb3TYUiWg2UNk8UNo9uLsdfeYsNXKC8jWjABxv7tHMg12WepCWYfUWEYO85y7tFlrx+ZSF7uMLRjNFl0Gb7/8anE5Xvh9b8F3qEQ4MR9N3QYVZogQaL4PpJp3FzGbKbtX1UJP3xEnbGTJZ5L5CXwJgl1F0gDX9iDrwF5r9W26itdLo2roALcVKV7sof9xhYUijDlpjIFbARdt4UWLOvTjgBEJEoz9sfykUKd9s=","ak.pv":"150","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script><style>#onetrust-consent-sdk, #onetrust-banner-sdk, .onetrust-pc-dark-filter, #onetrust-pc-sdk { display: none !important; }</style></head><body id="syc_bk_home">
+
+<script type="text/javascript" src="js/bankrates.js"></script><div id="verint-iva-ui-root"></div>
+<div class="page-container">
+
+<span class="global-nav">
+	<span class="main-nav">
+	
+    		<section id="global-nav-section">
+				<nav class="global-nav-wrapper" role="navigation">
+				    <div class="nav-left logo-container">
+				    <button type="button" class="nav-mobile-toggle-btn" id="mobile-menu-toggle" aria-expanded="false">  <img alt="Navigation Menu Open" src="images/menu-icon.svg" class="nav-menu-icon">   <img alt="Navigation Menu Close" src="images/close-icon.svg" class="nav-close-icon"> </button><a href="javascript:location.reload()" data-object="header-left" data-reason="synchrony logo" data-type="link" class="syfclickevent nav-logo home-link"> <img alt="Synchrony" src="images/white-logo.svg" class="nav-logo-img nav-logo-img nav-white-logo"><img alt="Synchrony" src="images/black-logo.svg" class="nav-logo-img nav-logo-img nav-black-logo"></a></div><div class="grid-center nav-center"><div class="nav-center-links-container grid-center"><ul class="nav-link-main-menu">
+				  
+				 <li class="nav-menu-item nav-menu-item-bankinghome">
+					  
+					   	<div class="nav-menu-item-title">
+					   	 <a href="../pages/synchrony.com_banking.html" data-object="header-topnav" data-reason="banking home" data-type="link" class="syfclickevent nav-menu-item-title-text"> BANKING HOME</a></div>
+					  
+				  
+			
+	</li>
+				<li class="nav-menu-item  submenu-item nav-menu-item-savings" aria-expanded="false">
+					  
+				  
+					<div class="nav-menu-item-title  submenu-item__title syfclickevent" role="button" tabindex="0" data-object="header-topnav" data-reason="savings" data-type="link"> <span class="nav-menu-item-title-text">
+                               <span>SAVINGS</span>
+                            </span> <img alt="" src="images/arrow_drop_down.svg" class="nav-menu-item-arrow nav-item-arrow-mobile">  <img alt="" src="images/arrow_drop_down_white.svg" class="nav-menu-item-arrow nav-item-arrow-desktop"> </div><div class="nav-menu-item-links-wrapper submenu">
+									<div class="nav-menu-item-left-links">
+								
+								
+										<ul class="nav-menu-item-links-list"><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_high-yield-savings.html" data-object="header-topnav" data-reason="savings-highyieldsavings" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		High Yield Savings
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_money-market-account.html" data-object="header-topnav" data-reason="savings-moneymarkets" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Money Markets
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_cd.html" data-object="header-topnav" data-reason="savings-cds" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		CDs
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_ira_ira-cd.html" data-object="header-topnav" data-reason="savings-iracds" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		IRA CDs
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_ira_ira-money-market-account.html" data-object="header-topnav" data-reason="savings-iramoneymarkets" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		IRA Money Markets
+		                                        		</span></a></li>
+										</ul>
+									</div>
+						   
+								  
+									<div class="nav-menu-item-right-links">
+								
+										<ul class="nav-menu-item-links-list"><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_compare-products.html" data-object="header-topnav" data-reason="savings-comparesavingsproducts" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Compare Savings Products
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_ratesandterms.html" data-object="header-topnav" data-reason="savings-noniraproductrates" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Non-IRA Product Rates
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_products_ira-rates-and-terms.html" data-object="header-topnav" data-reason="savings-iraproductrates" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		IRA Product Rates
+		                                        		</span></a></li>
+										</ul>
+									</div>
+						   
+					</div>
+				  
+			
+	</li>
+				<li class="nav-menu-item  submenu-item nav-menu-item-resources" aria-expanded="false">
+					  
+				  
+					<div class="nav-menu-item-title  submenu-item__title syfclickevent" role="button" tabindex="0" data-object="header-topnav" data-reason="resources" data-type="link"> <span class="nav-menu-item-title-text">
+                               <span>RESOURCES</span>
+                            </span> <img alt="" src="images/arrow_drop_down.svg" class="nav-menu-item-arrow nav-item-arrow-mobile">  <img alt="" src="images/arrow_drop_down_white.svg" class="nav-menu-item-arrow nav-item-arrow-desktop"> </div><div class="nav-menu-item-links-wrapper submenu">
+									<div class="nav-menu-item-left-links">
+								
+								
+										<ul class="nav-menu-item-links-list"><li class="nav-menu-item-link">   <a href="/banking/resources/forms" data-object="header-topnav" data-reason="resources-bankforms" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Bank Forms
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="/banking/mobile-app" data-object="header-topnav" data-reason="resources-synchroybankmobileapp" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Synchrony Bank Mobile App
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="/banking/savings-calculator?utm_source=dy&utm_medium=digital&utm_content=CB_D_DY_SC_CB" data-object="header-topnav" data-reason="resources-savingsgoalcalculator" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Savings Goal Calculator
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="https://www.accelnetwork.com/accel-atm-cash-locator.html" data-object="header-topnav" data-reason="resources-atmfinder" data-type="link" class="syfclickevent nav-link submenu-link" target="_blank"><span class="nav-link-text">
+		                                            		ATM Finder
+		                                        		</span></a></li>
+										</ul>
+									</div>
+						   
+								  
+									<div class="nav-menu-item-right-links">
+								
+										<ul class="nav-menu-item-links-list"><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_contact-us.html" data-object="header-topnav" data-reason="resources-contactus" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Contact Us
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_about.html" data-object="header-topnav" data-reason="resources-aboutsynchronybank" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		About Synchrony Bank
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="/blog/saving-budgeting" data-object="header-topnav" data-reason="resources-bankblog" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Bank Blog
+		                                        		</span></a></li><li class="nav-menu-item-link">   <a href="../pages/synchrony.com_banking_resources_faq.html" data-object="header-topnav" data-reason="resources-bankfaqs" data-type="link" class="syfclickevent nav-link submenu-link"><span class="nav-link-text">
+		                                            		Bank FAQ's
+		                                        		</span></a></li>
+										</ul>
+									</div>
+						   
+					</div>
+				  
+			
+	</li>
+	</ul></div>
+ <div class="nav-center-search-container">
+ 
+     <div class="search-area"><div class="form-wrapper" id="nav-search-area"><form class="search-form" method="get" action="/search-results">
+          <button type="button" class="toggle-button syfclickevent" data-object="header-topnav" data-reason="search icon" data-type="link" aria-label="Show/hide search form" aria-controls="nav-search-area" aria-expanded="false"><img alt="search icon" src="images/search_icon_gray.svg" width="24" height="24"></button>
+          <div id="search-input"><input name="keyword" type="search" aria-label="Search Synchrony.com" placeholder="Search Synchrony.com" role="combobox" aria-autocomplete="none" aria-expanded="false" aria-controls="cb1-listbox" tabindex="-1"><button type="submit" tabindex="-1"> <img src="images/icon_chevron_next.png" alt="Submit search" class="icon next-icon" width="8" height="16"> </button>
+          </div>
+        </form><div class="search-dropdown" id="cb1-listbox" role="listbox" aria-label="Trending Searches">
+		    <div class="search-dropdown__popular">
+			    <div class="search-dropdown__popular__login-prompt" role="option" tabindex="0"><img src="images/icon_perforated_bang.svg" alt="" width="24" height="24">
+
+					<span> <strong> Need to make a payment? </strong> Use the�<strong>Sign In</strong> button to find your account sign in portal.</span>
+				</div>
+				<ul>
+				   
+	<li class="search-result-item" role="option">   <a href="../pages/synchrony.com_help_faqs.html" data-object="header-topnav" data-reason="creditcardfaqs-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Credit Card FAQs</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="registeraccount-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Register your account</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/consumer-resources/paperless-statements" data-object="header-topnav" data-reason="paperlessstatements-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Paperless statements</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/banking/products/compare-products?UISCode=0000000" data-object="header-topnav" data-reason="savingaccountrates-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Savings account rates</a></li>
+		
+	<li class="search-result-item" role="option">   <a href="/consumer-resources/your-credit-score" data-object="header-topnav" data-reason="yourcreditscore-searchlist" data-type="link" class="syfclickevent search-item-text link-plain">Your credit score</a></li>
+		
+	
+ 
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</div>
+		
+			<div class="nav-center-open-ac-container login-area no-dropdown">
+				<div id="login-button">
+		
+		
+		 <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="openanaccount" data-type="button" class="syfclickevent open-account-btn btn btn-primary open-ac-mob" id="open-ac-mob"> OPEN AN ACCOUNT</a>   <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="open an account" data-type="button" class="syfclickevent open-account-btn btn open-ac-desktop btn-secondary" id="open-ac-desk"> OPEN AN ACCOUNT</a> </div></div></div>
+		
+		
+			<div class="nav-right login-container login-area no-dropdown">
+				<div id="login-button">
+		
+		 <a href="http://localhost:3000/login" data-object="header-topnav" data-reason="sign in" data-type="link" class="syfclickevent login-account-btn btn" id="login-button"> SIGN IN</a></div>
+
+	        		
+	        		</div></nav>
+	        </section>
+</span>
+</span>
+<main>
+
+
+<section id="home-banner" class="fullwidth-hero home-banner">
+	
+		
+		
+	
+
+
+
+	<video autoplay="" muted="" loop="" playsinline="" id="homebannerVideo" class="displayDesktop ">
+        <source src="media/homepage_refresh_desktop.mp4" type="video/mp4">
+       </video><video autoplay="" muted="" loop="" playsinline="" id="homebannerTabletVideo" class="displayTablet ">
+        <source src="media/homepage_refresh_tablet.mp4" type="video/mp4">
+      </video><video autoplay="" muted="" loop="" playsinline="" id="homebannerMobileVideo" class="displayMobile ">
+        <source src="media/homepage_refresh_mobile.mp4" type="video/mp4">
+      </video>
+	
+
+
+	
+	<div id="bannerGradient"></div>
+	
+		
+			
+			<div id="banner-fdic"><img alt="FDIC" src="images/fdic_official_sign_white_png.png">FDIC-insured - Backed by the full faith and credit of the U.S. Government</div>
+		
+	
+    <div class="text-flex">
+        <h1 class="heading-md display-sm-mdup display-md-lgup">Saving is always<br> a great play.</h1>
+        <p class="body-sm title-md-mdup m-0 banner-content">Score a great rate for fall, with no monthly fees or minimums – and build something epic.</p>
+        </div>
+     
+	
+		<button class="video-play-imag" onclick="video()">
+			
+				
+				<img class="video-img" src="images/pause.svg" id="vid-img" alt="Pause video">
+									 
+		</button>
+	
+</section>
+
+<section class="syc-special-offer">
+<script type="application/json" data-id="rate-configs"> { "productId": "100", "displayApyOrRate":"apy","hideByClass":"offer-rate-container", "displayRateHtmlId":"offer-rate" } </script>
+
+<div class="special-offer-wrapper">
+<span class="stack-xs">
+    <span class="label-sm offer-pill">
+		
+			
+				
+				<img class="svg-16" alt="" src="images/sell.svg" role="presentation" loading="lazy">
+			
+		
+        Great Rate
+    </span>
+    <span class="body-xs body-sm-lgup description-first">Reach your savings goals sooner with our</span>
+    <span class="offer-text">
+        <span id="offer-type" class="label-md-prominent heading-xs-lgup">High Yield Savings</span><!-- heading-xs on lg+ -- how to switch? -->
+        <span id="offer-rate-container" class="offer-rate-container skeleton"> - <span id="offer-rate" class="label-md-prominent heading-xs-lgup"></span><span class="label-md-prominent heading-xs-lgup">%</span>
+        <span class="label-sm-prominent label-md-prominent-lgup">
+            APY<a aria-label="APY Disclosure" class="apy-disclosure" href="#annual-percentage">*</a>
+        </span></span>
+    </span>
+</span>
+<span class="body-xs body-sm-lgup description-second">No fees. No minimum balance.</span>
+    <a href="../pages/synchrony.com_banking_products_high-yield-savings.html" data-object="body-special-offer" data-reason="hys_learn_more" data-type="link" class="syfclickevent label-md-prominent offer-cta">
+				<span class="label-md-prominent offer-cta">Learn More
+					<img alt="" class="svg-24 pl-1" src="images/arrow_forward.svg">
+						<span class="visually-hidden"> about this special offer </span>
+				</span>		
+			</a>
+               
+              		
+	               <span class="right-panel">
+			        <button class="offer-close">
+						<img src="images/close.svg" alt="Close" class="">	
+			        </button>  
+		        </span>                  
+            
+	
+</div>
+</section>
+
+<section id="syc-feature-tiles">
+    <h2 class="text-center heading-sm heading-lg-mdup heading-xl-lgup">Explore our FDIC-insured savings products</h2>
+    <div class="text-center body-sm body-lg-mdup">Save with flexibility and security without fees to slow your progress.</div>
+    <div class="feature-tiles-container">
+        
+        	
+	        
+			
+				
+			    
+<div class="feature-tile">
+	<script type="application/json" data-id="rate-configs"> {  "productId": "100", "displayApyOrRate":"apy", "hideByClass": "rate.heading-xl","displayRateHtmlId":"rateId-1","elementType":"section" } </script>
+	
+	<div class="rate-tile-eyebrow label-md-mdup"></div>
+	<div class="rate heading-xl skeleton">
+		
+		
+		<span id="rateId-1" class="rate-percent"></span><span class="heading-sm">% APY
+		    <a aria-label="APY Disclosure" class="apy-disclosure" href="#annual-percentage">*</a>
+		</span>		
+	</div>
+	<h3 class="heading-xs heading-sm-mdup">High Yield Savings</h3>
+	<ul>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">Earn interest and access via ATM, online, and more.</li>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">No minimum balance.</li>
+</ul>
+
+        <div class="feature-cta-container">
+	
+		 <a href="../pages/synchrony.com_banking_products_high-yield-savings.html" data-object="body-sav_account" data-reason="hys_learn_more" data-type="button" class="syfclickevent btn btn-secondary"> LEARN MORE</a>
+	
+		 <a href=" http://localhost:3000/login" data-object="body-sav_account" data-reason="hys_start_saving_now" data-type="button" class="syfclickevent btn btn-primary"> START SAVING NOW</a>
+	
+        </div>
+		<div class="feature-tile-icon">
+		
+			<img src="images/piggy-bank.svg" alt="">
+		
+	</div>
+</div>
+
+        
+        	
+	        
+			
+				
+			    
+<div class="feature-tile">
+	<script type="application/json" data-id="rate-configs"> {  "productCode": "CD", "displayApyOrRate":"maxRate", "hideByClass": "rate.heading-xl","displayRateHtmlId":"rateId-2","elementType":"section" } </script>
+	
+	<div class="rate-tile-eyebrow label-md-mdup"></div>
+	<div class="rate heading-xl skeleton">
+		
+		
+		<span id="rateId-2" class="rate-percent"></span><span class="heading-sm">% APY
+		    <a aria-label="APY Disclosure" class="apy-disclosure" href="#annual-percentage">*</a>
+		</span>		
+	</div>
+	<h3 class="heading-xs heading-sm-mdup">Certificates of Deposit (CD)</h3>
+	<ul>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">Lock in your rate today and make your money work for you.</li>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">No minimum balance.</li>
+</ul>
+
+        <div class="feature-cta-container">
+	
+		 <a href="../pages/synchrony.com_banking_products_cd.html" data-object="body-sav_account" data-reason="cd_learn_more" data-type="button" class="syfclickevent btn btn-secondary"> LEARN MORE</a>
+	
+		 <a href=" http://localhost:3000/login" data-object="body-sav_account" data-reason="cd_start_saving_now" data-type="button" class="syfclickevent btn btn-primary"> START SAVING NOW</a>
+	
+        </div>
+		<div class="feature-tile-icon">
+		
+			<img src="images/award.svg" alt="">
+		
+	</div>
+</div>
+
+        
+        	
+	        
+			
+				
+			    
+<div class="feature-tile">
+	<script type="application/json" data-id="rate-configs"> {  "productId": "314", "displayApyOrRate":"apy", "hideByClass": "rate.heading-xl","displayRateHtmlId":"rateId-3","elementType":"section" } </script>
+	
+	<div class="rate-tile-eyebrow label-md-mdup">14-month</div>
+	<div class="rate heading-xl skeleton">
+		
+		
+		<span id="rateId-3" class="rate-percent"></span><span class="heading-sm">% APY
+		    <a aria-label="APY Disclosure" class="apy-disclosure" href="#annual-percentage">*</a>
+		</span>		
+	</div>
+	<h3 class="heading-xs heading-sm-mdup">Certificates of Deposit (CD)</h3>
+	<ul>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">Lock in a rate that’s right, right now.</li>
+	<li class="body-sm body-lg-mdup"><img alt="" src="images/check.svg">No minimum balance.</li>
+</ul>
+
+        <div class="feature-cta-container">
+	
+		 <a href="../pages/synchrony.com_banking_products_cd.html" data-object="body-sav_account" data-reason="cd_thirdtile_learn_more" data-type="button" class="syfclickevent btn btn-secondary"> LEARN MORE</a>
+	
+		 <a href=" http://localhost:3000/login" data-object="body-sav_account" data-reason="cd_thirdtile_start_saving_now" data-type="button" class="syfclickevent btn btn-primary"> START SAVING NOW</a>
+	
+        </div>
+		<div class="feature-tile-icon">
+		
+			<img src="images/trending-up.svg" alt="">
+		
+	</div>
+</div>
+
+        
+    </div>
+</section>
+<section id="awards-animation-section" class="awards-animation-section">
+	<h2 class="awrads-animation-header title-sm title-md-mdup">Stop, we're blushing–but here are some of the most recent awards our products have earned:</h2>
+   <div class="Marquee">
+        <div class="Marquee-content" role="region" aria-label="Awards"><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best Online Bank</div>
+						    <div class="award-subtext label-lg">GoBankingRates</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best Savings Accounts</div>
+						    <div class="award-subtext label-lg">MoneyRates</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best Money Market Account</div>
+						    <div class="award-subtext label-lg">GoBankingRates</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best CD Account</div>
+						    <div class="award-subtext label-lg">MoneyRates</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best CD Account</div>
+						    <div class="award-subtext label-lg">GoBankingRates</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best CD Account</div>
+						    <div class="award-subtext label-lg">MyBankTracker</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best Bank for CD’s</div>
+						    <div class="award-subtext label-lg">NerdWallet</div>
+						    <div class="award-subtext label-lg">2023</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">★★★★</div>
+						    <div class="award-subtext label-lg">Forbes Advisor</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best Online Savings Account</div>
+						    <div class="award-subtext label-lg">The Ascent</div>
+						    <div class="award-subtext label-lg">2023</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best High Yield Savings Account</div>
+						    <div class="award-subtext label-lg">CNBC Select</div>
+						    <div class="award-subtext label-lg">2024</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="Marquee-tag"><div class="card-wrapper">
+					<div class="card-image">
+						<div class=" award-block" id="">
+						    <div class="award-text title-lg">Best CD Rates</div>
+						    <div class="award-subtext label-lg">GoBankingRates</div>
+						    <div class="award-subtext label-lg">2025</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </div></section>
+<section class="syc-bk-benefits" data-analytics="benefits"><div class="text-center"><h2 class="heading-sm heading-lg-mdup heading-xl-lgup">We can help you achieve your goals</h2><p class="body-sm body-lg-mdup m-0">Wherever you are in your savings journey, our smart products can help you make tomorrow brighter. Let's get you there together.</p> <a href="http://localhost:3000/login" data-object="body-benefits" data-reason="start saving now" data-type="button" class="syfclickevent btn btn-valprop-cta"> START SAVING NOW</a></div><div class="valprop-container">
+ <div class="valprop-card d-flex">
+  <span class="valprop-icon">
+	
+                 <img src="images/syf_icons_rates_rgb_blue_1.png" alt="">
+       
+   </span>
+     <span> <div class="valprop-header heading-xs">Competitive rates</div> <div class="valprop-body body-sm body-md-mdup">Grow your savings (even more) with rates that consistently outperform traditional savings accounts. </div></span></div>
+ <div class="valprop-card d-flex">
+  <span class="valprop-icon">
+	
+                 <img src="images/syf_icons_legal_gov_reg_legal_scale.png" alt="">
+       
+   </span>
+     <span> <div class="valprop-header heading-xs">No minimum balance</div> <div class="valprop-body body-sm body-md-mdup">Whether you deposit a lot or a little is entirely up to you. </div></span></div>
+ <div class="valprop-card d-flex">
+  <span class="valprop-icon">
+	
+                 <img src="images/syf_icons_finance_money_wallet_icon_rgb_bankblue_opaque.svg" alt="">
+       
+   </span>
+     <span> <div class="valprop-header heading-xs">No monthly fees</div> <div class="valprop-body body-sm body-md-mdup">You’re able to hold on to more of what you earn, and what you deposit will always be yours to grow.</div></span></div>
+ <div class="valprop-card d-flex">
+  <span class="valprop-icon">
+	
+                 <img src="images/syf_icons_tech_security_mobile_phone_icon_rgb_blue_1.png" alt="">
+       
+   </span>
+     <span> <div class="valprop-header heading-xs">Flexible Access</div> <div class="valprop-body body-sm body-md-mdup">Enjoy the flexibility of being able to easily withdraw or transfer funds whenever you need them. </div></span></div></div></section>
+
+<section id="syc-security" class="alp-security" data-analytics="security"><div class="row security-2up"><div class="security-text col col-12 col-lg-6"><h2 class="heading-sm heading-lg-mdup heading-xl-xlup">Respecting your data, without compromise.</h2><p class="body-sm body-lg-mdup">At Synchrony Bank, we’re committed to helping you secure your financial future. That starts with keeping your deposits and your data safe—ensuring you always have access to your account and its information.</p><div class="syc-security-block d-flex"><img src="images/fdicshield_icon.svg" alt="" class="syc-security-icon svg-32 lazyImg"><div><h3 class="title-sm title-md-mdup">FDIC Insurance</h3><p class="body-sm body-md-mdup">Your deposits are protected, up to $250,000 per depositor, per ownership category.</p></div></div><div class="syc-security-block d-flex"><img src="images/tech_security_computer_icon.svg" alt="" class="syc-security-icon svg-32 lazyImg"><div><h3 class="title-sm title-md-mdup">Enhanced security</h3><p class="body-sm body-md-mdup">We employ advanced data security protocols, including robust encryption and authentication requirements, to keep your data continually protected.</p></div></div><div class="syc-security-block d-flex"><img src="images/mobileshield_icon.svg" alt="" class="syc-security-icon svg-32 lazyImg"><div><h3 class="title-sm title-md-mdup">Fraud protection</h3><p class="body-sm body-md-mdup">For even more peace of mind, your account comes with complimentary identity theft resolution services, too.</p></div></div> <a href="http://localhost:3000/login" data-object="body-security" data-reason="start saving now" data-type="button" class="syfclickevent btn btn-security-cta"> START SAVING NOW</a></div><div class="security-splash-img col col-12 col-lg-6"><img src="images/security_final_notype.png" alt="Forbes America's Most Cybersecure Banks 2024, powered by Security Scorecard." class=" lazyImg"><img src="images/forbesmostcybersecurebanks_300dpi.png" alt="" class="security-overlay lazyImg"></div></div></section>
+
+
+<section class="accs-anywt" id="accessAnywhere" data-analytics="credit-anytime">
+    <div class="accs-anywt-contain">
+        <div class="anywt-img">
+			
+				
+				<img src="images/bankinganywhereanytime.png" class="deviceBanner">
+			            
+        </div>
+        <div class="anywt-text">
+			
+				<h2 class="acc-title heading-sm heading-lg-mdup heading-xl-lgup">Access accounts<br> anywhere, anytime</h2>
+			        
+			
+				<p class="body-sm body-lg-mdup"></p><p class="body-sm body-lg-mdup">Doing more for you—whether online or in the Synchrony Bank app—to keep you in control no matter what.</p>
+
+<p class="body-sm body-lg-mdup">Check balances, transfer funds, deposit checks, and pay your bills from almost anywhere, 24/7.</p>
+
+<p class="body-sm body-lg-mdup">That's banking in sync with you.</p>
+<p></p>
+			
+            <p class="syf-link-stores">
+       			
+       				
+					
+		
+						
+							
+							
+						
+					
+					   <a href="https://apps.apple.com/us/app/synchrony-bank/id1357695194?ls=1" data-object="app_download" data-reason="ios" data-type="link" class="syfclickevent app-store device-content ios-content desk-content link-itunes ios-and-icon" title="Download iosApp Home" target="_blank"><img alt="Download on the App Store for iPhone" src="images/download_on_the_app_store_badge_us-uk_rgb_blk_092917.svg" class="img-fluid"></a>
+				
+       				
+					
+		
+						
+							
+							
+						
+					
+					   <a href="https://play.google.com/store/apps/details?id=com.syf.synchronybank" data-object="app_download" data-reason="android" data-type="link" class="syfclickevent google-play device-content android-content desk-content link-gpstore ios-and-icon" title="Download Android App Home" target="_blank"><img alt="Get it on Google Play for Android" src="images/getitongoogleplay_badge_web_color_english.png" class="img-fluid"></a>
+				
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="syn-video-section section-padding">
+	
+		<h2 class="syn-video-section-h2 heading-sm heading-lg-mdup heading-xl-lgup">See how the power of Synchrony can work for you</h2>
+	
+
+	
+		<div class="syn-video-wrapper">
+			<ul class="syn-video">
+			
+				
+				    
+				
+					<li class="syn-video-container">
+						
+							<a href="#posVideoModal" role="button" data-toggle="modal" data-target="#posVideoModal" data-thevideo="SCS9Bmb-AHM" data-videotype="ytube" data-object="body-syf_bank_vid" class="syfclickevent" data-reason="video0" data-type="button" tabindex="0">
+		
+								<div class="syn-video-img">
+									<div class="videoGradient"></div>
+										
+										
+											
+												<img src="images/stayincontrolimg.png" alt="" class="video-thumb lazyImg">
+										
+									
+									
+										<div class="syn-video-ctrl">  
+											<span class="syn-video-section-img video-play-imag">
+														
+													
+													<img src="images/play_arrow.svg" alt="video play/pause image -  Stay in Control" class="play">
+																					
+											</span>
+										</div>
+										
+								</div>
+							</a>
+																    				
+						<div class="syn-video-text">
+							<div class="syn-video-text-h title-md title-lg-mdup"> Stay in Control</div>
+							<div class="syn-video-text-des body-md body-lg-mdup">In today’s world, we’re all trying to hold on and figure out what’s next. See how Synchrony Bank helps you bank on your terms.</div>
+						</div>
+					</li>
+				
+				    
+				
+					<li class="syn-video-container">
+						
+							<a href="#posVideoModal" role="button" data-toggle="modal" data-target="#posVideoModal" data-thevideo="Gjkn-SYNMFo" data-videotype="ytube" data-object="body-syf_bank_vid" class="syfclickevent" data-reason="video1" data-type="button" tabindex="0">
+		
+								<div class="syn-video-img">
+									<div class="videoGradient"></div>
+										
+										
+											
+												<img src="images/lemonade-stand_376x212.png" alt="" class="video-thumb lazyImg">
+										
+									
+									
+										<div class="syn-video-ctrl">  
+											<span class="syn-video-section-img video-play-imag">
+														
+													
+													<img src="images/play_arrow.svg" alt="video play/pause image - Save for the sweetest rewards" class="play">
+																					
+											</span>
+										</div>
+										
+								</div>
+							</a>
+																    				
+						<div class="syn-video-text">
+							<div class="syn-video-text-h title-md title-lg-mdup">Save for the sweetest rewards</div>
+							<div class="syn-video-text-des body-md body-lg-mdup">Meet Pete and Emma: two lemonade enthusiasts—with a smart savings account. See their story in our original short film ‘The Lemonade Stand’ now.</div>
+						</div>
+					</li>
+				
+				    
+				
+					<li class="syn-video-container">
+						
+							<a href="#posVideoModal" role="button" data-toggle="modal" data-target="#posVideoModal" data-thevideo="LamlzbSTD3A" data-videotype="ytube" data-object="body-syf_bank_vid" class="syfclickevent" data-reason="video2" data-type="button" tabindex="0">
+		
+								<div class="syn-video-img">
+									<div class="videoGradient"></div>
+										
+										
+											
+												<img src="images/build-a-better-bank_376x212.png" alt="" class="video-thumb lazyImg">
+										
+									
+									
+										<div class="syn-video-ctrl">  
+											<span class="syn-video-section-img video-play-imag">
+														
+													
+													<img src="images/play_arrow.svg" alt="video play/pause image - Building your best bank" class="play">
+																					
+											</span>
+										</div>
+										
+								</div>
+							</a>
+																    				
+						<div class="syn-video-text">
+							<div class="syn-video-text-h title-md title-lg-mdup">Building your best bank</div>
+							<div class="syn-video-text-des body-md body-lg-mdup">You told us what it takes to make a great bank. And we agree! Hear what they said and see if it’s what you’re looking for from your bank, too.</div>
+						</div>
+					</li>
+				
+			</ul>
+		</div>
+	
+	<div class="modal fade video-modal" id="posVideoModal" tabindex="-1" role="dialog" aria-label="Video Player">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-close-btn-container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body" id="posPlayerContainer">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+      <section class="py-40 global-max-w blog_tiles" data-analytics="bank-home-blog"><script>var savingBudgeting ={"docs":[{"duration":"5 minute","image":"\/sites\/syc\/img\/blog-hero-how-fed-interest-rate-impact-cds-2400x1000.jpg","site":"synchronybank","articleTitle":"How Fed Interest Rate Decisions Impact CD Accounts","imgAltText":"Photo of couple sitting on couch looking over their finances.","docType":"blog","author":"Eric Rosenberg","displayDate":"Oct 01, 2024","articleId":1647399324901,"url":"\/sites\/syc\/blog\/bank\/cd-federal-reserve-rate-impact"},{"duration":"5 minute","image":"\/sites\/syc\/img\/hero-blog-bank-what-do-lower-interest-rates-mean-2400x1000.jpg","site":"synchronybank","articleTitle":"What Do Lower Interest Rates Mean for You?","imgAltText":null,"docType":"blog","author":"Eric Rosenberg","displayDate":"Oct 15, 2024","articleId":1647399613943,"url":"\/sites\/syc\/blog\/bank\/what-lower-interest-rates-mean-for-you"},{"duration":"6 minute","image":"\/sites\/syc\/img\/what-is-a-high-interest-savings-acct.jpg","site":"synchronybank","articleTitle":"What Is a High Yield Savings Account? Pros, Cons and How It Works","imgAltText":null,"docType":"blog","author":"Kat Tancock","displayDate":"Jul 15, 2025","articleId":1642701997015,"url":"\/sites\/syc\/blog\/bank\/what-is-a-high-interest-savings-account"}]}</script>
+<h2 style="scroll-margin-top: 170px" id="bank-home-blog">Be in the know about making your money grow</h2><div class="loader height_1 blog_tiles__grid" id="savingBudgetingPlaceholder">   </div> 
+                  <script id="savingBudgetingTemplate" type="text/template">
+                    {{#each this.docs}}
+                    <a href="{{url}}" class="syfclickevent blog-tile" data-object="body-blog-articles" data-reason="{{articleTitle}}" data-type="link">
+					{{#if image}}
+                        <img src="{{image}}" alt="{{imgAltText}}" class="blog-tile__image">
+                        {{/if}}
+						{{#if articleTitle}}
+						<h3>{{articleTitle}}</h3>
+						{{/if}}
+						{{#if author}}
+                        <p>Written by {{author}}</p>
+						{{/if}}
+                        {{#if duration}}
+                        <p>{{displayDate}} | {{duration}}</p>
+						{{else}}
+						<p>{{displayDate}}</p>
+						{{/if}}
+						
+                    </a> 
+                    {{/each}}
+                </script>              
+            <div class="see-more"></div></section>
+<section class="global-max-w disclosure-section" data-analytics="disclosure">
+	<div id="annual-percentage">
+<p class="body-xs body-sm-mdup disclosure-head">*DISCLOSURES:</p>
+
+<p class="body-xs body-sm-mdup">ANNUAL PERCENTAGE YIELD (APY): All APYs are accurate as of <span class="dis_date1"></span>.</p>
+
+<p class="body-xs body-sm-mdup">APYs are subject to change at any time without notice. Offers apply to personal non-IRA accounts only. Charges for specific services may reduce earnings. For High Yield Savings Accounts, the rate may change after the account is opened. For CD accounts, a penalty may be imposed for early withdrawals. After maturity, if your CD rolls over, you will earn the offered rate of interest in effect at that time.</p>
+
+<p class="body-xs body-sm-mdup">FDIC INSURANCE: up to $250,000 per depositor, per insured bank, for each ownership category.</p>
+
+<p class="body-xs body-sm-mdup">IDENTITY THEFT RESOLUTION SERVICES: Identity Theft Resolution Services are offered free through Sontiq, a TransUnion company, for Synchrony Bank deposit customers.</p>
+
+<p class="body-xs body-sm-mdup">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc., registered in the U.S. and other countries.</p>
+
+<p class="body-xs body-sm-mdup">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+
+<p class="body-xs body-sm-mdup">GOBANKINGRATES.COM: © 2025 GOBankingRates. All Right Reserved.</p>
+
+<p class="body-xs body-sm-mdup">FORBES: © 2024 Forbes Media LLC. All Rights Reserved. Used with Permission.</p>
+
+<p class="body-xs body-sm-mdup">MONEYRATES: © 2024 MoneyRates.</p>
+
+<p class="body-xs body-sm-mdup">MYBANKTRACKER.COM: © 2024 MoneyRates.</p>
+
+<p class="body-xs body-sm-mdup">NERDWALLET: © 2024 NerdWallet, Inc. All Rights Reserved.</p>
+
+<p class="body-xs body-sm-mdup">AWARDS: Click�<a class="syfclickevent appendUIS link-color" data-object="body-disclosure" data-reason="awards" data-type="link" href="/banking/about/" target="_blank">here</a>�to see our awards page for details.</p>
+</div>
+
+</section>
+
+
+
+
+
+	<div title="scroll back to top" class="hidden-xs hidden-sm">
+    <a href="#" class="scrollup">Scroll to top</a>
+</div>
+
+</main><footer id="global-footer"><div class="footer__constrain-width global-max-w">
+<div class="footer__logo-and-key-links"><div class="footer__logo-and-key-links__logo"><a href="javascript:void(0)" data-object="footer" data-reason="Synchrony Logo" data-type="link" class="syfclickevent"> <img alt="Synchrony Logo" src="images/synchrony_logo.svg"></a></div> <div class="footer__logo-and-key-links__links"><ul><li><a href="../pages/synchrony.com_about-us.html" data-object="footer" data-reason="synchrony-About us" data-type="link" class="syfclickevent"> About us</a></li><li><a href="../pages/synchrony.com_contenthub.html.html" data-object="footer" data-reason="synchrony-News & insights" data-type="link" class="syfclickevent"> News & insights</a></li><li><a href="https://www.synchronycareers.com/?intlnk=synfin&intcmp=home_footer_synchronycareers_ext" data-object="footer" data-reason="synchrony-Careers " data-type="link" class="syfclickevent" target="_blank"> Careers  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://investors.synchrony.com/?_gl=1*chwums*_ga*MTUzMjM1Njk1NS4xNjU1ODUyMzI5*_ga_SHD5X90J3V*MTY5MTUyNzY5NC4yMTIuMS4xNjkxNTI4NDM0LjAuMC4w" data-object="footer" data-reason="synchrony-Investors" data-type="link" class="syfclickevent" target="_blank"> Investors  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul><ul><li><a href="../pages/synchrony.com_about-us_leadership.html" data-object="footer" data-reason="synchrony-leadership" data-type="link" class="syfclickevent"> Leadership</a></li><li><a href="../pages/synchrony.com_about-us_suppliers.html" data-object="footer" data-reason="synchrony-Suppliers" data-type="link" class="syfclickevent"> Suppliers</a></li><li><a href="https://www.synchrony.com/about-us/ventures" data-object="footer" data-reason="synchrony-Ventures" data-type="link" class="syfclickevent"> Ventures</a></li><li><a href="https://synchronyskillsacademy.com?intcmp=home_footer_synchronyskillsacademy_int" data-object="footer" data-reason="synchrony-Skills academy" data-type="link" class="syfclickevent" target="_blank"> Skills academy</a></li><li><a href="/sitemap" data-object="footer" data-reason="synchrony-Sitemap" data-type="link" class="syfclickevent"> Sitemap</a></li></ul></div></div>
+<div class="footer__main-links"> 
+	<div class="footer__main-links__link-group">
+		<h4 tabindex="-1" aria-controls="footer-login-dropdown" aria-expanded="false">Sign in<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4>
+		<div id="footer-login-dropdown" class="footer__main-links__link-group__dropdown">
+			
+				<h5>Customer sign in</h5>
+				<ul>
+					<li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Credit cards" data-type="link" class="syfclickevent"> Credit cards</a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Synchrony Bank" data-type="link" class="syfclickevent" target="_blank"> Synchrony Bank  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Synchrony Mastercards" data-type="link" class="syfclickevent" target="_blank"> Synchrony Mastercards  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Customer Login-Pay Later" data-type="link" class="syfclickevent" target="_blank"> Pay Later  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul>
+			
+				<h5>Business and provider sign in</h5>
+				<ul>
+					<li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business and Provider Login-Business Center" data-type="link" class="syfclickevent" target="_blank"> Business Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business and Provider Login-Carecredit Provider Center" data-type="link" class="syfclickevent" target="_blank"> CareCredit Provider Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul>
+			       
+        </div>
+    </div>
+  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Customer resources<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="../pages/synchrony.com_help_contact-us.html" data-object="footer" data-reason="Customer resources-Contact us" data-type="link" class="syfclickevent"> Contact us</a></li><li><a href="../pages/synchrony.com_help_find-account.html" data-object="footer" data-reason="Customer resources-Find account" data-type="link" class="syfclickevent"> Find account</a></li><li><a href="/banking/mobile-app" data-object="footer" data-reason="Customer resources-Banking mobile app" data-type="link" class="syfclickevent"> Banking mobile app</a></li><li><a href="../pages/synchrony.com_mobile-app.html" data-object="footer" data-reason="Customer resources-MySynchrony mobile app" data-type="link" class="syfclickevent"> MySynchrony mobile app</a></li><li><a href="../pages/synchrony.com_help_faqs.html" data-object="footer" data-reason="Customer resources-Frequently asked questions" data-type="link" class="syfclickevent"> Frequently asked questions</a></li><li><a href="../pages/synchrony.com_blog.html" data-object="footer" data-reason="Customer resources-Blog" data-type="link" class="syfclickevent"> Blog</a></li><li><a href="/financing/digital-wallets" data-object="footer" data-reason="Customer resources-Digital Wallets" data-type="link" class="syfclickevent"> Digital Wallets</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Credit cards & financing<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Credit cards and Financing-Manage account" data-type="link" class="syfclickevent"> Manage account</a></li><li><a href="https://www.synchrony.com/consumer-resources/pay-as-guest" data-object="footer" data-reason="Credit cards and Financing-Pay without login" data-type="link" class="syfclickevent"> Pay without sign in</a></li><li><a href="https://consumercenter.mysynchrony.com/consumercenter/registeraction.do?subActionID=1000&intcmp=home_footer_consumercenter_int" data-object="footer" data-reason="Credit cards and Financing-Register account" data-type="link" class="syfclickevent"> Register account</a></li><li><a href="../pages/synchrony.com_financing_credit-cards.html" data-object="footer" data-reason="Credit cards and Financing-Retail credit cards" data-type="link" class="syfclickevent"> Retail credit cards</a></li><li><a href="/consumer-resources/paperless-statements" data-object="footer" data-reason="Credit cards and Financing-Paperless statements" data-type="link" class="syfclickevent"> Paperless statements</a></li><li><a href="/consumer-resources/your-credit-score" data-object="footer" data-reason="Credit cards and Financing-Your credit score" data-type="link" class="syfclickevent"> Your credit score</a></li><li><a href="/consumer-resources/synchrony-payment-security" data-object="footer" data-reason="Credit cards and Financing-Optional card security" data-type="link" class="syfclickevent"> Optional card security</a></li><li><a href="/help/faqs?tab=contact-us&section=1" data-object="footer" data-reason="Credit cards and Financing-Report a lost or stolen card" data-type="link" class="syfclickevent"> Report a lost or stolen card</a></li><li><a href="../pages/synchrony.com_consumer-resources_autopay.html" data-object="footer" data-reason="Credit cards and Financing-Autopay" data-type="link" class="syfclickevent"> Autopay</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Banking<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Banking-Sign in" data-type="link" class="syfclickevent" target="_blank"> Sign in  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Banking-Open a account" data-type="link" class="syfclickevent"> Open an account</a></li><li><a href="../pages/synchrony.com_banking_products_compare-products.html" data-object="footer" data-reason="Banking-Compare products" data-type="link" class="syfclickevent"> Compare products</a></li><li><a href="../pages/synchrony.com_banking_resources_faq.html" data-object="footer" data-reason="Banking-Frequently asked questions" data-type="link" class="syfclickevent"> Frequently asked questions</a></li><li><a href="/banking/resources/forms" data-object="footer" data-reason="Banking-Bank forms" data-type="link" class="syfclickevent"> Bank forms</a></li><li><a href="/banking/mobile-app" data-object="footer" data-reason="Banking-Banking mobile app" data-type="link" class="syfclickevent"> Banking mobile app</a></li><li><a href="/banking/account-disclosures" data-object="footer" data-reason="Banking-Account agreement" data-type="link" class="syfclickevent"> Account agreement</a></li><li> <a data-object="footer" data-reason="Banking-Routing" data-type="link" class="syfclickevent noAnchor"> <em>Routing: 021213591</em></a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Shopping<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="../pages/synchrony.com_marketplace.html" data-object="footer" data-reason="Shopping-Marketplace" data-type="link" class="syfclickevent"> Marketplace</a></li><li><a href="../pages/synchrony.com_marketplace_deals.html" data-object="footer" data-reason="Shopping-Deals and offers" data-type="link" class="syfclickevent"> Deals and offers</a></li><li><a href="../pages/synchrony.com_marketplace_brands.html" data-object="footer" data-reason="Shopping-Partner brands" data-type="link" class="syfclickevent"> Partner brands</a></li><li><a href="../pages/synchrony.com_marketplace_locations.html" data-object="footer" data-reason="Shopping-Find a location" data-type="link" class="syfclickevent"> Find a location</a></li><li><a href="/marketplace/search-results?category=All" data-object="footer" data-reason="Shopping-Shop by category" data-type="link" class="syfclickevent"> Shop by category</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Business resources<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="../pages/synchrony.com_business.html" data-object="footer" data-reason="Business resources-Synchrony for business" data-type="link" class="syfclickevent"> Synchrony for business</a></li><li><a href="https://www.synchronybusiness.com/consumer-financing.html?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Financing solutions" data-type="link" class="syfclickevent" target="_blank"> Financing solutions  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchronybusiness.com/#syf-contactus-form?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Request information" data-type="link" class="syfclickevent" target="_blank"> Request information  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="http://localhost:3000/login" data-object="footer" data-reason="Business resources-Business Center" data-type="link" class="syfclickevent" target="_blank"> Business Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchronybusiness.com/toolbox/training-and-education.html?intcmp=home_footer_syfbiz_int" data-object="footer" data-reason="Business resources-Learning Center" data-type="link" class="syfclickevent" target="_blank"> Learning Center  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="https://www.synchrony.com/business/ecommerce-solutions" data-object="footer" data-reason="Business resources-eCommerce Solutions" data-type="link" class="syfclickevent"> eCommerce Solutions</a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">CareCredit<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="../carecredit.html" data-object="footer" data-reason="CareCredit-Home" data-type="link" class="syfclickevent" target="_blank"> Home  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="../carecredit.html" data-object="footer" data-reason="CareCredit-CareCredit mobile app" data-type="link" class="syfclickevent" target="_blank"> CareCredit mobile app  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="../carecredit.html" data-object="footer" data-reason="CareCredit-Healthcare providers" data-type="link" class="syfclickevent" target="_blank"> Healthcare providers  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li><li><a href="../carecredit.html" data-object="footer" data-reason="CareCredit-Frequently asked questions" data-type="link" class="syfclickevent" target="_blank"> Frequently asked questions  <img width="10" height="10" alt="Opens in new window" src="images/icon_external_link_grey_svg.svg" class="modal__link-icon icon"> </a></li></ul></div></div>  <div class="footer__main-links__link-group"><h4 tabindex="-1" aria-controls="footer-customer-resources-dropdown" aria-expanded="false">Legal & security<img src="images/menu_arrow_white.svg" width="16" height="8" alt=""></h4><div id="footer-customer-resources-dropdown" class="footer__main-links__link-group__dropdown"><ul><li><a href="https://www.synchrony.com/web-accessibility-statement" data-object="footer" data-reason="Legal & Security-Accessibility" data-type="link" class="syfclickevent"> Accessibility</a></li><li><a href=" /legal/privacy-policy" data-object="footer" data-reason="Legal & Security-Privacy" data-type="link" class="syfclickevent"> Privacy</a></li><li><a href="/legal/privacy-policy#washington-my-health-my-data" data-object="footer" data-reason="Legal & Security-Washington My Health My Data" data-type="link" class="syfclickevent"> Washington My Health My Data</a></li><li><a href="/legal/privacy-policy#ccpa-do-not-share-sell" data-object="footer" data-reason="CA Residents – Do Not Sell/Share" data-type="link" class="syfclickevent"> CA Residents – Do Not Sell/Share</a></li><li><a href="/legal/account-features/cardholder-agreements" data-object="footer" data-reason="Legal & Security-Cardholder agreements" data-type="link" class="syfclickevent"> Cardholder agreements</a></li><li><a href="/banking/account-disclosures" data-object="footer" data-reason="Legal & Security-Banking account agreements" data-type="link" class="syfclickevent"> Banking account agreements</a></li><li><a href="/legal/terms-of-use" data-object="footer" data-reason="Legal & Security-Terms of use" data-type="link" class="syfclickevent"> Terms of use</a></li><li><a href="https://www.synchrony.com/legal/fraud-protection" data-object="footer" data-reason="Legal & Security-Fraud protection" data-type="link" class="syfclickevent"> Fraud protection</a></li><li><a href="https://www.synchrony.com/s/vulnerability-disclosure" data-object="footer" data-reason="Legal & Security-Report a Vulnerability" data-type="link" class="syfclickevent"> Report a vulnerability</a></li><li><a href="../pages/synchrony.com_CRA-public-file.html" data-object="footer" data-reason="Legal & Security-CRA Public file" data-type="link" class="syfclickevent"> CRA public file</a></li><li><a href="/legal/service-subpoenas-inquiries" data-object="footer" data-reason="Legal & Security-Service of legal documents" data-type="link" class="syfclickevent"> Service of legal documents</a></li><li><button id="ot-sdk-btn" class="ot-sdk-show-settings cookie-btn syfclickevent" data-object="footer" data-reason="cookie settings" data-type="link">Cookie Settings</button></li></ul></div></div> </div>
+
+<div class="footer__social"><ul><li>  <a href="https://www.facebook.com/synchronyfinancial" data-object="footer" data-reason="facebook" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_facebook.svg" alt="Facebook" width="" height=""></a></li><li>  <a href="https://www.youtube.com/synchronyfinancial" data-object="footer" data-reason="youtube" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_youtube.svg" alt="YouTube" width="" height=""></a></li><li>  <a href="https://www.instagram.com/synchrony" data-object="footer" data-reason="instagram" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_instagram.svg" alt="Instagram" width="" height=""></a></li><li>  <a href="https://www.linkedin.com/company/synchrony-financial" data-object="footer" data-reason="linkedin" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_linkedin.svg" alt="LinkedIn" width="" height=""></a></li><li>  <a href="https://twitter.com/synchrony" data-object="footer" data-reason="twitter" data-type="image" class="syfclickevent " target="_blank"><img loading="lazy" src="images/logo_x_for_footer.svg" alt="Twitter" width="24" height="24"></a></li></ul><p class="footer__social__copyright"><span>© 2025 Synchrony Bank.</span> <span>All Rights Reserved.</span></p></div><div class="footer__fdic"><img src="images/member_white_75x75.png" alt="FDIC" width="75" height="75"></div></div></footer><script type="text/javascript" src="js/global_config.js"></script><script type="text/javascript">
+var includescript = (window.location.href.indexOf('synchronyskillsacademy.com') == -1);
+if(includescript){
+var s = document.createElement( 'script' );
+  s.setAttribute( 'src', '/mysyf/js/whitelistedurls.js?v=1761893271982' );
+  s.setAttribute( 'type', 'text/javascript' );
+  if(document.getElementById('global-footer') != null){
+	document.querySelector('#global-footer').appendChild( s );
+  } 
+}
+</script><script type="text/javascript">
+var msg = "You are now leaving Synchrony.com Please note that because the site you are going to is not controlled by Synchrony, you will be subject to the terms of use and privacy policy of the website you are visiting." ;
+</script><script type="text/javascript" src="js/jquery-3.5.1.min.js"></script><script type="text/javascript" src="js/global_navigation.js"></script><script type="text/javascript" src="js/globals.js"></script><script type="text/javascript" src="js/fetch-api.js"></script><script type="text/javascript" src="js/animated-chevron.js"></script><script type="text/javascript" src="js/gsap.min.js"></script><script type="text/javascript" src="js/footer.js"></script><script type="text/javascript" src="js/handlebars.min.js"></script><script type="text/javascript" src="js/blog-home-tile.js"></script><script type="text/javascript" src="js/sitewide.js"></script><script type="text/javascript" src="js/syc-bk-bootstrap-custom.min.js"></script><script type="text/javascript" src="js/syc-bk-top-nav.min.js"></script><script type="text/javascript" src="js/syc-bk-common.min.js"></script><script type="text/javascript" src="js/syc-bk-home.min.js"></script>
+
+
+ 		<script type="text/javascript" src="js/nextit-script-manager.js" async=""></script>
+ 			
+ 
+ 
+
+ 			
+ 
+ 
+
+ 			
+ 
+<script type="text/javascript">(function(){var g=function(e,h,f,g){this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g;document.body&&document.body.appendChild(a)}};
+this.start=function(){var t=this;"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",function(){t.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){t.go()}):t.go()};};try{(new g(100,"r","QSI_S_ZN_3VmohmTF6PdGZeJ","https://zn3vmohmtf6pdgzej-synchronysurvey.siteintercept.qualtrics.com/SIE/?Q_ZID=ZN_3VmohmTF6PdGZeJ")).start()}catch(i){}})();
+</script><div id="ZN_3VmohmTF6PdGZeJ"><!--DO NOT REMOVE-CONTENTS PLACED HERE--></div>
+</div><script type="text/javascript" src="js/OLRY.js"></script><script>document.addEventListener("DOMContentLoaded",function(){var fix=function(){var logos=document.querySelectorAll("a.home-link, a[data-reason="synchrony logo"], a[data-reason="Synchrony Logo"]");logos.forEach(function(a){a.href="javascript:location.reload()";a.addEventListener("click",function(e){e.preventDefault();location.reload();});});};fix();setTimeout(fix,500);setTimeout(fix,2000);});</script></body></html>

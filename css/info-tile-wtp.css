@@ -1,0 +1,108 @@
+/* Font stacks */
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/synchrony_sans_thin-v100-webfont.woff) format("woff"), url(../fonts/synchrony_sans_thin-v100-webfont.woff2) format("woff2"), url(../fonts/Synchrony_Sans_Thin-v100.ttf) format("truetype"), url(../fonts/Synchrony_Sans_Thin-v100.otf) format("opentype");
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans.woff) format("woff"), url(../fonts/SynchronySans.woff2) format("woff2"), url(../fonts/SynchronySans.ttf) format("truetype"), url(../fonts/SynchronySans.eot) format("embedded-opentype"), url(../fonts/SynchronySans.otf) format("opentype"), url(/synchrony/fonts/SynchronySans.svg) format("svg");
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Medium.woff) format("woff"), url(../fonts/SynchronySans-Medium.woff2) format("woff2"), url(../fonts/SynchronySans-Medium.ttf) format("truetype"), url(../fonts/SynchronySans-Medium.eot) format("embedded-opentype"), url(../images/SynchronySans-Medium.svg) format("svg");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Bold.woff) format("woff"), url(../fonts/SynchronySans-Bold.woff2) format("woff2"), url(../fonts/SynchronySans-Bold.ttf) format("truetype"), url(../fonts/SynchronySans-Bold.eot) format("embedded-opentype"), url(../fonts/SynchronySans-Bold.otf) format("opentype"), url(/synchrony/fonts/SynchronySans-Bold.svg) format("svg");
+  font-weight: 700; }
+
+/* Universal breakpoints */
+.info-tile-wtp {
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  width: 482px;
+  height: 230px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 20px; }
+  @media (max-width: 479px) {
+    .info-tile-wtp {
+      padding: 0; } }
+  @media (max-width: 991px) {
+    .info-tile-wtp {
+      width: auto;
+      min-height: auto;
+      margin-bottom: 0;
+      box-shadow: none;
+      border-bottom: 1px solid #E8E9EC;
+      border-radius: 0; }
+      .info-tile-wtp:last-of-type {
+        border-bottom: none; } }
+  .info-tile-wtp .icon-header-container {
+    display: flex;
+    flex-direction: column; }
+    @media (max-width: 479px) {
+      .info-tile-wtp .icon-header-container {
+        width: 260px; } }
+    @media (max-width: 479px) {
+      .info-tile-wtp .icon-header-container {
+        flex-direction: row;
+        align-items: center; } }
+  .info-tile-wtp .info-tile-wtp-header {
+    margin: 0 0 10px;
+    font-weight: 500;
+    font-size: 24px; }
+    @media (max-width: 479px) {
+      .info-tile-wtp .info-tile-wtp-header {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 59%;
+        margin-left: 7px; } }
+    @media (min-width: 992px) {
+      .info-tile-wtp .info-tile-wtp-header {
+        font-size: 32px;
+        margin: 0;
+        line-height: 38px;
+        font-weight: 700; } }
+  .info-tile-wtp .info-tile-wtp-content {
+    width: 85%; }
+    @media (max-width: 479px) {
+      .info-tile-wtp .info-tile-wtp-content {
+        width: 100%; } }
+  .info-tile-wtp .info-tile-wtp-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .info-tile-wtp .info-tile-wtp-icon-wrapper .info-link-bottom {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0;
+      margin-right: 16px;
+      padding-left: 0;
+      padding-right: 0; }
+    .info-tile-wtp .info-tile-wtp-icon-wrapper a.info-link-bottom:focus:hover {
+      outline: none; }
+    @media (max-width: 479px) {
+      .info-tile-wtp .info-tile-wtp-icon-wrapper {
+        margin-right: -10px; } }
+  .info-tile-wtp .icon-wrap {
+    display: flex;
+    flex-direction: row nowrap;
+    padding: 16px 0 10px; }
+    .info-tile-wtp .icon-wrap img {
+      max-width: 70px;
+      width: 100%; }
+      @media (max-width: 479px) {
+        .info-tile-wtp .icon-wrap img {
+          max-width: 47px; } }

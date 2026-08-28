@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Prequalify for Credit Cards | Synchrony</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        :root {
+            --primary-gold: #fbc600;
+            --dark-charcoal: #1e242b;
+            --light-bg: #f5f8f9;
+            --border: #dde4e8;
+            --teal: #00685b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--dark-charcoal);
+            background: var(--light-bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Header */
+        .pq-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            min-height: 60px;
+        }
+
+        .pq-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .pq-logo {
+            height: 34px;
+            width: auto;
+            max-width: 170px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .pq-header-actions {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .btn-signin-header {
+            background: var(--primary-gold);
+            color: #111111 !important;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 9px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.1s;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-signin-header:hover {
+            background: #e6b500;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Banner */
+        .pq-hero {
+            background: linear-gradient(135deg, #1b2838 0%, #0d1520 100%);
+            color: #ffffff;
+            padding: 48px 20px 56px 20px;
+            text-align: center;
+        }
+
+        .pq-badge {
+            background: rgba(251, 198, 0, 0.18);
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 5px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .pq-hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .pq-hero p {
+            font-size: 17px;
+            color: #b0c0cf;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Main Container */
+        .pq-main {
+            max-width: 1040px;
+            margin: -28px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        /* Interactive Card Matcher */
+        .pq-card-matcher {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            margin-bottom: 36px;
+        }
+
+        .pq-card-matcher h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--dark-charcoal);
+        }
+
+        .pq-card-matcher p {
+            color: #61707d;
+            font-size: 15px;
+        }
+
+        .pq-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 24px 0 20px 0;
+        }
+
+        .pq-select-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c353f;
+        }
+
+        .pq-select {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            color: var(--dark-charcoal);
+            background: #fafbfc;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .pq-select:focus {
+            border-color: #00685b;
+            box-shadow: 0 0 0 3px rgba(0,104,91,0.12);
+        }
+
+        .btn-check-offers {
+            background: var(--primary-gold);
+            color: #111111;
+            font-weight: 800;
+            font-size: 16px;
+            border: none;
+            height: 50px;
+            padding: 0 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-check-offers:hover {
+            background: #e6b500;
+        }
+
+        /* Card Showcase */
+        .pq-cards-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+        }
+
+        .pq-card-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pq-card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+        }
+
+        .pq-tag {
+            font-weight: 800;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .pq-card-item h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-charcoal);
+        }
+
+        .pq-card-item p {
+            font-size: 14px;
+            color: #5a6672;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .pq-card-btn {
+            background: var(--dark-charcoal);
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            display: block;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .pq-card-btn:hover {
+            background: #000000;
+        }
+
+        .pq-card-btn-secondary {
+            background: #ffffff;
+            color: var(--dark-charcoal);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            text-align: center;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .pq-card-btn-secondary:hover {
+            background: #f0f4f6;
+        }
+
+        /* Footer */
+        .pq-footer {
+            background: #161b20;
+            color: #8c9ba5;
+            padding: 36px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .pq-footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .pq-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile specific fixes */
+        @media(max-width: 768px) {
+            .pq-header {
+                padding: 10px 16px;
+            }
+            .pq-logo {
+                height: 28px;
+                max-width: 140px;
+            }
+            .btn-signin-header {
+                font-size: 13px;
+                padding: 8px 16px;
+            }
+            .pq-hero {
+                padding: 36px 16px 44px 16px;
+            }
+            .pq-hero h1 {
+                font-size: 26px;
+            }
+            .pq-hero p {
+                font-size: 15px;
+            }
+            .pq-card-matcher {
+                padding: 20px;
+            }
+            .pq-form-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .pq-cards-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Clean Header -->
+    <header class="pq-header">
+        <a href="Mainindex.html" class="pq-logo-link">
+            <img src="images/2023_synchrony_basic_logo.svg" alt="Synchrony" class="pq-logo" onerror="this.onerror=null; this.src='images/main_logo@0.5x.png';">
+        </a>
+        <div class="pq-header-actions">
+            <a href="http://localhost:3000/login" class="btn-signin-header">SIGN IN</a>
+        </div>
+    </header>
+
+    <section class="pq-hero">
+        <div class="pq-badge">No Impact to Credit Score</div>
+        <h1>Find Your Perfect Card Offer</h1>
+        <p>Check if you prequalify for Synchrony retail and rewards credit cards in just 60 seconds with zero credit score impact.</p>
+    </section>
+
+    <main class="pq-main">
+        <div class="pq-card-matcher">
+            <h2>Prequalification Quick Check</h2>
+            <p>Select your preferred financing option to see available personalized offers.</p>
+            <form onsubmit="event.preventDefault(); alert('Great news! You have multiple pre-approved offers available. Returning to main portal...'); window.location.href='Mainindex.html';">
+                <div class="pq-form-grid">
+                    <div class="pq-select-group">
+                        <label>Financing Category</label>
+                        <select class="pq-select">
+                            <option>Shopping & Retail Cards</option>
+                            <option>Home Improvement & Furniture</option>
+                            <option>CareCredit Healthcare</option>
+                            <option>Cashback Mastercards</option>
+                        </select>
+                    </div>
+                    <div class="pq-select-group">
+                        <label>Monthly Spending</label>
+                        <select class="pq-select">
+                            <option value="under500">Under  / month</option>
+                            <option value="500-1500"> - ,500 / month</option>
+                            <option value="1500-3000">,500 - ,000 / month</option>
+                            <option value="3000plus">,000+ / month</option>
+                        </select>
+                    </div>
+                    <div class="pq-select-group">
+                        <label>Reward Preference</label>
+                        <select class="pq-select">
+                            <option>2% Unlimited Cash Back</option>
+                            <option>0% Promotional Financing</option>
+                            <option>Store Discounts & Perks</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-check-offers">Check My Pre-Qualified Offers</button>
+            </form>
+        </div>
+
+        <div class="pq-cards-showcase">
+            <div class="pq-card-item">
+                <span class="pq-tag" style="background:#fff4cc; color:#8a6400;">POPULAR</span>
+                <h3>Synchrony Premier Mastercard®</h3>
+                <p>Earn unlimited 2% cash back on every purchase with no annual fee and zero category restrictions.</p>
+                <a href="Mainindex.html" class="pq-card-btn">Return to Main Page</a>
+                <a href="http://localhost:3000/login" class="pq-card-btn-secondary">Sign In to Apply</a>
+            </div>
+
+            <div class="pq-card-item">
+                <span class="pq-tag" style="background:#e6f4ea; color:#137333;">HEALTH & WELLNESS</span>
+                <h3>CareCredit® Credit Card</h3>
+                <p>Flexible financing for health, dental, vision, cosmetic, and veterinary care at 285,000+ locations.</p>
+                <a href="carecredit.html" class="pq-card-btn">View CareCredit Portal</a>
+                <a href="Mainindex.html" class="pq-card-btn-secondary">Back to Homepage</a>
+            </div>
+
+            <div class="pq-card-item">
+                <span class="pq-tag" style="background:#fce8e6; color:#c5221f;">LUXURY REWARDS</span>
+                <h3>JPLuxury Rewards Card</h3>
+                <p>Special financing on designer collections, exclusive seasonal savings, and VIP concierge service.</p>
+                <a href="jpluxury.html" class="pq-card-btn">View JPLuxury Collection</a>
+                <a href="Mainindex.html" class="pq-card-btn-secondary">Back to Homepage</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pq-footer">
+        <p>© 2026 Synchrony Bank. All rights reserved. Member FDIC.</p>
+        <div style="margin-top: 12px;">
+            <a href="Mainindex.html">Synchrony Main</a>
+            <a href="carecredit.html">CareCredit</a>
+            <a href="jpluxury.html">JPLuxury</a>
+            <a href="banking/index.html">Banking</a>
+            <a href="http://localhost:3000/login">Sign In</a>
+        </div>
+    </footer>
+</body>
+</html>

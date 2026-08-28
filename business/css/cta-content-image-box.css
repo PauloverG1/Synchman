@@ -1,0 +1,135 @@
+/* Universal breakpoints */
+.cta-content-image-box .cta-content-photo-wrap {
+  width: 50%; }
+  @media (min-width: 992px) {
+    .cta-content-image-box .cta-content-photo-wrap {
+      position: relative;
+      bottom: 120px;
+      margin-top: 140px; } }
+  @media (max-width: 991px) {
+    .cta-content-image-box .cta-content-photo-wrap {
+      width: 100%; } }
+
+.cta-content-image-box .content-wrap {
+  background: rgba(191, 222, 223, 0.3); }
+  .cta-content-image-box .content-wrap.bg-none {
+    background: none; }
+    @media (min-width: 992px) {
+      .cta-content-image-box .content-wrap.bg-none {
+        margin: 100px 0 0; } }
+  @media (min-width: 992px) {
+    .cta-content-image-box .content-wrap {
+      margin: 60px 0 0; } }
+
+.cta-content-image-box .cta-content-wrap {
+  padding: 40px 100px; }
+  @media (max-width: 991px) {
+    .cta-content-image-box .cta-content-wrap {
+      padding: 20px; } }
+
+.cta-content-image-box .content-inner.bg-gray {
+  background-color: #F5F5F5; }
+
+.cta-content-image-box .cta-content-photo {
+  width: 100%;
+  min-height: 595px;
+  border-radius: 0px 24px 0px 0px; }
+  .cta-content-image-box .cta-content-photo.short {
+    min-height: 550px; }
+    /*Deepika- fix image alignment for horizontal iphone 15*/
+    @media (max-width: 560px) {
+      .cta-content-image-box .cta-content-photo.short {
+        min-height: 230px;
+        max-height: 230px;
+        border-radius: 0px; } }
+    @media (min-width: 768px) and (max-width: 1080px) {
+      .cta-content-image-box .cta-content-photo.short {
+        background-position: center top;
+        min-height: 350px; } }
+  .cta-content-image-box .cta-content-photo.reverse {
+    border-radius: 24px 0px 0px 0px; }
+    @media (max-width: 991px) {
+      .cta-content-image-box .cta-content-photo.reverse {
+        border-radius: 0px; } }
+  @media (min-width: 768px) and (max-width: 1080px) {
+    .cta-content-image-box .cta-content-photo {
+      background-position: center top;
+      min-height: 350px; } }
+  @media (max-width: 767px) {
+    .cta-content-image-box .cta-content-photo {
+      min-height: 230px;
+      max-height: 230px;
+      border-radius: 0px; } }
+
+.cta-content-image-box .cta-content-desc-heading {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 48px; }
+  @media (max-width: 991px) {
+    .cta-content-image-box .cta-content-desc-heading {
+      font-size: 24px;
+      line-height: 32px; } }
+
+.cta-content-image-box .cta-content-desc-copy {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0px 0 40px; }
+  @media (max-width: 991px) {
+    .cta-content-image-box .cta-content-desc-copy {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px; } }
+
+.cta-content-image-box .cta-content-description {
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column; }
+  @media (min-width: 992px) {
+    .cta-content-image-box .cta-content-description {
+      height: 501px;
+      justify-content: space-between; } }
+  .cta-content-image-box .cta-content-description.no-height {
+    height: auto; }
+  @media (max-width: 991px) {
+    .cta-content-image-box .cta-content-description {
+      border-radius: 0px;
+      padding: 15px 30px; } }
+  @media (max-width: 480px) {
+    .cta-content-image-box .cta-content-description {
+      height: 300px; } }
+  .cta-content-image-box .cta-content-description.reverse {
+    border-radius: 0px 0px 24px 0px; }
+    @media (max-width: 991px) {
+      .cta-content-image-box .cta-content-description.reverse {
+        border-radius: 0px; } }
+
+.cta-content-image-box .button-holder {
+  position: relative; }
+  
+  
+ /*amazon page mobile alignment Fix*/
+ @media (min-width:373px) and (max-width: 480px) {
+  #amazon-howitworks.cta-content-image-box .cta-content-description {
+      height: 400px;    } }	 
+ @media (max-width:372px) {
+  #amazon-howitworks.cta-content-image-box .cta-content-description {
+      height: 470px;    } }  
+ .amazon-cta  {
+     color: inherit;  }		 
+ #amazon-howitworks.cta-content-image-box .content-wrap {
+    background-color: #F5F5F5;}	 
+ @media (min-width: 991px){
+  #amazon-howitworks.cta-content-image-box .cta-content-description {
+      height: auto;
+      } }	
+ @media only screen and (min-width: 480px) and (max-width: 991px) {
+   #amazon-howitworks.cta-content-image-box .cta-wrap.left{
+    width: 40% !important;
+    margin: auto;  } }
+@media (max-width: 480px) {
+#amazon-howitworks.cta-content-image-box .cta-wrap.left {	
+   width: 90%; }}	
+	  
+
+	 

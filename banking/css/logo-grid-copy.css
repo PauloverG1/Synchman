@@ -1,0 +1,70 @@
+/* Font stacks */
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/synchrony_sans_thin-v100-webfont.woff2) format("woff2"), url(../fonts/Synchrony_Sans_Thin-v100.ttf) format("truetype"), url(../fonts/Synchrony_Sans_Thin-v100.otf) format("opentype");
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans.woff2) format("woff2"), url(../fonts/SynchronySans.ttf) format("truetype"), url(../fonts/SynchronySans.otf) format("opentype"), url(/synchrony/fonts/SynchronySans.svg) format("svg");
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Medium.woff2) format("woff2"), url(../fonts/SynchronySans-Medium.ttf) format("truetype"), url(../images/SynchronySans-Medium.svg) format("svg");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Bold.woff2) format("woff2"), url(../fonts/SynchronySans-Bold.ttf) format("truetype"), url(../fonts/SynchronySans-Bold.otf) format("opentype"), url(/synchrony/fonts/SynchronySans-Bold.svg) format("svg");
+  font-weight: 700; }
+
+/* Universal breakpoints */
+.logo-grid {
+  background-color: #F3F6F6; }
+  .logo-grid .between {
+    justify-content: space-between; }
+  .logo-grid-heading {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 55px;
+    margin: 0;
+    color: #3B3D49;
+    margin-bottom: 20px; }
+    @media (max-width: 991px) {
+      .logo-grid-heading {
+        font-size: 36.7624px;
+        line-height: 32px;
+        margin-bottom: 10px; } }
+  .logo-grid .logo-grid-copy {
+    max-width: 515px;
+    width: 50%; }
+    @media (max-width: 991px) {
+      .logo-grid .logo-grid-copy {
+        max-width: 100%;
+        width: 100%; } }
+  @media (max-width: 991px) {
+    .logo-grid .logo-grid-tagline {
+      width: 100%; } }
+  .logo-grid .logo-grid-logo {
+    max-width: 50%; }
+    @media (max-width: 991px) {
+      .logo-grid .logo-grid-logo {
+        display: none; } }
+    .logo-grid .logo-grid-logo img {
+      width: 100%; }
+  .logo-grid .logo-grid-tagline {
+    max-width: 380px; }
+  @media (max-width: 767px) {
+    .logo-grid .logo-grid-subcopy {
+      font-size: 16px; } }
+      /* ADA fix for logo grid image on 400% zoom*/
+     .zoom-in-mode .logo-grid .logo-grid-logo{
+      display: block;
+      max-width: 100%;
+     }
+    

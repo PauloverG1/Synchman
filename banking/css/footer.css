@@ -1,0 +1,206 @@
+/* Universal breakpoints */
+footer#global-footer {
+  background: linear-gradient(to right, #2d2e35 50%, #3b3d49 50%); }
+  footer#global-footer * {
+    outline-color: #fbc600 !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  footer#global-footer .icon {
+    width: 10px;
+    margin-top: -2px;
+    margin-left: 8px; }  
+  footer#global-footer a {
+    color: inherit;
+    outline-offset: 2px;
+    display: flex;
+    text-decoration: none; }
+    footer#global-footer a:hover {
+      color: #fbc600 !important; }
+      footer#global-footer .cookie-btn {
+        background-color: transparent;
+        border: none;
+        padding: 0;    
+	color: #b7bdc9 !important;
+    font-size: inherit;
+    width: 100%;
+    text-align: left; }
+    footer#global-footer .cookie-btn:hover {
+      color: #fbc600 !important;
+      cursor: pointer; }
+      footer#global-footer .footer__constrain-width {
+        display: grid;
+        color: white;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: "logo-and-key-links main-links" "social fdic"; }
+        @media (max-width: 991px) {
+          footer#global-footer .footer__constrain-width {
+            display: flex;
+            flex-direction: column; } }
+      footer#global-footer .footer__logo-and-key-links {
+        background-color: #2d2e35;
+        padding: 40px 48px; }
+        @media (max-width: 991px) {
+          footer#global-footer .footer__logo-and-key-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 16px; } }
+            footer#global-footer .footer__logo-and-key-links__logo {
+              margin-bottom: 24px; }
+              footer#global-footer .footer__logo-and-key-links__logo a {
+                display: block;
+                width: 208px;
+                height: 44px;
+                outline-offset: 4px; }
+            footer#global-footer .footer__logo-and-key-links__links {
+              display: flex;
+              gap: 40px; }
+              footer#global-footer .footer__logo-and-key-links__links ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 8px; }
+                footer#global-footer .footer__logo-and-key-links__links ul a {
+                  color: #b7bdc9;
+                  font-size: 14px;
+                  line-height: 20px;
+                  display: flex;
+                  width: -moz-fit-content;
+                  width: fit-content; }
+    footer#global-footer .footer__main-links {
+      background-color: #3b3d49;
+      padding: 50px;
+      padding-bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      grid-template-rows: repeat(2, auto);
+      grid-row-gap: 32px; }
+      @media screen and (max-width: 1300px) {
+      footer#global-footer .footer__main-links {
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(4, auto); } }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__main-links {
+      display: flex;
+      flex-direction: column;
+      padding: 32px 16px; } } 
+      footer#global-footer .footer__main-links__link-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 24px; }
+      @media (max-width: 1279px) {
+      footer#global-footer .footer__main-links__link-group {
+      padding-right: 0; } }
+      footer#global-footer .footer__main-links__link-group__dropdown {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 2px; }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__main-links__link-group__dropdown {
+      max-height: 0;
+      transition: all 0.3s ease-in-out; } 
+      footer#global-footer .footer__main-links__link-group__dropdown.open {
+      max-height: 500px; } } 
+      footer#global-footer .footer__main-links__link-group h4 {
+      margin: 0;
+      padding: 0 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; } 
+      @media (max-width: 991px) {
+      footer#global-footer .footer__main-links__link-group h4 {
+      cursor: pointer; } }
+      footer#global-footer .footer__main-links__link-group h4.open img {
+      transform: rotate(180deg); }      
+      footer#global-footer .footer__main-links__link-group h4 img {
+      display: none !important;
+      transition: all 0.3s ease-in-out; }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__main-links__link-group h4 img {
+      display: block !important; } }
+      footer#global-footer .footer__main-links__link-group h5 {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500; }
+      footer#global-footer .footer__main-links__link-group ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #b7bdc9;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px; }
+      footer#global-footer .footer__main-links__link-group ul a {
+      outline-offset: 0; 
+      width: fit-content;
+    }
+footer#global-footer .footer__main-links__link-group ul a:focus-visible ,.footer__logo-and-key-links__links a:focus-visible {
+   color: #fbc600 !important;
+    }
+      footer#global-footer .footer__social {
+      background-color: #2d2e35;
+      padding: 16px 48px 40px 48px; }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__social {
+      padding: 32px 16px; } }
+      footer#global-footer .footer__social ul {
+      padding: 0;
+      margin: 0 0 16px 0;
+      display: flex;
+      gap: 24px;
+      list-style-type: none; }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__social ul {
+      justify-content: center;
+      margin-bottom: 24px; } }
+      footer#global-footer .footer__social ul a {
+      display: block;
+      height: 24px; }
+      footer#global-footer .footer__social ul a img {
+      filter: invert(77%) sepia(4%) saturate(1048%) hue-rotate(181deg) brightness(88%) contrast(86%); }
+      footer#global-footer .footer__social ul a img:hover {
+        filter: invert(76%) sepia(7%) saturate(7500%) hue-rotate(4deg) brightness(104%) contrast(101%); }
+      footer#global-footer .footer__social__copyright {
+      color: #b7bdc9;
+      font-size: 12px;
+      letter-spacing: 0.28px; }
+      @media (max-width: 991px) {
+      footer#global-footer .footer__social__copyright {
+      text-align: center; } }
+      footer#global-footer .footer__fdic {
+        background-color: #3b3d49;
+        padding-bottom: 40px;
+        padding-right: 46px;
+        display: flex;
+        justify-content: end;
+        align-items: end; }
+        footer#global-footer .footer__fdic img {
+          width: 64px;
+          height: 64px; }
+        @media (max-width: 991px) {
+          footer#global-footer .footer__fdic {
+            background-color: #2d2e35;
+            padding-left: 46px;
+            padding-bottom: 30px;
+            justify-content: center; }
+            footer#global-footer .footer__fdic img {
+              width: 56px;
+              height: 56px; } }           
+
+/*custom css to disable cursor pointer for routing link in footer banking section*/
+.noAnchor{
+	pointer-events: none;
+}
+
+button#ot-sdk-btn.cookie-btn:focus-visible {
+  color: #fbc600 !important;
+width: auto !important;
+}

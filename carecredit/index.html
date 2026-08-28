@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>CareCredit - Coming Soon | A Synchrony Solution</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <style>
+        :root {
+            --primary-teal: #00685b;
+            --primary-dark-teal: #004d43;
+            --primary-light-teal: #008775;
+            --accent-mint: #ebf5f3;
+            --soft-mint: #f4faf8;
+            --warm-gold: #fbc600;
+            --text-dark: #1e2428;
+            --text-muted: #535d66;
+            --border-color: #d1dedb;
+            --white: #ffffff;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Synchrony Global Bar */
+        .utility-top-bar {
+            background-color: #222222;
+            color: #ffffff;
+            font-size: 13px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 38px;
+        }
+
+        .utility-top-bar ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .utility-top-bar a {
+            color: #cccccc;
+            text-decoration: none;
+            padding: 8px 0;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .utility-top-bar a:hover {
+            color: #ffffff;
+        }
+
+        .utility-top-bar li.active a {
+            color: #ffffff;
+            font-weight: 600;
+            border-bottom: 2px solid var(--warm-gold);
+        }
+
+        .utility-alert-badge {
+            background: #004b6b;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .utility-alert-badge a {
+            color: var(--warm-gold);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* CareCredit Sub Header */
+        .cc-sub-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eef2f1;
+            padding: 8px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 24px;
+            font-size: 14px;
+        }
+
+        .cc-sub-header a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .cc-sub-header a:hover {
+            color: var(--primary-teal);
+        }
+
+        .cc-sub-header svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-teal);
+        }
+
+        /* Main CareCredit Navigation */
+        .cc-main-nav {
+            background: #ffffff;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .cc-brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .cc-brand-logo {
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .cc-nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .cc-nav-links li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 0;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cc-nav-links li a:hover {
+            color: var(--primary-teal);
+        }
+
+        .cc-nav-links li.active a {
+            color: var(--primary-teal);
+            border-bottom: 3px solid var(--primary-teal);
+        }
+
+        .btn-apply-pill {
+            background-color: var(--primary-teal);
+            color: #ffffff !important;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-apply-pill:hover {
+            background-color: var(--primary-dark-teal);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Banner Section */
+        .cc-hero-section {
+            background: linear-gradient(135deg, #f2f9f8 0%, #e5f3f0 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 48px 32px 64px 32px;
+        }
+
+        .cc-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .coming-soon-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1px solid var(--primary-teal);
+            color: var(--primary-teal);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 104, 91, 0.1);
+        }
+
+        .coming-soon-pill .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00a887;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 135, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 168, 135, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 135, 0); }
+        }
+
+        .cc-hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .cc-hero-highlight-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-left: 4px solid var(--primary-teal);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .cc-hero-highlight-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 6px;
+        }
+
+        .cc-hero-highlight-box p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .cc-hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .cc-hero-disclaimer {
+            font-size: 13px;
+            color: #788590;
+            margin-bottom: 28px;
+        }
+
+        .cc-prequal-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 60, 50, 0.08);
+            border: 1px solid #e0ece9;
+        }
+
+        .cc-prequal-box label {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .cc-prequal-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cc-select-wrapper {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .cc-select {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 15px;
+            color: var(--text-dark);
+            background-color: #fafcfc;
+            outline: none;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .cc-select:focus {
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 3px rgba(0, 104, 91, 0.15);
+        }
+
+        .cc-btn-submit {
+            height: 48px;
+            padding: 0 32px;
+            background-color: var(--primary-teal);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .cc-btn-submit:hover {
+            background-color: var(--primary-dark-teal);
+        }
+
+        /* Right Image Column */
+        .cc-hero-image-wrap {
+            position: relative;
+            text-align: center;
+        }
+
+        .cc-hero-image {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 50, 40, 0.12);
+            object-fit: cover;
+            border: 4px solid #ffffff;
+        }
+
+        .cc-hero-floating-card {
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            background: #ffffff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid #eef3f2;
+        }
+
+        .cc-floating-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cc-floating-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-teal);
+        }
+
+        .cc-floating-text h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .cc-floating-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Category Grid Section */
+        .cc-categories-section {
+            max-width: 1200px;
+            margin: 64px auto;
+            padding: 0 32px;
+        }
+
+        .cc-section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px auto;
+        }
+
+        .cc-section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .cc-section-header p {
+            font-size: 17px;
+            color: var(--text-muted);
+        }
+
+        .cc-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .cc-card {
+            background: #ffffff;
+            border: 1px solid #e6eeec;
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 104, 91, 0.08);
+            border-color: #cde2dd;
+        }
+
+        .cc-card-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--accent-mint);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .cc-card-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary-teal);
+        }
+
+        .cc-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .cc-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .cc-card-link {
+            color: var(--primary-teal);
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cc-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* How It Works Section */
+        .cc-steps-section {
+            background: #f8fbfa;
+            border-top: 1px solid #eaf2f0;
+            border-bottom: 1px solid #eaf2f0;
+            padding: 64px 32px;
+        }
+
+        .cc-steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cc-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .cc-step-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid #eef4f2;
+            position: relative;
+        }
+
+        .cc-step-number {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-teal);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .cc-step-item h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .cc-step-item p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Notification Banner / CTA */
+        .cc-cta-section {
+            max-width: 1200px;
+            margin: 64px auto;
+            padding: 0 32px;
+        }
+
+        .cc-cta-card {
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-dark-teal) 100%);
+            border-radius: 24px;
+            padding: 56px 48px;
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .cc-cta-card h2 {
+            font-size: 34px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .cc-cta-card p {
+            font-size: 17px;
+            color: #d7ede8;
+            line-height: 1.5;
+        }
+
+        .cc-notify-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cc-notify-input {
+            flex: 1;
+            height: 52px;
+            padding: 0 18px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .cc-notify-btn {
+            height: 52px;
+            padding: 0 28px;
+            background: var(--warm-gold);
+            color: #1e2428;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .cc-notify-btn:hover {
+            background: #e6b500;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .cc-footer {
+            background-color: #22252a;
+            color: #b0b8c0;
+            padding: 60px 32px 32px 32px;
+            font-size: 14px;
+        }
+
+        .cc-footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cc-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .cc-footer-col h4 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cc-footer-col ul {
+            list-style: none;
+        }
+
+        .cc-footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .cc-footer-col a {
+            color: #a4b0ba;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cc-footer-col a:hover {
+            color: #ffffff;
+        }
+
+        .cc-footer-bottom {
+            border-top: 1px solid #363d44;
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .cc-hero-title {
+                font-size: 40px;
+            }
+            .cc-steps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .cc-cta-card {
+                grid-template-columns: 1fr;
+                padding: 40px 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .utility-top-bar {
+                padding: 0 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                padding: 10px 16px;
+            }
+
+            .cc-sub-header {
+                padding: 8px 16px;
+                justify-content: space-between;
+            }
+
+            .cc-main-nav {
+                padding: 12px 16px;
+            }
+
+            .cc-nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 2px solid var(--primary-teal);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .cc-nav-links.open {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .cc-hero-section {
+                padding: 32px 16px 48px 16px;
+            }
+
+            .cc-hero-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .cc-hero-title {
+                font-size: 32px;
+            }
+
+            .cc-hero-image-wrap {
+                order: -1;
+            }
+
+            .cc-hero-floating-card {
+                position: static;
+                margin-top: 16px;
+            }
+
+            .cc-prequal-form {
+                flex-direction: column;
+            }
+
+            .cc-btn-submit {
+                width: 100%;
+            }
+
+            .cc-notify-form {
+                flex-direction: column;
+            }
+
+            .cc-footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cc-footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .cc-hero-title {
+                font-size: 28px;
+            }
+            .cc-hero-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Utility Bar -->
+    <div class="utility-top-bar">
+        <ul class="utility-bar__links">
+            <li id="synchrony"><a href="../Mainindex.html">Synchrony</a></li>
+            <li id="synchrony-bank"><a href="../banking/index.html">Synchrony Bank</a></li>
+            <li id="business"><a href="../business/index.html">Business</a></li>
+            <li id="carecredit" class="active"><a href="index.html">CareCredit</a></li>
+        </ul>
+        <div class="utility-alert-badge">
+            <span>ALERT: Cardholders impacted by Federal shutdown. <a href="../Mainindex.html">Learn More</a></span>
+        </div>
+    </div>
+
+    <!-- Sub Header -->
+    <div class="cc-sub-header">
+        <a href="javascript:void(0)" onclick="document.getElementById('category-select').focus();">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            Search
+        </a>
+        <a href="../pages/synchrony.com_help_contact-us.html">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Contact Us
+        </a>
+        <a href="http://localhost:3000/login">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            Log In
+        </a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="cc-main-nav">
+        <a href="index.html" class="cc-brand-logo-wrap">
+            <img src="../images/main_logo@0.5x.png" alt="CareCredit a Synchrony solution" class="cc-brand-logo" onerror="this.onerror=null; this.src='images/2023_synchrony_basic_logo.svg';">
+        </a>
+
+        <button class="mobile-menu-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="cc-nav-links" id="ccNavLinks">
+            <li class="active"><a href="index.html">For Consumers</a></li>
+            <li><a href="#how-it-works">How It Works ▾</a></li>
+            <li><a href="#categories">Categories ▾</a></li>
+            <li><a href="#categories">Find a Location</a></li>
+            <li><a href="#notify">Resources ▾</a></li>
+            <li><a href="#prequalify" class="btn-apply-pill">Apply</a></li>
+            <li><a href="http://localhost:3000/login" style="color: var(--primary-teal);">For Providers</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="cc-hero-section">
+        <div class="cc-hero-container">
+            <div class="cc-hero-content">
+                <div class="coming-soon-pill">
+                    <span class="pulse-dot"></span>
+                    COMING SOON
+                </div>
+                
+                <h1 class="cc-hero-title">Get care today.<br>Pay over time.</h1>
+
+                <div class="cc-hero-highlight-box">
+                    <h3>New CareCredit Portal Coming Soon</h3>
+                    <p>We are enhancing your health and wellness financing experience with faster digital approvals and seamless provider payments.</p>
+                </div>
+
+                <p class="cc-hero-description">
+                    CareCredit is a health and wellness credit card with flexible financing options so you can pay over time for care you want or need.* Accepted at 285,000+ locations!
+                </p>
+
+                <p class="cc-hero-disclaimer">*Subject to credit approval</p>
+
+                <!-- Prequalify Box -->
+                <div class="cc-prequal-box" id="prequalify">
+                    <label for="category-select">See if you prequalify without impacting your credit score</label>
+                    <form class="cc-prequal-form" onsubmit="event.preventDefault(); alert('CareCredit portal is launching soon! Please check back shortly.');">
+                        <div class="cc-select-wrapper">
+                            <select id="category-select" class="cc-select" required>
+                                <option value="" disabled selected>Select category*</option>
+                                <option value="dental">Dental & Oral Care</option>
+                                <option value="vision">Vision & LASIK</option>
+                                <option value="pet">Veterinary & Pet Care</option>
+                                <option value="cosmetic">Cosmetic & Dermatology</option>
+                                <option value="hearing">Hearing & Audiology</option>
+                                <option value="wellness">Chiropractic & Wellness</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cc-btn-submit">Apply</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column Image -->
+            <div class="cc-hero-image-wrap">
+                <img src="../images/cc_brand_family_photo.png" alt="Happy family smiling together with their dog" class="cc-hero-image" onerror="this.onerror=null; this.src='images/syf-july-2024-heroimage-final-v2.jpg';">
+                
+                <div class="cc-hero-floating-card">
+                    <div class="cc-floating-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <div class="cc-floating-text">
+                        <h4>285,000+ Providers</h4>
+                        <p>Accepted nationwide across the US</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="cc-categories-section" id="categories">
+        <div class="cc-section-header">
+            <h2>Financing for Your Health & Wellness</h2>
+            <p>From routine checkups to specialized treatments, CareCredit makes healthcare accessible.</p>
+        </div>
+
+        <div class="cc-cards-grid">
+            <div class="cc-card">
+                <div class="cc-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </div>
+                <h3>Dental Care</h3>
+                <p>Coverage for checkups, cleanings, crowns, braces, periodontics, and surgical implants.</p>
+                <a href="#prequalify" class="cc-card-link">Explore Dental ›</a>
+            </div>
+
+            <div class="cc-card">
+                <div class="cc-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h3>Vision & LASIK</h3>
+                <p>Financing for routine exams, designer eyeglasses, contact lenses, and corrective eye surgeries.</p>
+                <a href="#prequalify" class="cc-card-link">Explore Vision ›</a>
+            </div>
+
+            <div class="cc-card">
+                <div class="cc-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h3>Veterinary & Pets</h3>
+                <p>Care for your dogs, cats, and exotic animals including preventive care, emergency surgery, and medications.</p>
+                <a href="#prequalify" class="cc-card-link">Explore Pet Care ›</a>
+            </div>
+
+            <div class="cc-card">
+                <div class="cc-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                </div>
+                <h3>Cosmetic & Wellness</h3>
+                <p>Financing options for dermatology, cosmetic surgery, weight management, spa, and fitness.</p>
+                <a href="#prequalify" class="cc-card-link">Explore Cosmetic ›</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="cc-steps-section" id="how-it-works">
+        <div class="cc-steps-container">
+            <div class="cc-section-header">
+                <h2>How CareCredit Works</h2>
+                <p>Three simple steps to manage your out-of-pocket healthcare costs.</p>
+            </div>
+
+            <div class="cc-steps-grid">
+                <div class="cc-step-item">
+                    <div class="cc-step-number">1</div>
+                    <h3>Prequalify in Minutes</h3>
+                    <p>Check if you prequalify with no risk to your credit score before you apply.</p>
+                </div>
+
+                <div class="cc-step-item">
+                    <div class="cc-step-number">2</div>
+                    <h3>Find Your Provider</h3>
+                    <p>Use your card at 285,000+ participating health networks, veterinary hospitals, and practices nationwide.</p>
+                </div>
+
+                <div class="cc-step-item">
+                    <div class="cc-step-number">3</div>
+                    <h3>Pay Over Time</h3>
+                    <p>Enjoy flexible promotional financing terms and budget-friendly monthly payments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification CTA -->
+    <section class="cc-cta-section" id="notify">
+        <div class="cc-cta-card">
+            <div>
+                <h2>Get notified when the new portal launches</h2>
+                <p>Be the first to access our new features, promotional health offers, and instant prequalification tools.</p>
+            </div>
+            <div>
+                <form class="cc-notify-form" onsubmit="event.preventDefault(); alert('Thank you! You will be notified as soon as the portal is live.'); this.reset();">
+                    <input type="email" placeholder="Enter your email address" class="cc-notify-input" required>
+                    <button type="submit" class="cc-notify-btn">Notify Me</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="cc-footer">
+        <div class="cc-footer-container">
+            <div class="cc-footer-grid">
+                <div class="cc-footer-col">
+                    <h4>About CareCredit</h4>
+                    <ul>
+                        <li><a href="../Mainindex.html">Synchrony Financial</a></li>
+                        <li><a href="../banking/index.html">Synchrony Bank</a></li>
+                        <li><a href="../business/index.html">Business Financing</a></li>
+                        <li><a href="../pages/synchrony.com_blog.html">Health & Wellness Blog</a></li>
+                    </ul>
+                </div>
+                <div class="cc-footer-col">
+                    <h4>Cardholders</h4>
+                    <ul>
+                        <li><a href="http://localhost:3000/login">Sign In to Account</a></li>
+                        <li><a href="#prequalify">See If You Prequalify</a></li>
+                        <li><a href="../pages/synchrony.com_consumer-resources_pay-as-guest.html">Pay as Guest</a></li>
+                        <li><a href="../pages/synchrony.com_help_faqs.html">FAQs & Support</a></li>
+                    </ul>
+                </div>
+                <div class="cc-footer-col">
+                    <h4>Providers</h4>
+                    <ul>
+                        <li><a href="http://localhost:3000/login">Provider Center Login</a></li>
+                        <li><a href="../business/index.html">Accept CareCredit</a></li>
+                        <li><a href="../business/index.html">Grow Your Practice</a></li>
+                    </ul>
+                </div>
+                <div class="cc-footer-col">
+                    <h4>Legal & Security</h4>
+                    <ul>
+                        <li><a href="../pages/synchrony.com_legal_privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../pages/synchrony.com_legal_terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="../pages/synchrony.com_legal_fraud-protection.html">Fraud Protection</a></li>
+                        <li><a href="../pages/synchrony.com_web-accessibility-statement.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cc-footer-bottom">
+                <p>© 2026 CareCredit / Synchrony Bank. All rights reserved. Member FDIC.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="../Mainindex.html" style="color: #a4b0ba; text-decoration: none;">Main Portal</a>
+                    <a href="http://localhost:3000/login" style="color: var(--warm-gold); font-weight: bold; text-decoration: none;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation drawer toggle
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const navLinks = document.getElementById('ccNavLinks');
+        
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>

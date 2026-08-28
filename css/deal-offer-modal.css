@@ -1,0 +1,213 @@
+/* Universal breakpoints */
+@keyframes from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(40rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+.deal-modal {
+  position: absolute; }
+  .deal-modal .modal__container {
+    width: calc(100% - 32px);
+    max-width: 616px;
+    position: relative;
+    display: flex;
+    height: -moz-fit-content;
+    height: fit-content; }
+    .deal-modal .modal__container .modal__close {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      left: unset;
+      z-index: 1;
+      outline-color: #3b3d49;
+      }
+    .deal-modal .modal__container .modal__scroll-area {
+      border-radius: 8px;
+      overflow: auto;
+      /* MKPL fix for the shorter content */
+      width: 626px;
+      /* Scrollbar styles */ }
+      .deal-modal .modal__container .modal__scroll-area::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+        cursor: pointer; }
+      .deal-modal .modal__container .modal__scroll-area::-webkit-scrollbar-track {
+        background: #e8e9ec;
+        opacity: 0.7;
+        border-radius: 12px; }
+      .deal-modal .modal__container .modal__scroll-area::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        background: #62657b; }
+      .deal-modal .modal__container .modal__scroll-area::-webkit-scrollbar-thumb:hover {
+        background: #62657b; }
+      .deal-modal .modal__container .modal__scroll-area .modal__header {
+        height: 250px;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px; }
+        .deal-modal .modal__container .modal__scroll-area .modal__header img {
+          background-position: center; }
+        .deal-modal .modal__container .modal__scroll-area .modal__header .modal__brand-logo {
+          position: absolute;
+          border-radius: 50%;
+          width: 96px;
+          height: 96px;
+          background-size: contain;
+          bottom: 12px;
+          right: 12px;
+          box-shadow: 0px 12px 18px rgba(59, 61, 73, 0.12); }
+      .deal-modal .modal__container .modal__scroll-area .modal__content {
+        color: var(--ink);
+        text-align: left; }
+        .deal-modal .modal__container .modal__scroll-area .modal__content h3 {
+          margin-bottom: 24px;
+          color: #3b3d49;
+          font-size: 18px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .deal-modal .modal__container .modal__scroll-area .modal__content h3 button {
+            margin-right: 2px; }
+            .deal-modal .modal__container .modal__scroll-area .modal__content h3 button:hover img {
+              filter: invert(77%) sepia(67%) saturate(2386%) hue-rotate(4deg) brightness(104%) contrast(101%); }
+        .deal-modal .modal__container .modal__scroll-area .modal__content .get-details {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 16px;
+          color: #3f647c;
+          text-decoration: none; }
+        .deal-modal .modal__container .modal__scroll-area .modal__content .deal-modal__buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 24px;
+          margin-top: 20px;
+          margin-bottom: 40px;
+          justify-content: center; }
+          @media screen and (max-width: 480px) {
+            .deal-modal .modal__container .modal__scroll-area .modal__content .deal-modal__buttons {
+              flex-direction: column; } }
+          .deal-modal .modal__container .modal__scroll-area .modal__content .deal-modal__buttons a {
+            box-sizing: border-box;
+            width: 240px;
+            text-align: center;
+            font-weight: 700;
+            outline-offset: -2px; }
+            @media screen and (max-width: 480px) {
+              .deal-modal .modal__container .modal__scroll-area .modal__content .deal-modal__buttons a {
+                width: 100%; } }
+        .deal-modal .modal__container .modal__scroll-area .modal__content .deal-modal__partner {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          font-size: 20px;
+          margin-bottom: 24px; }
+        .deal-modal .modal__container .modal__scroll-area .modal__content .deal-disclosure {
+          color: #3b3d49;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 12px;
+          letter-spacing: 0.16px; }
+    .deal-modal .modal__container .sharing-tools {
+      color: #3b3d49;
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 40px;
+      flex-direction: column;
+      gap: 40px; }
+      .deal-modal .modal__container .sharing-tools:not(.hidden) {
+        display: flex; }
+      .deal-modal .modal__container .sharing-tools button.return-to-offer {
+        height: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-left: 15px;
+        width: -moz-fit-content;
+        width: fit-content;
+        color: inherit; }
+        .deal-modal .modal__container .sharing-tools button.return-to-offer:hover {
+          text-decoration: underline; }
+      .deal-modal .modal__container .sharing-tools h3 {
+        font-size: 24px;
+        margin: 0;
+        margin-left: 30px; }
+      .deal-modal .modal__container .sharing-tools .offer-blurb {
+        display: flex;
+        overflow: hidden;
+        gap: 16px;
+        padding-bottom: 24px;
+        margin-right: 30px;
+        margin-left: 30px;
+        border-bottom: 1px solid #e8e9ec;
+        min-height: 50px;
+        }
+        .deal-modal .modal__container .sharing-tools .offer-blurb > div {
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center; }
+          .deal-modal .modal__container .sharing-tools .offer-blurb > div .modal__brand-name {
+            font-size: 18px;
+            font-weight: 700; }
+          .deal-modal .modal__container .sharing-tools .offer-blurb > div p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 24px; }
+      .deal-modal .modal__container .sharing-tools .share-via h4 {
+        margin-left: 30px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        margin-top: 0;
+        margin-bottom: 10px; }
+      .deal-modal .modal__container .sharing-tools .share-via .share-buttons {
+        display: flex;
+        gap: 20px;
+        padding: 2px 30px;
+        overflow: auto; }
+        .deal-modal .modal__container .sharing-tools .share-via .share-buttons::-webkit-scrollbar {
+          display: none; }
+        @media (max-width: 991px) {
+          .deal-modal .modal__container .sharing-tools .share-via .share-buttons {
+            gap: 8px; } }
+        .deal-modal .modal__container .sharing-tools .share-via .share-buttons a {
+          height: 56px;
+          width: 56px;
+          flex-shrink: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #b7bdc9;
+          border-radius: 8px;
+          transition: background-color 0.2s; }
+          .deal-modal .modal__container .sharing-tools .share-via .share-buttons a img {
+            transition: filter 0.2s; }
+          @media (min-width: 768px) {
+            .deal-modal .modal__container .sharing-tools .share-via .share-buttons a.sms-share {
+              display: none; } }
+          .deal-modal .modal__container .sharing-tools .share-via .share-buttons a:focus {
+            outline: 2px solid #3b3d49; }
+          .deal-modal .modal__container .sharing-tools .share-via .share-buttons a:hover {
+            background-color: #3b3d49; }
+            .deal-modal .modal__container .sharing-tools .share-via .share-buttons a:hover img {
+              filter: invert(100%) sepia(100%) saturate(0) hue-rotate(0) brightness(100%) contrast(200%); }
+      .deal-modal .modal__container .sharing-tools .copy-button {
+        border-radius: 8px;
+        width: calc(100% - 60px);
+        margin-left: 30px;
+        font-size: 18px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer; }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPLuxury | Exclusive Shopping & Financing</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        :root { --brand-red: #cc0000; --brand-dark-red: #990000; --charcoal: #1f2327; --light-gray: #f7f7f8; --border-color: #e5e5e7; --text-muted: #5c646c; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--charcoal); background-color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; text-align: center; }
+        .jp-header { background-color: var(--brand-red); color: #ffffff; padding: 16px 24px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(204, 0, 0, 0.2); }
+        .jp-logo { font-size: 32px; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-decoration: none; text-transform: uppercase; }
+        .jp-top-bar-links { position: absolute; right: 24px; display: flex; gap: 16px; }
+        .jp-top-link { color: #ffffff; font-size: 13px; text-decoration: none; font-weight: 600; background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 4px; }
+        .jp-main-container { flex: 1; max-width: 840px; margin: 0 auto; padding: 60px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .jp-badge { display: inline-block; background: #fff0f0; color: var(--brand-red); border: 1px solid #ffcccc; font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 18px; border-radius: 20px; margin-bottom: 24px; }
+        .jp-title { font-size: 34px; font-weight: 800; color: #111111; line-height: 1.25; margin-bottom: 16px; max-width: 680px; }
+        .jp-subtitle { font-size: 18px; color: var(--text-muted); line-height: 1.6; margin-bottom: 36px; max-width: 540px; }
+        .jp-actions-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+        .btn-jp-primary { background-color: var(--brand-red); color: #ffffff; font-size: 16px; font-weight: 700; padding: 14px 32px; border-radius: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(204,0,0,0.25); }
+        .btn-jp-primary:hover { background-color: var(--brand-dark-red); }
+        .btn-jp-secondary { background-color: #ffffff; color: var(--charcoal); border: 2px solid var(--border-color); font-size: 16px; font-weight: 700; padding: 14px 30px; border-radius: 30px; text-decoration: none; }
+        .btn-jp-secondary:hover { background-color: var(--light-gray); }
+        .jp-teaser-box { background: var(--light-gray); border-radius: 16px; padding: 24px 32px; width: 100%; display: flex; justify-content: space-around; text-align: left; gap: 20px; border: 1px solid var(--border-color); }
+        .jp-teaser-item h4 { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 4px; }
+        .jp-teaser-item p { font-size: 13px; color: var(--text-muted); }
+        .jp-footer { background-color: #1a1a1a; color: #888888; padding: 28px 24px; font-size: 13px; }
+        .jp-footer a { color: #cccccc; text-decoration: none; margin: 0 10px; }
+        @media (max-width: 768px) { .jp-top-bar-links { display: none; } .jp-title { font-size: 26px; } .jp-teaser-box { flex-direction: column; text-align: center; } .jp-actions-group { flex-direction: column; width: 100%; } .btn-jp-primary, .btn-jp-secondary { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header class="jp-header">
+        <a href="Mainindex.html" class="jp-logo">JPLuxury</a>
+        <div class="jp-top-bar-links">
+            <a href="Mainindex.html" class="jp-top-link">← Synchrony Home</a>
+            <a href="http://localhost:3000/login" class="jp-top-link">Sign In</a>
+        </div>
+    </header>
+    <main class="jp-main-container">
+        <div class="jp-badge">Coming Soon • Luxury Shopping</div>
+        <div style="margin-bottom: 30px;">
+            <svg width="280" height="160" viewBox="0 0 280 160" fill="none">
+                <rect x="70" y="40" width="140" height="100" rx="12" fill="#84233c" stroke="#4e1020" stroke-width="4"/>
+                <path d="M95 40 V20 C95 10, 185 10, 185 20 V40" stroke="#c69214" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <circle cx="140" cy="75" r="8" fill="#fbc600"/>
+                <path d="M25 130 Q45 80 65 100 Q75 110 90 135 L20 135 Z" fill="#1a1a1a"/>
+                <path d="M25 130 L20 150 L26 150 L30 130" fill="#cc0000"/>
+                <path d="M190 135 Q210 85 230 105 Q240 115 255 135 L185 135 Z" fill="#84233c"/>
+                <path d="M190 135 L185 150 L191 150 L195 135" fill="#c69214"/>
+            </svg>
+        </div>
+        <h1 class="jp-title">We Are Currently Unable to Provide a Shopping Experience for This Country</h1>
+        <p class="jp-subtitle">Our new JPLuxury digital boutique and promotional rewards shopping catalog are launching soon. Please try again later.</p>
+        <div class="jp-actions-group">
+            <a href="Mainindex.html" class="btn-jp-primary">Return to Synchrony Home</a>
+            <a href="prequalify.html" class="btn-jp-secondary">See If You Prequalify</a>
+            <a href="http://localhost:3000/login" class="btn-jp-secondary">Cardholder Sign In</a>
+        </div>
+        <div class="jp-teaser-box">
+            <div class="jp-teaser-item"><h4>Exclusive Rewards</h4><p>Earn bonus points & cash back on all designer brands.</p></div>
+            <div class="jp-teaser-item"><h4>Flexible Financing</h4><p>0% promotional APR on qualifying luxury purchases.</p></div>
+            <div class="jp-teaser-item"><h4>VIP Perks</h4><p>Early access to seasonal deals and concierge support.</p></div>
+        </div>
+    </main>
+    <footer class="jp-footer">
+        <p>© 2026 JPLuxury & Synchrony Bank. All rights reserved.</p>
+        <div style="margin-top: 10px;">
+            <a href="Mainindex.html">Synchrony Main</a>
+            <a href="carecredit.html">CareCredit</a>
+            <a href="banking/index.html">Banking</a>
+            <a href="http://localhost:3000/login">Sign In</a>
+        </div>
+    </footer>
+</body>
+</html>

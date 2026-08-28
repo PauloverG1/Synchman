@@ -1,0 +1,55 @@
+/* Universal breakpoints */
+.financing-tile {
+  width: 320px;
+  min-width: 320px;
+  height: 320px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background: #fff; }
+  @media (max-width: 767px) {
+    .financing-tile {
+      margin-right: 10px; } }
+  @media (min-width: 1440px) {
+    .financing-tile:nth-of-type(4) {
+      margin-right: 0; } }
+  .financing-tile:last-of-type {
+    margin-right: 0; }
+  .financing-tile .expiry-badge {
+    position: relative;
+    background-color: #FBC600;
+    font-weight: 500;
+    padding: 4px 8px;
+    top: 12px;
+    left: 16px;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 2px; }
+  .financing-tile .financing-image {
+    height: 180px;
+    position: relative;
+    border-radius: 5px; }
+  .financing-tile .financing-tile-inner {
+    height: 100%; }
+  .financing-tile .brand-name {
+    font-weight: 500;
+    margin: 0;
+    max-width: 175px; }
+  .financing-tile .brand-logo {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    left: 20px;
+    bottom: 12px; }
+  .financing-tile .offer-content {
+    position: relative; }
+  .financing-tile .offer-content-inner {
+    max-height: 176px;
+    padding: 15px 0 0; }
+  .financing-tile .offer-link {
+    padding-bottom: 24px; }
+  .financing-tile .offer-icon {
+    margin: 0 10px 0 0; }
+  .financing-tile .offer-description {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 10px; }

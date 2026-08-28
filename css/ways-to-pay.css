@@ -1,0 +1,30 @@
+/* Universal breakpoints */
+.ways-to-pay {
+  background-color: #F3F6F6;
+  padding: 60px 0; }
+  @media (max-width: 1279px) {
+    .ways-to-pay {
+      padding: 30px 0; } }
+  .ways-to-pay .ways-to-pay-heading {
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 48px;
+    margin: 0; }
+    @media (max-width: 1279px) {
+      .ways-to-pay .ways-to-pay-heading {
+        font-size: 36px;
+        line-height: 40px; } }
+  @media (max-width: 1279px) {
+    .ways-to-pay-inner {
+      margin: 0 20px; } }
+  .ways-to-pay .info-tiles-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    @media (max-width: 991px) {
+      .ways-to-pay .info-tiles-left {
+        background-color: #fff;
+        padding: 0 20px;
+        border-radius: 8px;
+        margin: 30px 0; } }
+   

@@ -1,0 +1,94 @@
+/* Font stacks */
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/synchrony_sans_thin-v100-webfont.woff2) format("woff2"), url(../fonts/Synchrony_Sans_Thin-v100.ttf) format("truetype"), url(../fonts/Synchrony_Sans_Thin-v100.otf) format("opentype");
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans.woff2) format("woff2"), url(../fonts/SynchronySans.ttf) format("truetype"), url(../fonts/SynchronySans.otf) format("opentype"), url(/synchrony/fonts/SynchronySans.svg) format("svg");
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Medium.woff2) format("woff2"), url(../fonts/SynchronySans-Medium.ttf) format("truetype"), url(../images/SynchronySans-Medium.svg) format("svg");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Synchrony Sans';
+  font-display: fallback;
+  src: url(../fonts/SynchronySans-Bold.woff2) format("woff2"), url(../fonts/SynchronySans-Bold.ttf) format("truetype"), url(../fonts/SynchronySans-Bold.otf) format("opentype"), url(/synchrony/fonts/SynchronySans-Bold.svg) format("svg");
+  font-weight: 700; }
+
+
+/* Universal breakpoints */
+html {
+    scroll-behavior: smooth; }
+  html._disableScroll {
+    /* Keep scrollbar to prevent "jump" in layout */
+    overflow-y: scroll;
+    height: 100vh; }
+    html._disableScroll.touch {
+      overflow-y: hidden; }
+    html._disableScroll body {
+      overflow-y: hidden;
+      height: 100vh; }
+  
+  body {
+    font-family: "Synchrony Sans", Helvetica, sans-serif;
+    margin: 0;
+    padding: 0; }
+  
+  .iOS-stop-body-scroll {
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overflow: hidden;
+    overscroll-behavior: none; }
+  main {
+    overflow-x: clip; }
+
+/* Basic Button Styling For Login */
+.button-basic {
+    border: 2px solid transparent;
+    background: #fbc600;
+    color: #3b3d49;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-weight: 700;
+    transition: all 200ms ease-in-out, color 150ms ease-in-out;
+    font-family: "Synchrony Sans", Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer; 
+}
+.button-basic.is-active {
+    border-radius: 8px;
+    border: 2px solid #fbc600;
+    background-color: white;
+    color: #3b3d49; 
+}
+.button-basic.is-active .menu-arrow {
+    transform: rotateX(180deg); 
+}
+
+.icon {
+  margin: 0 5px;
+  display: block;
+}
+
+.menu-arrow {
+  margin-left: 5px;
+  width: 6px;
+  align-self: auto /* Vinda Sawant- WCWFT-179 align chevron icon on old mysyf pages as per design */;
+}
+
+.global-nav .modal__link-icon {
+  width: 14px;
+  align-self: center;
+  margin: 0px !important;
+}
+footer#global-footer a.has-icon .icon {
+  margin: 0px 5px !important;
+}

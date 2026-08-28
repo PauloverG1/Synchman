@@ -1,0 +1,165 @@
+/* Universal breakpoints */
+.carousel-bkg-wrap {
+  background: #E6F0F5;
+  padding: 40px 0px; }
+  @media (min-width: 992px) {
+    .carousel-bkg-wrap {
+      padding: 60px; } }
+
+.banking-carousel {
+  position: relative;
+  background: #E6F0F5; }
+  .banking-carousel .slick-track {
+    display: flex; }
+  .banking-carousel .slick-slide {
+    margin: 0 10px; }
+  .banking-carousel .slick-next, .banking-carousel .slick-prev {
+    position: absolute;
+    display: block;
+    padding: 0;
+    height: 60px;
+    width: 60px;
+    line-height: 0;
+    font-size: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: none; }
+    @media (max-width: 991px) {
+      .banking-carousel .slick-next, .banking-carousel .slick-prev {
+        height: 44px;
+        width: 44px; } }
+  .banking-carousel .slick-next, .banking-carousel .slick-next:focus {
+    z-index: 2;
+    right: -50px; }
+    @media (min-width: 1280px) {
+      .banking-carousel .slick-next, .banking-carousel .slick-next:focus {
+        right: 0; } }
+    @media (max-width: 991px) {
+      .banking-carousel .slick-next, .banking-carousel .slick-next:focus {
+        top: 25%;
+        right: 15px; } }
+  .banking-carousel .slick-prev, .banking-carousel .slick-prev:focus {
+    left: 0;
+    z-index: 2;
+    left: -50px; }
+    @media (min-width: 1280px) {
+      .banking-carousel .slick-prev, .banking-carousel .slick-prev:focus {
+        left: 0; } }
+    @media (max-width: 991px) {
+      .banking-carousel .slick-prev, .banking-carousel .slick-prev:focus {
+        top: 25%;
+        left: 15px; } }
+  .banking-carousel .slick-list {
+    margin: 0 -10px;
+    overflow-x: hidden; }
+  .banking-carousel .slick-dots {
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    top: -25px; }
+    @media (max-width: 991px) {
+      .banking-carousel .slick-dots {
+        top: 25px; } }
+    .banking-carousel .slick-dots li {
+      width: 40px;
+      display: flex;
+      justify-content: center; }
+  .banking-carousel .slick-dots li button {
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    padding: 0; }
+  .banking-carousel .slick-dots li button .slick-dot-icon:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    font-family: slick;
+    width: 10px;
+    height: 10px;
+    /*background-color: #A0A8B7; */
+	/* ADA fix */
+	background-color: #707070;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    transition: all .05s linear;
+    border-radius: 5px; }
+  .banking-carousel .slick-dots li.slick-active button {
+    width: 40px; }
+  .banking-carousel .slick-dots li.slick-active button .slick-dot-icon:before {
+    background-color: #3b3d49;
+    width: 40px;
+    height: 10px;
+    margin-top: 0;
+    margin-left: 0px; }
+  .banking-carousel .slick-dots li button .slick-dot-icon {
+    opacity: 0.9; }
+
+.premium-partner-slide .inner-partner-slide {
+  min-height: 500px;
+  flex-direction: column-reverse; }
+  @media (min-width: 992px) {
+    .premium-partner-slide .inner-partner-slide {
+      background-color: #E8F4FF;
+      flex-direction: row; } }
+  .premium-partner-slide .inner-partner-slide .partner-content {
+    padding: 20px 30px;
+    width: auto;
+    background: rgba(255, 255, 255, 0.7);
+    max-width: 100%; }
+    @media (min-width: 992px) {
+      .premium-partner-slide .inner-partner-slide .partner-content {
+        min-width: 500px;
+        background-color: #E8F4FF;
+        width: 30%;
+        padding: 40px 60px; } }
+  .premium-partner-slide .inner-partner-slide .partner-content-right {
+    background-color: #E8F4FF;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    display: flex; }
+    @media (min-width: 992px) {
+      .premium-partner-slide .inner-partner-slide .partner-content-right {
+        position: relative;
+        width: 70%;
+        display: block; } }
+  .premium-partner-slide .inner-partner-slide .brand-icon-partners {
+    align-self: flex-start;
+    width: 80px;
+    height: 80px; }
+    @media (min-width: 992px) {
+      .premium-partner-slide .inner-partner-slide .brand-icon-partners {
+        width: 112px;
+        height: 112px; } }
+  .premium-partner-slide .inner-partner-slide .partner-image {
+    position: relative;
+    bottom: -24px; }
+    @media (min-width: 992px) {
+      .premium-partner-slide .inner-partner-slide .partner-image {
+        position: absolute;
+        bottom: 0;
+        max-width: 85%; } }
+  .premium-partner-slide .inner-partner-slide .partner-badge {
+    position: absolute;
+    font-weight: 500;
+    padding: 4px 8px;
+    top: 15px;
+    right: 60px;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 2px;
+    background: linear-gradient(92.68deg, rgba(31, 32, 38, 0.8) 2.89%, rgba(59, 61, 73, 0.52) 104.34%);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px); }
+    @media (min-width: 992px) {
+      .premium-partner-slide .inner-partner-slide .partner-badge {
+        top: 40px;
+        right: 40px; } }
