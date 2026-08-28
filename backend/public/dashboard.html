@@ -929,6 +929,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <script>
 const $ = id => document.getElementById(id);
 const fmt = n => new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+const fmtDate = s => new Date(s+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
 /* PHONE NUMBER AUTO-FORMAT */
 function formatPhoneInput(el){
   let v = el.value.replace(/\D/g, '').slice(0, 10);
