@@ -174,15 +174,22 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
-// Serve root marketing static files (images, css, js, fonts, pages)
+// Serve root marketing static files (images, css, js, fonts, pages, sections)
 const rootDir = path.join(__dirname, '..');
 app.use('/css', express.static(path.join(rootDir, 'css')));
 app.use('/js', express.static(path.join(rootDir, 'js')));
 app.use('/images', express.static(path.join(rootDir, 'images')));
 app.use('/fonts', express.static(path.join(rootDir, 'fonts')));
 app.use('/pages', express.static(path.join(rootDir, 'pages')));
+app.use('/banking', express.static(path.join(rootDir, 'banking')));
+app.use('/business', express.static(path.join(rootDir, 'business')));
+app.use('/carecredit', express.static(path.join(rootDir, 'carecredit')));
+app.use('/prequalify', express.static(path.join(rootDir, 'prequalify')));
 
-// Marketing home page routes
+// Marketing static pages
+app.get('/carecredit.html', (req, res) => res.sendFile(path.join(rootDir, 'carecredit.html')));
+app.get('/jpluxury.html', (req, res) => res.sendFile(path.join(rootDir, 'jpluxury.html')));
+app.get('/prequalify.html', (req, res) => res.sendFile(path.join(rootDir, 'prequalify.html')));
 app.get('/home', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
 app.get('/main', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
 app.get('/Mainindex.html', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
@@ -199,7 +206,7 @@ const requireAdmin = (req, res, next) => {
 
 // ─── USER AUTH ────────────────────────────────────────────────────────────────
 app.get('/login', (req, res) => {
-  if (req.session.userId) return res.redirect('/');
+  if (req.session.userId) return res.redirect('/dashboard');
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
@@ -211,7 +218,7 @@ app.post('/auth/login', (req, res) => {
   }
   req.session.userId = user.id;
   req.session.userName = user.name;
-  res.json({ success: true });
+  res.json({ success: true, redirect: '/dashboard' });
 });
 
 app.post('/auth/logout', (req, res) => {
@@ -220,14 +227,22 @@ app.post('/auth/logout', (req, res) => {
   res.json({ success: true });
 });
 
-
 app.get('/auth/me', (req, res) => {
   if (!req.session.userId) return res.json({ authenticated: false });
   res.json({ authenticated: true, name: req.session.userName });
 });
 
 // ─── MAIN ROUTES ──────────────────────────────────────────────────────────────
-app.get('/', requireAuth, (req, res) => {
+// Root URL serves the main marketing page with full info
+app.get('/', (req, res) => {
+  res.sendFile(path.join(rootDir, 'Mainindex.html'));
+});
+
+// Client Banking Dashboard
+app.get('/dashboard', requireAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+app.get('/portal', requireAuth, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 

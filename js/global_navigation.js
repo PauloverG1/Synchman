@@ -209,7 +209,7 @@ this.focusableElements = [
     this.loginButton.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      window.location.href = "http://localhost:3000/login";
+      window.location.href = "/login";
     });
   /* if(this.pageFooterLoginTrigger!==null){
     this.pageFooterLoginTrigger.addEventListener("click", (event) => {
@@ -333,11 +333,11 @@ this.loginSearchInput2.addEventListener(
   }
 
   toggleLoginMenu() {
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "/login";
   }
 
   openLoginMenu() {
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "/login";
   }
 
   closeLoginMenu() {

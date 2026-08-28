@@ -624,7 +624,7 @@ async function doLogin(){
     });
     const d=await res.json();
     if(d.success){
-      window.location.href='/';
+      window.location.href='/dashboard';
     } else {
       errMsg.textContent=d.message||'Invalid email or password.';
       errMsg.style.display='block';

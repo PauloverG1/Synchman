@@ -146,9 +146,9 @@ var MySYFSitewide = (function () {
     });
   })();
 
-  // Universal Sign In handler - routes all sign in buttons/links directly to http://localhost:3000/login
+  // Universal Sign In handler - routes all sign in buttons/links directly to /login
   (function() {
-    var LOGIN_URL = "http://localhost:3000/login";
+    var LOGIN_URL = "/login";
 
     function isSignInTarget(el) {
       if (!el) return false;
