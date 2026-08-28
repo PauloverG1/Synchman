@@ -600,20 +600,20 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" class="sc-row">
           <div class="sc prim">
             <p class="sl">Total Portfolio Value</p>
-            <div class="sv"><span class="cur">$</span><span id="inv-total">90,214.38</span></div>
-            <span class="sbg" style="background:rgba(16,185,129,.2);color:#6EE7B7">↑ +10.3% all time</span>
+            <div class="sv"><span class="cur">$</span><span id="inv-total">0.00</span></div>
+            <span class="sbg" id="inv-stat-alltime" style="background:rgba(16,185,129,.2);color:#6EE7B7">↑ +10.3% all time</span>
           </div>
           <div class="sc">
-            <div class="sico" style="background:var(--gnbg)">📅</div>
+            <div class="sico" id="inv-stat-ytd-ico" style="background:var(--gnbg)">📅</div>
             <p class="sl">Annual Return (YTD)</p>
-            <div class="sv" style="color:var(--green)">8.4<span style="font-size:16px;font-weight:500">%</span></div>
-            <span class="sbg b-gr">↑ Above benchmark</span>
+            <div class="sv" id="inv-stat-ytd" style="color:var(--green)">8.4<span style="font-size:16px;font-weight:500">%</span></div>
+            <span class="sbg b-gr" id="inv-stat-bench">↑ Above benchmark</span>
           </div>
           <div class="sc">
-            <div class="sico" style="background:var(--gbg)">🛡️</div>
+            <div class="sico" id="inv-stat-risk-ico" style="background:var(--gbg)">🛡️</div>
             <p class="sl">Risk Profile</p>
-            <div class="sv" style="font-size:22px;color:var(--gold)">Moderate</div>
-            <span class="sbg b-gd">Balanced growth</span>
+            <div class="sv" id="inv-stat-risk-title" style="font-size:22px;color:var(--gold)">Moderate</div>
+            <span class="sbg b-gd" id="inv-stat-risk-sub">Balanced growth</span>
           </div>
         </div>
 
@@ -1403,23 +1403,77 @@ async function init(){
     const totalInv = _investments.reduce((sum, i) => sum + (i.value || 0), 0);
     if ($('inv-total')) $('inv-total').textContent = fmt(totalInv);
 
-    // Dynamic Performance Overview
+    // Dynamic Performance Overview & Top Stat Cards
     const perf = d.investment_performance;
     if (perf) {
+      // 1. Total Portfolio All-Time Badge
+      const inc = perf.since_inception || '+10.3%';
+      const isIncNeg = inc.trim().startsWith('-');
+      const alltimeEl = $('inv-stat-alltime');
+      if (alltimeEl) {
+        alltimeEl.textContent = (isIncNeg ? '↓ ' : '↑ ') + (inc.startsWith('+') || inc.startsWith('-') ? inc : '+' + inc) + ' all time';
+        alltimeEl.style.background = isIncNeg ? 'rgba(239,68,68,.2)' : 'rgba(16,185,129,.2)';
+        alltimeEl.style.color = isIncNeg ? '#FCA5A5' : '#6EE7B7';
+      }
+
+      // 2. Annual Return (YTD) Stat Card
+      const ytd = perf.ytd_return || '+8.4%';
+      const isYtdNeg = ytd.trim().startsWith('-');
+      const cleanYtd = ytd.replace(/[^0-9.-]/g, '');
+      const ytdEl = $('inv-stat-ytd');
+      if (ytdEl) {
+        ytdEl.innerHTML = cleanYtd + '<span style="font-size:16px;font-weight:500">%</span>';
+        ytdEl.style.color = isYtdNeg ? 'var(--red)' : 'var(--green)';
+      }
+      const benchEl = $('inv-stat-bench');
+      if (benchEl) {
+        benchEl.textContent = isYtdNeg ? '↓ Below benchmark' : '↑ Above benchmark';
+        benchEl.className = isYtdNeg ? 'sbg b-rd' : 'sbg b-gr';
+      }
+      const ytdIco = $('inv-stat-ytd-ico');
+      if (ytdIco) {
+        ytdIco.style.background = isYtdNeg ? 'var(--rnbg)' : 'var(--gnbg)';
+      }
+
+      // 3. Risk Profile Stat Card
+      const riskLvl = perf.risk_level || 'Moderate';
+      const strat = perf.strategy || 'Balanced growth';
+      const riskTitle = $('inv-stat-risk-title');
+      const riskSub = $('inv-stat-risk-sub');
+      const riskIco = $('inv-stat-risk-ico');
+      if (riskTitle) riskTitle.textContent = riskLvl;
+      if (riskSub) riskSub.textContent = strat;
+
+      const lvlLower = riskLvl.toLowerCase();
+      if (lvlLower.includes('conservative') || lvlLower.includes('low')) {
+        if (riskTitle) riskTitle.style.color = 'var(--navy)';
+        if (riskSub) riskSub.className = 'sbg b-bl';
+        if (riskIco) riskIco.style.background = 'var(--bnbg)';
+      } else if (lvlLower.includes('aggressive') || lvlLower.includes('high')) {
+        if (riskTitle) riskTitle.style.color = 'var(--red)';
+        if (riskSub) riskSub.className = 'sbg b-rd';
+        if (riskIco) riskIco.style.background = 'var(--rnbg)';
+      } else { // Moderate / Balanced
+        if (riskTitle) riskTitle.style.color = 'var(--gold)';
+        if (riskSub) riskSub.className = 'sbg b-gd';
+        if (riskIco) riskIco.style.background = 'var(--gbg)';
+      }
+
+      // Lower Performance Overview Table
       if ($('inv-perf-inception')) {
-        $('inv-perf-inception').textContent = perf.since_inception || '+10.3%';
-        $('inv-perf-inception').style.color = (perf.since_inception || '').startsWith('-') ? 'var(--red)' : 'var(--green)';
+        $('inv-perf-inception').textContent = inc;
+        $('inv-perf-inception').style.color = isIncNeg ? 'var(--red)' : 'var(--green)';
       }
       if ($('inv-perf-ytd')) {
-        $('inv-perf-ytd').textContent = perf.ytd_return || '+8.4%';
-        $('inv-perf-ytd').style.color = (perf.ytd_return || '').startsWith('-') ? 'var(--red)' : 'var(--green)';
+        $('inv-perf-ytd').textContent = ytd;
+        $('inv-perf-ytd').style.color = isYtdNeg ? 'var(--red)' : 'var(--green)';
       }
       if ($('inv-perf-1m')) {
         $('inv-perf-1m').textContent = perf.one_month_return || '+1.2%';
         $('inv-perf-1m').style.color = (perf.one_month_return || '').startsWith('-') ? 'var(--red)' : 'var(--green)';
       }
       if ($('inv-perf-div')) $('inv-perf-div').textContent = perf.dividend_yield || '$1,842.30';
-      if ($('inv-perf-strat')) $('inv-perf-strat').textContent = perf.strategy || 'Balanced Growth';
+      if ($('inv-perf-strat')) $('inv-perf-strat').textContent = strat;
       if ($('inv-perf-rebal')) $('inv-perf-rebal').textContent = perf.rebalancing || 'Quarterly';
       if ($('inv-perf-incdate')) $('inv-perf-incdate').textContent = perf.inception_date || ('March ' + (d.user && d.user.memberSince ? d.user.memberSince : '2019'));
     }

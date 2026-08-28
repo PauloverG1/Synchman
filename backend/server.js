@@ -86,7 +86,8 @@ db.exec(`
     dividend_yield TEXT DEFAULT '$1,842.30',
     strategy TEXT DEFAULT 'Balanced Growth',
     rebalancing TEXT DEFAULT 'Quarterly',
-    inception_date TEXT DEFAULT 'March 2019'
+    inception_date TEXT DEFAULT 'March 2019',
+    risk_level TEXT DEFAULT 'Moderate'
   );
 
   CREATE TABLE IF NOT EXISTS investment_activities (
@@ -99,6 +100,10 @@ db.exec(`
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 `);
+
+try {
+  db.exec("ALTER TABLE investment_performance ADD COLUMN risk_level TEXT DEFAULT 'Moderate'");
+} catch(e) {}
 
 // ─── SEED ────────────────────────────────────────────────────────────────────
 const userCount = db.prepare('SELECT COUNT(*) as c FROM users').get();
@@ -257,10 +262,10 @@ app.get('/api/dashboard', requireAuth, (req, res) => {
   const accounts = db.prepare('SELECT * FROM accounts WHERE user_id = ?').all(uid);
 
   // Use actual status column as display_status — 'completed','approved','rejected'
-  const completed = db.prepare('SELECT *, status as display_status FROM transactions WHERE user_id = ? ORDER BY date DESC, id DESC LIMIT 20').all(uid);
+  const completed = db.prepare('SELECT *, status as display_status FROM transactions WHERE user_id = ?').all(uid);
 
-  // Only show truly PENDING from pending_transactions (rejected ones now appear in transactions)
-  const pendingRows = db.prepare("SELECT * FROM pending_transactions WHERE user_id = ? AND status = 'pending' ORDER BY created_at DESC").all(uid);
+  // Only show truly PENDING from pending_transactions (rejected/approved ones appear in transactions table)
+  const pendingRows = db.prepare("SELECT * FROM pending_transactions WHERE user_id = ? AND status = 'pending'").all(uid);
   const pendingMapped = pendingRows.map(p => ({
     id: 'pending_' + p.id,
     user_id: p.user_id,
@@ -268,15 +273,24 @@ app.get('/api/dashboard', requireAuth, (req, res) => {
     description: p.description,
     amount: p.type === 'deposit' ? p.amount : -p.amount,
     type: p.type === 'deposit' ? 'credit' : 'debit',
-    category: p.tx_category === 'investment' ? 'Investment' : 'Transfer',
+    category: p.tx_category === 'investment' ? 'Investment' : (p.type === 'deposit' ? 'Income' : 'Transfer'),
     date: p.date,
-    display_status: 'pending'
+    status: 'pending',
+    display_status: 'pending',
+    created_at: p.created_at || new Date().toISOString()
   }));
 
-  // Merge and sort newest first, cap at 20
+  // Merge, sort newest date first (with tie-break on created_at / id), cap strictly at 15
   const allTxns = [...completed, ...pendingMapped]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 20);
+    .sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      if (dateB !== dateA) return dateB - dateA;
+      const timeA = a.created_at ? new Date(a.created_at).getTime() : (typeof a.id === 'number' ? a.id : 0);
+      const timeB = b.created_at ? new Date(b.created_at).getTime() : (typeof b.id === 'number' ? b.id : 0);
+      return timeB - timeA;
+    })
+    .slice(0, 15);
 
   const investments = db.prepare('SELECT * FROM investments WHERE user_id = ? ORDER BY allocation_pct DESC').all(uid);
   const performance = db.prepare('SELECT * FROM investment_performance WHERE user_id = ?').get(uid) || {
@@ -401,7 +415,8 @@ app.get('/admin/api/user/:id', requireAdmin, (req, res) => {
     dividend_yield: '$1,842.30',
     strategy: 'Balanced Growth',
     rebalancing: 'Quarterly',
-    inception_date: `March ${user.member_since || '2019'}`
+    inception_date: `March ${user.member_since || '2019'}`,
+    risk_level: 'Moderate'
   };
   const activities = db.prepare('SELECT * FROM investment_activities WHERE user_id = ? ORDER BY id DESC').all(uid);
   res.json({ user, accounts, transactions, pending, investments, performance, activities });
@@ -518,12 +533,17 @@ app.post('/admin/api/user/:id/total-investment', requireAdmin, (req, res) => {
   res.json({ success: true, total: newTotal, investments });
 });
 
-// Update account balance (silent — does NOT create a transaction record)
+// Update account balance and APY (silent — does NOT create a transaction record)
 app.post('/admin/api/user/:id/balance', requireAdmin, (req, res) => {
-  const { accountId, newBalance } = req.body;
+  const { accountId, newBalance, apy } = req.body;
   const account = db.prepare('SELECT * FROM accounts WHERE id = ?').get(accountId);
   if (!account) return res.status(404).json({ error: 'Account not found' });
-  db.prepare('UPDATE accounts SET balance = ? WHERE id = ?').run(parseFloat(newBalance), accountId);
+  const balNum = parseFloat(newBalance) || 0;
+  if (apy !== undefined && apy !== null && apy !== '' && !isNaN(parseFloat(apy))) {
+    db.prepare('UPDATE accounts SET balance = ?, apy = ? WHERE id = ?').run(balNum, parseFloat(apy), accountId);
+  } else {
+    db.prepare('UPDATE accounts SET balance = ? WHERE id = ?').run(balNum, accountId);
+  }
   res.json({ success: true });
 });
 
@@ -601,18 +621,18 @@ app.post('/admin/api/user/:id/investment', requireAdmin, (req, res) => {
 // Update investment performance overview
 app.post('/admin/api/user/:id/investment-performance', requireAdmin, (req, res) => {
   const uid = parseInt(req.params.id, 10);
-  const { since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date } = req.body;
+  const { since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date, risk_level } = req.body;
   const existing = db.prepare('SELECT user_id FROM investment_performance WHERE user_id = ?').get(uid);
   if (existing) {
     db.prepare(`UPDATE investment_performance SET 
-      since_inception = ?, ytd_return = ?, one_month_return = ?, dividend_yield = ?, strategy = ?, rebalancing = ?, inception_date = ? 
+      since_inception = ?, ytd_return = ?, one_month_return = ?, dividend_yield = ?, strategy = ?, rebalancing = ?, inception_date = ?, risk_level = ? 
       WHERE user_id = ?`
-    ).run(since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date, uid);
+    ).run(since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date, risk_level || 'Moderate', uid);
   } else {
     db.prepare(`INSERT INTO investment_performance 
-      (user_id, since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-    ).run(uid, since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date);
+      (user_id, since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date, risk_level) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).run(uid, since_inception, ytd_return, one_month_return, dividend_yield, strategy, rebalancing, inception_date, risk_level || 'Moderate');
   }
   const updated = db.prepare('SELECT * FROM investment_performance WHERE user_id = ?').get(uid);
   res.json({ success: true, performance: updated });
@@ -638,16 +658,30 @@ app.post('/admin/api/user/:id/investment-activity', requireAdmin, (req, res) => 
 
 // Add manual transaction
 app.post('/admin/api/user/:id/transaction', requireAdmin, (req, res) => {
-  const { description, amount, type, category, accountId } = req.body;
+  const { description, amount, type, category, accountId, date } = req.body;
   const uid = req.params.id;
   const acctId = accountId || 'hys_1';
   const today = new Date().toISOString().split('T')[0];
-  db.prepare('INSERT INTO transactions (user_id, account_id, description, amount, type, category, date) VALUES (?, ?, ?, ?, ?, ?, ?)')
-    .run(uid, acctId, description, parseFloat(amount), type, category || 'Adjustment', today);
-  if (type === 'credit') {
-    db.prepare('UPDATE accounts SET balance = balance + ? WHERE id = ? AND user_id = ?').run(parseFloat(amount), acctId, uid);
+  const txDate = date || today;
+  const parsedAmt = parseFloat(amount) || 0;
+
+  db.prepare('INSERT INTO transactions (user_id, account_id, description, amount, type, category, date, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)')
+    .run(uid, acctId, description, parsedAmt, type, category || 'Adjustment', txDate, 'completed');
+
+  if (acctId === 'invest_1' || category === 'Investment') {
+    // Proportional investment portfolio update
+    const invs = db.prepare('SELECT * FROM investments WHERE user_id = ?').all(uid);
+    const totalPct = invs.reduce((s, i) => s + i.allocation_pct, 0) || 100;
+    invs.forEach(inv => {
+      const delta = (inv.allocation_pct / totalPct) * parsedAmt * (type === 'credit' ? 1 : -1);
+      db.prepare('UPDATE investments SET value = MAX(0, value + ?) WHERE id = ?').run(delta, inv.id);
+    });
   } else {
-    db.prepare('UPDATE accounts SET balance = balance - ? WHERE id = ? AND user_id = ?').run(parseFloat(amount), acctId, uid);
+    if (type === 'credit') {
+      db.prepare('UPDATE accounts SET balance = balance + ? WHERE id = ? AND user_id = ?').run(parsedAmt, acctId, uid);
+    } else {
+      db.prepare('UPDATE accounts SET balance = balance - ? WHERE id = ? AND user_id = ?').run(parsedAmt, acctId, uid);
+    }
   }
   res.json({ success: true });
 });

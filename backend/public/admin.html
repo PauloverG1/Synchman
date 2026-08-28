@@ -287,19 +287,26 @@ tr:hover td{background:var(--bg)}
         <div class="card" style="margin-bottom:16px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
             <div>
-              <div style="font-size:15px;font-weight:700">📈 Performance Overview</div>
-              <div style="font-size:12px;color:var(--light)">Directly controls the metrics shown on client's Investments page</div>
+              <div style="font-size:15px;font-weight:700">📈 Performance Overview & Top Metrics</div>
+              <div style="font-size:12px;color:var(--light)">Directly controls the top 3 cards & metrics on client's Investments page</div>
             </div>
             <button class="btn btn-navy btn-sm" onclick="savePerformance()">💾 Save Performance</button>
           </div>
           <div class="g3" style="margin-bottom:10px">
-            <div class="field"><label>Since Inception</label><input type="text" id="ud-perf-inc" placeholder="+10.3%"></div>
-            <div class="field"><label>Year to Date</label><input type="text" id="ud-perf-ytd" placeholder="+8.4%"></div>
+            <div class="field"><label>Since Inception (All-Time %)</label><input type="text" id="ud-perf-inc" placeholder="+10.3%"></div>
+            <div class="field"><label>Annual Return YTD (%)</label><input type="text" id="ud-perf-ytd" placeholder="+8.4%"></div>
             <div class="field"><label>1-Month Return</label><input type="text" id="ud-perf-1m" placeholder="+1.2%"></div>
           </div>
-          <div class="g2" style="margin-bottom:10px">
+          <div class="g3" style="margin-bottom:10px">
+            <div class="field"><label>Risk Profile Level</label>
+              <select id="ud-perf-risk">
+                <option value="Conservative">Conservative (Low Risk)</option>
+                <option value="Moderate">Moderate (Balanced)</option>
+                <option value="Aggressive">Aggressive (High Growth)</option>
+              </select>
+            </div>
+            <div class="field"><label>Strategy / Risk Subtitle</label><input type="text" id="ud-perf-strat" placeholder="Balanced growth"></div>
             <div class="field"><label>Dividend Yield (YTD)</label><input type="text" id="ud-perf-div" placeholder="$1,842.30"></div>
-            <div class="field"><label>Strategy</label><input type="text" id="ud-perf-strat" placeholder="Balanced Growth"></div>
           </div>
           <div class="g2">
             <div class="field"><label>Rebalancing</label><input type="text" id="ud-perf-rebal" placeholder="Quarterly"></div>
@@ -352,6 +359,7 @@ tr:hover td{background:var(--bg)}
         <div class="field"><label>Category</label><select id="mt-cat"><option>Income</option><option>Interest</option><option>Adjustment</option><option>Withdrawal</option><option>Transfer</option><option>Investment</option></select></div>
         <div class="field"><label>Account</label><select id="mt-acct"></select></div>
       </div>
+      <div class="field"><label>Transaction Date</label><input type="date" id="mt-date"></div>
       <button class="btn btn-gold" style="width:100%;margin-top:4px" onclick="submitManualTxn()">Add Transaction →</button>
     </div>
   </div>
@@ -579,7 +587,9 @@ async function loadUserDetail(uid) {
 
     // Populate account select in add transaction modal
     const sel = document.getElementById('mt-acct');
-    sel.innerHTML = d.accounts.map(a => `<option value="${a.id}">${a.type} (${a.number})</option>`).join('');
+    const accOptions = d.accounts.map(a => `<option value="${a.id}">${a.type} (${a.number})</option>`).join('');
+    const invOption = `<option value="invest_1">Investment Portfolio (Total Portfolio)</option>`;
+    sel.innerHTML = accOptions + invOption;
   } catch (e) { toast('⚠️ Error loading user'); }
 }
 
@@ -598,15 +608,20 @@ function renderAccounts(accounts, investments = []) {
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
         <div>
           <div style="font-size:14px;font-weight:700">${a.type}</div>
-          <div style="font-size:12px;color:var(--light)">${a.number} · ${a.apy}% APY</div>
+          <div style="font-size:12px;color:var(--light)">${a.number}</div>
         </div>
         <span class="badge b-gr">Active</span>
       </div>
       <div style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:12px">$${fmt(a.balance)}</div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="number" id="bal-${a.id}" value="${a.balance}" step="0.01" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
-        <button class="btn btn-navy btn-sm" onclick="saveBalance('${a.id}')">Save</button>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);width:65px">Balance ($)</label>
+        <input type="number" id="bal-${a.id}" value="${a.balance}" step="0.01" style="flex:1;padding:6px 8px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
       </div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:12px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);width:65px">APY (%)</label>
+        <input type="number" id="apy-${a.id}" value="${a.apy || 0}" step="0.01" style="flex:1;padding:6px 8px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
+      </div>
+      <button class="btn btn-navy btn-sm" style="width:100%" onclick="saveBalance('${a.id}')">💾 Save Account</button>
     </div>
   `).join('');
 
@@ -620,10 +635,11 @@ function renderAccounts(accounts, investments = []) {
         <span class="badge b-gr">Active</span>
       </div>
       <div style="font-size:24px;font-weight:800;color:var(--green);margin-bottom:12px">$${fmt(totalInv)}</div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="number" id="bal-investments" value="${totalInv.toFixed(2)}" step="0.01" style="flex:1;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
-        <button class="btn btn-navy btn-sm" onclick="saveTotalInvestment()">Save</button>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:20px">
+        <label style="font-size:11px;font-weight:600;color:var(--mid);width:65px">Balance ($)</label>
+        <input type="number" id="bal-investments" value="${totalInv.toFixed(2)}" step="0.01" style="flex:1;padding:6px 8px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-family:inherit;outline:none">
       </div>
+      <button class="btn btn-navy btn-sm" style="width:100%" onclick="saveTotalInvestment()">💾 Save Portfolio</button>
     </div>
   `;
 
@@ -631,15 +647,17 @@ function renderAccounts(accounts, investments = []) {
 }
 
 async function saveBalance(accountId) {
-  const inp = document.getElementById('bal-' + accountId);
-  if (!inp) return;
-  const val = inp.value;
+  const balInp = document.getElementById('bal-' + accountId);
+  const apyInp = document.getElementById('apy-' + accountId);
+  if (!balInp) return;
+  const val = balInp.value;
+  const apyVal = apyInp ? apyInp.value : null;
   if (val === '' || isNaN(val)) { toast('⚠️ Please enter a valid number'); return; }
   try {
     const res = await fetch('/admin/api/user/' + currentUser.user.id + '/balance', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ accountId, newBalance: parseFloat(val) })
+      body: JSON.stringify({ accountId, newBalance: parseFloat(val), apy: apyVal !== null && apyVal !== '' ? parseFloat(apyVal) : undefined })
     });
     if (res.status === 401) {
       toast('⚠️ Admin session expired. Please log in again.');
@@ -647,7 +665,7 @@ async function saveBalance(accountId) {
     }
     const d = await res.json();
     if (d.success) {
-      toast('✅ Balance updated!');
+      toast('✅ Account balance and APY updated!');
       loadUserDetail(currentUser.user.id);
     } else {
       toast('⚠️ ' + (d.error || 'Error saving balance'));
@@ -869,9 +887,11 @@ function renderPerformance(perf) {
   document.getElementById('ud-perf-ytd').value = perf.ytd_return || '+8.4%';
   document.getElementById('ud-perf-1m').value = perf.one_month_return || '+1.2%';
   document.getElementById('ud-perf-div').value = perf.dividend_yield || '$1,842.30';
-  document.getElementById('ud-perf-strat').value = perf.strategy || 'Balanced Growth';
+  document.getElementById('ud-perf-strat').value = perf.strategy || 'Balanced growth';
   document.getElementById('ud-perf-rebal').value = perf.rebalancing || 'Quarterly';
   document.getElementById('ud-perf-incdate').value = perf.inception_date || 'March 2019';
+  const riskSelect = document.getElementById('ud-perf-risk');
+  if (riskSelect) riskSelect.value = perf.risk_level || 'Moderate';
 }
 
 async function savePerformance() {
@@ -882,7 +902,8 @@ async function savePerformance() {
     dividend_yield: document.getElementById('ud-perf-div').value.trim(),
     strategy: document.getElementById('ud-perf-strat').value.trim(),
     rebalancing: document.getElementById('ud-perf-rebal').value.trim(),
-    inception_date: document.getElementById('ud-perf-incdate').value.trim()
+    inception_date: document.getElementById('ud-perf-incdate').value.trim(),
+    risk_level: document.getElementById('ud-perf-risk')?.value || 'Moderate'
   };
   try {
     const res = await fetch('/admin/api/user/' + currentUser.user.id + '/investment-performance', {
@@ -892,7 +913,7 @@ async function savePerformance() {
     });
     const d = await res.json();
     if (d.success) {
-      toast('✅ Performance overview saved!');
+      toast('✅ Performance overview & top metrics saved!');
       currentUser.performance = d.performance;
     } else {
       toast('⚠️ Error saving performance metrics');
@@ -1030,16 +1051,22 @@ function renderTxnHistory(txns) {
 }
 
 // ── MANUAL TRANSACTION ─────────────────────────────────────────────────────
-function openAddTxnModal() { document.getElementById('txn-modal').classList.add('on'); }
+function openAddTxnModal() {
+  const dateInput = document.getElementById('mt-date');
+  if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
+  document.getElementById('txn-modal').classList.add('on');
+}
 function closeTxnModal() { document.getElementById('txn-modal').classList.remove('on'); }
 
 async function submitManualTxn() {
+  const dateVal = document.getElementById('mt-date')?.value || new Date().toISOString().split('T')[0];
   const body = {
     description: document.getElementById('mt-desc').value,
     amount: document.getElementById('mt-amt').value,
     type: document.getElementById('mt-type').value,
     category: document.getElementById('mt-cat').value,
     accountId: document.getElementById('mt-acct').value,
+    date: dateVal
   };
   if (!body.description || !body.amount) { toast('⚠️ Fill in description and amount.'); return; }
   const res = await fetch('/admin/api/user/' + currentUser.user.id + '/transaction', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
