@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const Database = require('better-sqlite3');
+const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
 
@@ -164,6 +165,7 @@ try {
 
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -172,19 +174,21 @@ app.use(session({
   saveUninitialized: false,
   cookie: { maxAge: 24 * 60 * 60 * 1000, httpOnly: true }
 }));
+
+const staticOptions = { maxAge: '1d', index: false };
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // Serve root marketing static files (images, css, js, fonts, pages, sections)
 const rootDir = path.join(__dirname, '..');
-app.use('/css', express.static(path.join(rootDir, 'css')));
-app.use('/js', express.static(path.join(rootDir, 'js')));
-app.use('/images', express.static(path.join(rootDir, 'images')));
-app.use('/fonts', express.static(path.join(rootDir, 'fonts')));
-app.use('/pages', express.static(path.join(rootDir, 'pages')));
-app.use('/banking', express.static(path.join(rootDir, 'banking')));
-app.use('/business', express.static(path.join(rootDir, 'business')));
-app.use('/carecredit', express.static(path.join(rootDir, 'carecredit')));
-app.use('/prequalify', express.static(path.join(rootDir, 'prequalify')));
+app.use('/css', express.static(path.join(rootDir, 'css'), staticOptions));
+app.use('/js', express.static(path.join(rootDir, 'js'), staticOptions));
+app.use('/images', express.static(path.join(rootDir, 'images'), staticOptions));
+app.use('/fonts', express.static(path.join(rootDir, 'fonts'), staticOptions));
+app.use('/pages', express.static(path.join(rootDir, 'pages'), staticOptions));
+app.use('/banking', express.static(path.join(rootDir, 'banking'), staticOptions));
+app.use('/business', express.static(path.join(rootDir, 'business'), staticOptions));
+app.use('/carecredit', express.static(path.join(rootDir, 'carecredit'), staticOptions));
+app.use('/prequalify', express.static(path.join(rootDir, 'prequalify'), staticOptions));
 
 // Marketing static pages
 app.get('/carecredit.html', (req, res) => res.sendFile(path.join(rootDir, 'carecredit.html')));

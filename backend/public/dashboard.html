@@ -126,11 +126,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .st-pending{background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A}
 .st-approved{background:#ECFDF5;color:#065F46;border:1px solid #6EE7B7}
 .st-rejected{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA}
-
 /* forms */
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;min-width:0}
 .field label{font-size:12.5px;font-weight:600;color:var(--mid)}
-.field input,.field select,.field textarea{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;color:var(--text);background:#fff;outline:none;width:100%;transition:border-color var(--ease)}
+.field input,.field select,.field textarea{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;color:var(--text);background:#fff;outline:none;width:100%;min-width:0;box-sizing:border-box;max-width:100%;transition:border-color var(--ease)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy)}
 .hint{font-size:11px;color:var(--light)}
 
@@ -211,6 +210,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .modal-head{background:linear-gradient(135deg,var(--navy),#004080);padding:24px 28px;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between}
 .modal-body{padding:28px}
 .modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.modal-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
 /* responsive */
 .mid-split>*{min-width:0;overflow:hidden}
@@ -218,8 +218,19 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   .mid-split{grid-template-columns:1fr!important}
   .g3{grid-template-columns:1fr 1fr}
 }
-@media(max-width:767px){
+@media(max-width:768px){
   :root{--sw:0px}
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.op{transform:translateX(0)}
+  .main{margin-left:0;padding-bottom:var(--bn)}
+  .tb-ham{display:flex}
+  .content{padding:14px 14px 20px;box-sizing:border-box;width:100%;overflow-x:hidden}
+
+  /* All grids become single column — override inline styles too */
+  .g2,.g3,.sc-row,.mid-split,.modal-grid-2{grid-template-columns:1fr!important;gap:12px!important}
+  .modal-box{width:calc(100% - 20px);max-width:100%;margin:10px auto;border-radius:16px}
+  .modal-head{padding:18px 20px!important;border-radius:16px 16px 0 0}
+  .modal-body{padding:20px 16px!important}
 
   /* prevent ANY horizontal scroll */
   html,body{overflow-x:hidden;max-width:100vw}
@@ -227,12 +238,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   .sb{transform:translateX(-240px)}
   .sb.op{transform:translateX(0);width:240px}
   .hbg{display:flex}
-
-  /* main layout */
-  .main{margin-left:0;padding-bottom:var(--bn)}
   .tb{padding:13px 16px}
   .tb-l h1{font-size:18px}
-  .content{padding:14px 14px 20px;box-sizing:border-box;width:100%;overflow-x:hidden}
 
   /* FDIC wraps properly */
   .fdic{flex-wrap:wrap}
@@ -419,7 +426,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
               <label>Recipient Bank Name</label>
               <input type="text" id="tr-bank" placeholder="e.g. Wells Fargo">
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="modal-grid-2">
               <div class="field">
                 <label>Account Number</label>
                 <input type="text" id="tr-acct" placeholder="Enter account number" inputmode="numeric" maxlength="17"
@@ -841,22 +848,22 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <button class="modal-close" onclick="closeLoanModal()">×</button>
     </div>
     <div class="modal-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="modal-grid-2">
         <div class="field"><label>First Name</label><input type="text" placeholder="John"></div>
         <div class="field"><label>Last Name</label><input type="text" placeholder="Smith"></div>
       </div>
       <div class="field"><label>Email Address</label><input type="email" placeholder="john@example.com"></div>
-      <div class="field"><label>Phone Number</label><input type="tel" placeholder="+1 (555) 000-0000"></div>
+      <div class="field"><label>Phone Number</label><input type="tel" id="loan-phone" placeholder="(555) 000-0000" inputmode="numeric" maxlength="14" oninput="formatPhoneInput(this)"></div>
       <div class="field"><label>Loan Amount Requested ($)</label><input type="number" id="modal-amt" placeholder="e.g. 25000"></div>
       <div class="field"><label>Loan Purpose</label><select><option>Home Improvement</option><option>Debt Consolidation</option><option>Medical Expenses</option><option>Business</option><option>Education</option><option>Vehicle Purchase</option><option>Emergency</option><option>Other</option></select></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="modal-grid-2">
         <div class="field"><label>Employment Status</label><select><option>Employed Full-Time</option><option>Self-Employed</option><option>Employed Part-Time</option><option>Retired</option><option>Unemployed</option></select></div>
         <div class="field"><label>Annual Income ($)</label><input type="number" placeholder="e.g. 75000"></div>
       </div>
       <div class="field"><label>Credit Score Range</label><select><option>Excellent (750+)</option><option>Good (700–749)</option><option>Fair (650–699)</option><option>Poor (600–649)</option><option>Very Poor (below 600)</option></select></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="modal-grid-2">
         <div class="field"><label>Date of Birth</label><input type="date"></div>
-        <div class="field"><label>SSN Last 4 Digits</label><input type="text" maxlength="4" placeholder="••••"></div>
+        <div class="field"><label>SSN Last 4 Digits</label><input type="text" id="loan-ssn" maxlength="4" placeholder="••••" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'').slice(0,4)"></div>
       </div>
       <div class="field"><label>Home Address</label><input type="text" placeholder="123 Main St, City, State ZIP"></div>
       <div style="padding:12px 14px;background:var(--nbg);border-radius:var(--rs);font-size:12px;color:var(--mid);margin-bottom:16px">🔒 Encrypted &amp; secure. This performs a <strong>soft credit check only</strong> — no impact to your score.</div>
@@ -922,7 +929,18 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <script>
 const $ = id => document.getElementById(id);
 const fmt = n => new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
-const fmtDate = s => new Date(s+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+/* PHONE NUMBER AUTO-FORMAT */
+function formatPhoneInput(el){
+  let v = el.value.replace(/\D/g, '').slice(0, 10);
+  if (!v) { el.value = ''; return; }
+  if (v.length <= 3) {
+    el.value = '(' + v;
+  } else if (v.length <= 6) {
+    el.value = '(' + v.slice(0, 3) + ') ' + v.slice(3);
+  } else {
+    el.value = '(' + v.slice(0, 3) + ') ' + v.slice(3, 6) + '-' + v.slice(6, 10);
+  }
+}
 
 /* TOAST */
 function toast(msg){
