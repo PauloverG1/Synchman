@@ -174,6 +174,19 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
+// Serve root marketing static files (images, css, js, fonts, pages)
+const rootDir = path.join(__dirname, '..');
+app.use('/css', express.static(path.join(rootDir, 'css')));
+app.use('/js', express.static(path.join(rootDir, 'js')));
+app.use('/images', express.static(path.join(rootDir, 'images')));
+app.use('/fonts', express.static(path.join(rootDir, 'fonts')));
+app.use('/pages', express.static(path.join(rootDir, 'pages')));
+
+// Marketing home page routes
+app.get('/home', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
+app.get('/main', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
+app.get('/Mainindex.html', (req, res) => res.sendFile(path.join(rootDir, 'Mainindex.html')));
+
 // ─── AUTH GUARDS ─────────────────────────────────────────────────────────────
 const requireAuth = (req, res, next) => {
   if (!req.session.userId) return res.redirect('/login');
