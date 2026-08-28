@@ -977,15 +977,11 @@ function goto(p){
   if(p==='investments'&&!portDone) initPortChart();
   if(p==='loans') calcLoan();
 
-  // If user navigates to Overview after a transfer, silently re-fetch latest data
-  // so the pending transaction shows up immediately without a manual reload
+  // If user navigates to Overview after a transfer, reload so latest pending transaction displays
   if(p==='overview' && sessionStorage.getItem('needsOverviewRefresh')==='1'){
     sessionStorage.removeItem('needsOverviewRefresh');
-    fetch('/api/dashboard').then(r=>r.json()).then(d=>{
-      if(!d||d.error) return;
-      renderTxns(d.transactions||[]);
-      renderAccCards(d.accounts||[]);
-    }).catch(()=>{});
+    location.reload();
+    return;
   }
 
   window.scrollTo({top:0,behavior:'smooth'});
