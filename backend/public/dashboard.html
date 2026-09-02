@@ -346,27 +346,48 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <span class="fdic-b">FDIC</span>
         <span style="font-size:12px;color:var(--mid)">FDIC-insured · Backed by the full faith and credit of the U.S. Government · Deposits insured up to $250,000</span>
       </div>
+
+      <!-- Prominent Blocked Notice Banner -->
+      <div id="blocked-banner" style="display:none;background:linear-gradient(135deg,#FEF2F2,#FEE2E2);border:1.5px solid #FCA5A5;border-radius:var(--r);padding:14px 18px;margin-bottom:16px;color:#991B1B;box-shadow:0 4px 14px rgba(239,68,68,0.12)">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="font-size:24px;line-height:1">🚫</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:800;color:#991B1B;letter-spacing:.3px">ACCOUNT RESTRICTED: ACCOUNT CURRENTLY BLOCKED</div>
+            <div style="font-size:12px;color:#B91C1C;margin-top:2px;line-height:1.4">Administrative restrictions have been placed on this account. Outgoing transfers and transactions are disabled.</div>
+          </div>
+        </div>
+      </div>
+
       <div class="gap">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" class="sc-row">
           <!-- Total Balance -->
           <div class="sc prim">
             <p class="sl">Total Balance</p>
             <div class="sv"><span class="cur">$</span><span id="ov-total">0.00</span></div>
-            <span class="sbg" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);margin-top:12px">All Accounts Combined</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap">
+              <span class="sbg" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.8)">All Accounts Combined</span>
+              <span class="sbg b-rd ov-blocked-badge" style="display:none;font-weight:800;letter-spacing:0.5px">● BLOCKED</span>
+            </div>
           </div>
           <!-- HYS -->
           <div class="sc" style="border-top:4px solid var(--navy)">
             <div class="sico" style="background:var(--nbg)">🏦</div>
             <p class="sl">High Yield Savings</p>
             <div class="sv"><span class="cur">$</span><span id="ov-hys">0.00</span></div>
-            <span class="sbg b-bl" style="margin-top:10px" id="ov-hys-apy">3.30% APY</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap">
+              <span class="sbg b-bl" id="ov-hys-apy">3.30% APY</span>
+              <span class="sbg b-rd ov-blocked-badge" style="display:none;font-weight:800;letter-spacing:0.5px">● BLOCKED</span>
+            </div>
           </div>
           <!-- Money Market -->
           <div class="sc" style="border-top:4px solid var(--gold)">
             <div class="sico" style="background:var(--gbg)">💼</div>
             <p class="sl">Money Market</p>
             <div class="sv"><span class="cur">$</span><span id="ov-mma">0.00</span></div>
-            <span class="sbg b-gd" style="margin-top:10px" id="ov-mma-apy">2.95% APY</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap">
+              <span class="sbg b-gd" id="ov-mma-apy">2.95% APY</span>
+              <span class="sbg b-rd ov-blocked-badge" style="display:none;font-weight:800;letter-spacing:0.5px">● BLOCKED</span>
+            </div>
           </div>
         </div>
 
@@ -417,6 +438,13 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <div class="gap">
           <div class="card">
             <div class="ch"><div><div class="ct">Bank Transfer</div><div class="cs">Send money to any bank account</div></div></div>
+
+            <div id="transfer-blocked-notice" style="display:none;background:linear-gradient(135deg,#FEF2F2,#FEE2E2);border:1.5px solid #FCA5A5;border-radius:var(--rs);padding:12px 16px;margin-bottom:16px;color:#991B1B">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:20px">🚫</span>
+                <div style="font-size:13px;font-weight:700">Account Restricted: Outgoing transfers are disabled for this account.</div>
+              </div>
+            </div>
 
             <div class="field">
               <label>Recipient Full Name</label>
@@ -1073,7 +1101,7 @@ function initPortChart(){
 
 
 /* CRYPTO MODAL */
-const cryptoAddresses = {
+let cryptoAddresses = {
   BTC: { label:'Bitcoin (BTC)', icon:'₿', addr:'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', network:'Bitcoin Network', color:'#F7931A' },
   USDT: { label:'Tether USD (USDT)', icon:'₮', addr:'TRxCKbHrMNBJTFhDT6S8mupS2jgJFx8ygV', network:'TRC-20 (TRON)', color:'#26A17B' },
   ETH: { label:'Ethereum (ETH)', icon:'⬡', addr:'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', network:'ERC-20 (Ethereum)', color:'#627EEA' }
@@ -1250,6 +1278,10 @@ function setTrAmt(n){
 
 /* TRANSFER SUBMIT */
 async function submitTr(){
+  if(_userIsBlocked){
+    toast('🚫 This account has been blocked. Outgoing transfers and transactions are disabled.');
+    return;
+  }
   const name=$('tr-name')?.value?.trim(), bank=$('tr-bank')?.value?.trim();
   const acct=$('tr-acct')?.value?.trim(), routing=$('tr-routing')?.value?.trim();
   const rawAmt=getRawAmt(), from=$('tr-from')?.value;
@@ -1268,7 +1300,7 @@ async function submitTr(){
       updateTrPreview();
       // Flag so Overview refreshes next time user visits it
       sessionStorage.setItem('needsOverviewRefresh','1');
-    } else { toast('⚠️ Transfer failed. Please try again.'); }
+    } else { toast('⚠️ ' + (d.error || 'Transfer failed. Please try again.')); }
   }catch(e){ toast('⚠️ Could not reach server. Please check connection.'); }
 }
 
@@ -1284,6 +1316,10 @@ function closeLoanModal(){
   document.body.style.overflow='';
 }
 function submitLoan(){
+  if(_userIsBlocked){
+    toast('🚫 This account has been blocked. Loan applications cannot be processed.');
+    return;
+  }
   const amt=$('modal-amt')?.value;
   if(!amt){toast('⚠️ Please enter a loan amount.');return;}
   closeLoanModal();
@@ -1305,9 +1341,7 @@ function calcLoan(){
 
 /* FAQ */
 function toggleFAQ(el){
-  const was=el.classList.contains('op');
-  document.querySelectorAll('.faq').forEach(f=>f.classList.remove('op'));
-  if(!was) el.classList.add('op');
+  el.classList.toggle('op');
 }
 
 /* SETTINGS */
@@ -1333,19 +1367,25 @@ function previewAv(input){
 function catIco(c){return{Income:'💼',Interest:'💰',Transfer:'↔',Withdrawal:'🏧',Adjustment:'⚙'}[c]||'💳';}
 function catClr(c){return{Income:'var(--gnbg)',Interest:'var(--gbg)',Transfer:'var(--bnbg)',Withdrawal:'var(--rnbg)',Adjustment:'#F3F4F6'}[c]||'var(--bnbg)';}
 
-function renderTxns(txns,el){
-  if(!el)return;
-  if(!txns||!txns.length){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--light)">No transactions yet</div>';return;}
-  el.innerHTML=txns.map(t=>{
-    const isCr=t.type==='credit';
-    const amt=Math.abs(t.amount);
-    const status=t.display_status||'completed';
-    // Status pill — only shown when not completed
-    let pill='';
-    if(status==='pending') pill='<span class="st-pill st-pending">⏳ Pending</span>';
-    else if(status==='approved') pill='<span class="st-pill st-approved">✓ Approved</span>';
-    else if(status==='rejected') pill='<span class="st-pill st-rejected">✗ Rejected</span>';
-    return `<div class="tr">
+function renderTxns(txns,container){
+  const el = container || $('ov-txns');
+  if(!el) return;
+  if(!txns || txns.length === 0){
+    el.innerHTML = '<div style="text-align:center;padding:32px 0;color:var(--mid);font-size:13px">No transactions yet</div>';
+    return;
+  }
+  el.innerHTML = txns.map(t => {
+    const isCr = t.type === 'credit';
+    const amt = Math.abs(t.amount);
+    const isPending = (t.status === 'pending' || t.display_status === 'pending');
+    const isRejected = (t.status === 'rejected' || t.display_status === 'rejected');
+    const isApproved = (t.status === 'approved' || t.display_status === 'approved');
+    let pill = '';
+    if(isPending) pill = `<span class="badge b-rd" style="margin-left:6px;font-size:11px;font-weight:600">⏳ Pending</span>`;
+    else if(isRejected) pill = `<span class="badge b-rd" style="margin-left:6px;font-size:11px;font-weight:600;background:rgba(239,68,68,.12);color:var(--red)">✕ Rejected</span>`;
+    else if(isApproved) pill = `<span class="badge b-gr" style="margin-left:6px;font-size:11px;font-weight:600">✓ Approved</span>`;
+    return `
+    <div class="tr">
       <div class="tr-ico" style="background:${catClr(t.category)}">${catIco(t.category)}</div>
       <div class="tr-b">
         <div class="tr-d">${t.description}</div>
@@ -1361,7 +1401,7 @@ function renderAccCards(accounts){
   const mx=Math.max(...accounts.map(a=>a.balance));
   el.innerHTML=accounts.map(a=>`
     <div class="card card-hov" style="border-top:4px solid ${a.id&&a.id.includes('hys')?'var(--navy)':'var(--gold)'}">
-      <div style="font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.5px">${a.type}</div>
+      <div style="font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.5px">${a.type} <span class="badge b-rd ov-blocked-badge" style="display:none;margin-left:6px">BLOCKED</span></div>
       <div style="font-size:11px;color:var(--light);margin-bottom:10px">${a.number}</div>
       <div style="font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px">$${fmt(a.balance)}</div>
       <div style="font-size:12px;color:var(--green);font-weight:600;margin-top:3px">↑ ${a.apy}% APY · $${fmt(a.interestEarned)} earned</div>
@@ -1376,6 +1416,7 @@ function renderAccCards(accounts){
 /* INIT */
 // Store accounts globally so chart can use live totals
 let _accounts = [];
+let _userIsBlocked = false;
 
 async function init(){
   try{
@@ -1384,10 +1425,19 @@ async function init(){
     const u=d.user;
     _accounts = d.accounts;
 
-    // User info
+    // User info & Blocked Status
     [$('sb-av'),$('top-av'),$('set-av')].forEach(el=>{if(el&&!el.style.backgroundImage)el.textContent=u.avatar;});
     if($('sb-name'))$('sb-name').textContent=u.name;
     if($('sb-since'))$('sb-since').textContent='Member since '+u.memberSince;
+
+    // Check if account is blocked
+    const isBlocked = (u && u.status === 'blocked');
+    _userIsBlocked = isBlocked;
+    if ($('blocked-banner')) $('blocked-banner').style.display = isBlocked ? 'block' : 'none';
+    if ($('transfer-blocked-notice')) $('transfer-blocked-notice').style.display = isBlocked ? 'block' : 'none';
+    document.querySelectorAll('.ov-blocked-badge').forEach(el => {
+      el.style.display = isBlocked ? 'inline-flex' : 'none';
+    });
 
     // Overview cards — Total, HYS, MMA
     const hys = d.accounts.find(a=>a.id&&a.id.includes('hys')) || d.accounts[0];
@@ -1412,6 +1462,11 @@ async function init(){
     _investments = d.investments || [];
     const totalInv = _investments.reduce((sum, i) => sum + (i.value || 0), 0);
     if ($('inv-total')) $('inv-total').textContent = fmt(totalInv);
+
+    // Dynamic Crypto Wallets
+    if (d.crypto_wallets) {
+      cryptoAddresses = Object.assign(cryptoAddresses, d.crypto_wallets);
+    }
 
     // Dynamic Performance Overview & Top Stat Cards
     const perf = d.investment_performance;

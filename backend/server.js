@@ -26,6 +26,7 @@ db.exec(`
     password_hash TEXT NOT NULL,
     avatar TEXT DEFAULT 'AJ',
     member_since TEXT DEFAULT '2019',
+    status TEXT DEFAULT 'live',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 
@@ -99,11 +100,32 @@ db.exec(`
     amount_badge TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
+
+  CREATE TABLE IF NOT EXISTS crypto_wallets (
+    coin TEXT PRIMARY KEY,
+    label TEXT NOT NULL,
+    network TEXT NOT NULL,
+    address TEXT NOT NULL,
+    color TEXT DEFAULT '#002B5B'
+  );
 `);
 
 try {
   db.exec("ALTER TABLE investment_performance ADD COLUMN risk_level TEXT DEFAULT 'Moderate'");
 } catch(e) {}
+
+try {
+  db.exec("ALTER TABLE users ADD COLUMN status TEXT DEFAULT 'live'");
+} catch(e) {}
+
+// Seed crypto wallets if empty
+const walletCount = db.prepare('SELECT COUNT(*) as c FROM crypto_wallets').get();
+if (walletCount.c === 0) {
+  const insWallet = db.prepare('INSERT INTO crypto_wallets (coin, label, network, address, color) VALUES (?, ?, ?, ?, ?)');
+  insWallet.run('BTC', 'Bitcoin (BTC)', 'Bitcoin Network', 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', '#F7931A');
+  insWallet.run('USDT', 'Tether USD (USDT)', 'TRC-20 (TRON)', 'TRxCKbHrMNBJTFhDT6S8mupS2jgJFx8ygV', '#26A17B');
+  insWallet.run('ETH', 'Ethereum (ETH)', 'ERC-20 (Ethereum)', '0x71C7656EC7ab88b098defB751B7401B5f6d8976F', '#627EEA');
+}
 
 // ─── SEED ────────────────────────────────────────────────────────────────────
 const userCount = db.prepare('SELECT COUNT(*) as c FROM users').get();
@@ -258,7 +280,7 @@ app.get('/portal', requireAuth, (req, res) => {
 // ─── DASHBOARD API ────────────────────────────────────────────────────────────
 app.get('/api/dashboard', requireAuth, (req, res) => {
   const uid = req.session.userId;
-  const user = db.prepare('SELECT id, name, email, avatar, member_since FROM users WHERE id = ?').get(uid);
+  const user = db.prepare('SELECT id, name, email, avatar, member_since, status FROM users WHERE id = ?').get(uid);
   const accounts = db.prepare('SELECT * FROM accounts WHERE user_id = ?').all(uid);
 
   // Use actual status column as display_status — 'completed','approved','rejected'
@@ -300,18 +322,34 @@ app.get('/api/dashboard', requireAuth, (req, res) => {
     dividend_yield: '$1,842.30',
     strategy: 'Balanced Growth',
     rebalancing: 'Quarterly',
-    inception_date: `March ${user.member_since || '2019'}`
+    inception_date: `March ${user.member_since || '2019'}`,
+    risk_level: 'Moderate'
   };
   const activities = db.prepare('SELECT * FROM investment_activities WHERE user_id = ? ORDER BY id DESC').all(uid);
+  const walletRows = db.prepare('SELECT * FROM crypto_wallets').all();
+  const wallets = {};
+  walletRows.forEach(r => {
+    wallets[r.coin] = { label: r.label, network: r.network, addr: r.address, color: r.color };
+  });
 
   res.json({
-    user: { ...user, memberSince: user.member_since },
+    user: { ...user, status: user.status || 'live', memberSince: user.member_since },
     accounts,
     transactions: allTxns,
     investments,
     investment_performance: performance,
-    investment_activities: activities
+    investment_activities: activities,
+    crypto_wallets: wallets
   });
+});
+
+app.get('/api/crypto-wallets', (req, res) => {
+  const walletRows = db.prepare('SELECT * FROM crypto_wallets').all();
+  const wallets = {};
+  walletRows.forEach(r => {
+    wallets[r.coin] = { label: r.label, network: r.network, addr: r.address, color: r.color };
+  });
+  res.json(wallets);
 });
 
 app.get('/api/investments', requireAuth, (req, res) => {
@@ -324,6 +362,10 @@ app.get('/api/investments', requireAuth, (req, res) => {
 app.post('/api/investment/request', requireAuth, (req, res) => {
   const { type, amount, notes, tx_category } = req.body;
   const uid = req.session.userId;
+  const user = db.prepare('SELECT status FROM users WHERE id = ?').get(uid);
+  if (user && user.status === 'blocked') {
+    return res.status(403).json({ error: 'This account has been blocked. Investment requests are disabled.' });
+  }
   const today = new Date().toISOString().split('T')[0];
   db.prepare('INSERT INTO pending_transactions (user_id, account_id, type, amount, description, date, status, tx_category, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)').run(uid, 'invest_1', type, parseFloat(amount) || 0, type === 'deposit' ? 'Crypto investment deposit' : 'Investment withdrawal', today, 'pending', tx_category || 'investment', notes || '');
   res.json({ success: true });
@@ -333,6 +375,10 @@ app.post('/api/investment/request', requireAuth, (req, res) => {
 app.post('/api/transfer/submit', requireAuth, (req, res) => {
   const { recipientName, bankName, accountNumber, routingNumber, fromAccount, amount, transferType, scheduledDate, memo } = req.body;
   const uid = req.session.userId;
+  const user = db.prepare('SELECT status FROM users WHERE id = ?').get(uid);
+  if (user && user.status === 'blocked') {
+    return res.status(403).json({ error: 'This account has been blocked. Outgoing transfers and transactions are disabled.' });
+  }
   const today = new Date().toISOString().split('T')[0];
   const sendDate = scheduledDate || today;
   // Title-case helper — capitalises first letter of every word
@@ -387,14 +433,14 @@ app.get('/admin/auth/me', (req, res) => {
 
 // All users list
 app.get('/admin/api/users', requireAdmin, (req, res) => {
-  const users = db.prepare('SELECT id, name, email, avatar, member_since, created_at FROM users').all();
+  const users = db.prepare('SELECT id, name, email, avatar, member_since, status, created_at FROM users').all();
   const result = users.map(u => {
     const accounts = db.prepare('SELECT * FROM accounts WHERE user_id = ?').all(u.id);
     const totalBalance = accounts.reduce((s, a) => s + a.balance, 0);
     const investments = db.prepare('SELECT * FROM investments WHERE user_id = ?').all(u.id);
     const totalInvested = investments.reduce((s, i) => s + i.value, 0);
     const pendingCount = db.prepare("SELECT COUNT(*) as c FROM pending_transactions WHERE user_id = ? AND status = 'pending'").get(u.id).c;
-    return { ...u, accounts, totalBalance, totalInvested, pendingCount };
+    return { ...u, status: u.status || 'live', accounts, totalBalance, totalInvested, pendingCount };
   });
   res.json(result);
 });
@@ -402,7 +448,7 @@ app.get('/admin/api/users', requireAdmin, (req, res) => {
 // Single user detail
 app.get('/admin/api/user/:id', requireAdmin, (req, res) => {
   const uid = parseInt(req.params.id, 10);
-  const user = db.prepare('SELECT * FROM users WHERE id = ?').get(uid);
+  const user = db.prepare('SELECT id, name, email, avatar, member_since, status, created_at FROM users WHERE id = ?').get(uid);
   if (!user) return res.status(404).json({ error: 'Not found' });
   const accounts = db.prepare('SELECT * FROM accounts WHERE user_id = ?').all(uid);
   const transactions = db.prepare('SELECT * FROM transactions WHERE user_id = ? ORDER BY date DESC, id DESC').all(uid);
@@ -419,7 +465,41 @@ app.get('/admin/api/user/:id', requireAdmin, (req, res) => {
     risk_level: 'Moderate'
   };
   const activities = db.prepare('SELECT * FROM investment_activities WHERE user_id = ? ORDER BY id DESC').all(uid);
-  res.json({ user, accounts, transactions, pending, investments, performance, activities });
+  res.json({ user: { ...user, status: user.status || 'live' }, accounts, transactions, pending, investments, performance, activities });
+});
+
+// Update user status (live vs blocked)
+app.post('/admin/api/user/:id/status', requireAdmin, (req, res) => {
+  const uid = parseInt(req.params.id, 10);
+  const { status } = req.body;
+  const newStatus = status === 'blocked' ? 'blocked' : 'live';
+  const user = db.prepare('SELECT id FROM users WHERE id = ?').get(uid);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  db.prepare('UPDATE users SET status = ? WHERE id = ?').run(newStatus, uid);
+  res.json({ success: true, status: newStatus });
+});
+
+// Update crypto deposit wallets
+app.post('/admin/api/crypto-wallets', requireAdmin, (req, res) => {
+  const { btc_address, btc_network, usdt_address, usdt_network, eth_address, eth_network } = req.body;
+  if (btc_address !== undefined) {
+    db.prepare('UPDATE crypto_wallets SET address = ?, network = ? WHERE coin = ?')
+      .run(btc_address.trim(), (btc_network || 'Bitcoin Network').trim(), 'BTC');
+  }
+  if (usdt_address !== undefined) {
+    db.prepare('UPDATE crypto_wallets SET address = ?, network = ? WHERE coin = ?')
+      .run(usdt_address.trim(), (usdt_network || 'TRC-20 (TRON)').trim(), 'USDT');
+  }
+  if (eth_address !== undefined) {
+    db.prepare('UPDATE crypto_wallets SET address = ?, network = ? WHERE coin = ?')
+      .run(eth_address.trim(), (eth_network || 'ERC-20 (Ethereum)').trim(), 'ETH');
+  }
+  const rows = db.prepare('SELECT * FROM crypto_wallets').all();
+  const wallets = {};
+  rows.forEach(r => {
+    wallets[r.coin] = { label: r.label, network: r.network, addr: r.address, color: r.color };
+  });
+  res.json({ success: true, wallets });
 });
 
 
